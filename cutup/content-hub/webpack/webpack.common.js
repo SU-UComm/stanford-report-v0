@@ -87,12 +87,17 @@ const copyWebPack = new CopyWebpackPlugin({
     patterns: [
         {
             from: path.resolve(__dirname, '../src/externals'),
-            to: 'externals',
+            to: 'externals/[name][ext]',
             noErrorOnMissing: true,
         },
         {
             from: 'src/modules/**/inline-*.svg',
             to: 'svg/[name][ext]',
+            noErrorOnMissing: true,
+        },
+        {
+            from: 'src/components/**/static/*.*',
+            to: 'static/[name][ext]',
             noErrorOnMissing: true,
         },
     ],

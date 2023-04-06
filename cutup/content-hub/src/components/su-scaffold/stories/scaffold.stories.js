@@ -1,10 +1,10 @@
 import * as Component from '../main';
 import inputData from '../data/sample.json';
-import propsToControls from '../../../../scripts/stortbook-helpers/propsToControls';
+import propsToControls from '../../../helpers/propsToControls';
 import manifest from '../manifest.json';
 
 export default {
-    title: 'Scaffold',
+    title: 'su-scaffold',
     argTypes: propsToControls(manifest.functions[0].input.properties),
 };
 
@@ -15,7 +15,7 @@ const Template = ({label, ...args}) => {
 
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'http://127.0.0.1:8080/css/output.css';
+    link.href = 'http://127.0.0.1:4000/global.css';
     link.type = 'text/css';
     link.media = 'all';
 
