@@ -36,8 +36,8 @@ module.exports = (env) => {
                 path: `.env`,
             }),
             new MiniCssExtractPlugin({
-                filename: '[name].css',
-                chunkFilename: '[name].css',
+                filename: 'css/[name].css',
+                chunkFilename: 'css/[name].css',
             }),
             new CleanWebpackPlugin({
                 cleanAfterEveryBuildPatterns: [config.buildFolder],

@@ -1,7 +1,7 @@
 /**
  * Function description string
  */
-const description = 'This is the function description text.';
+const description = 'Proxy a fetch request to avoid CORS.';
 
 /**
  * Main process function
@@ -15,7 +15,7 @@ const description = 'This is the function description text.';
  */
 // eslint-disable-next-line no-unused-vars
 const processFunction = async (param) => {
-    const jsonData = await param.loco.fetchJSON('https://api.jokes.one/jod').catch((err) => {
+    const jsonData = await param.loco.fetchJSON('https://services-team.matrix.squiz.cloud/rn_edify/instances').catch((err) => {
         return {error: err.message};
     });
 
