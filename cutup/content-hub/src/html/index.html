@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>React starter</title>
+        ${require('src/html/fragments/head.html')}
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <!--noindex-->
+            ${require('src/html/fragments/global-header.html')}
+            <!--endnoindex-->
+
+            <main class="main" role="main">
+                <div class="container su-py-10">
+                    <h2>Components</h2>
+                    <ul>
+                        <li><a href="reactApp.html">React App with Contexts</a></li>
+                    </ul>
+                </div>
+                ${require('dxpLoader?dataFile=/su-scaffold/data/sample.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
+                ${require('dxpLoader?dataFile=/su-scaffold/data/sample2.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
+            </main>
+            <!-- /.main -->
+
+            <!--noindex-->
+            ${require('src/html/fragments/global-footer.html')}
+            <!--endnoindex-->
+        </div>
+        <!-- /.page-wrapper -->
+    </body>
+</html>
