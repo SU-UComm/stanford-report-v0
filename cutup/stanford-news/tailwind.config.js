@@ -8,7 +8,7 @@ module.exports = {
     // Our own prefix.
     prefix: 'su-',
 
-    content: ['./src/components/**/previews/**/*.html', './src/components/**/main.js', './src/components/**/manifest.json', './src/modules/**/*.jsx'],
+    content: ['./src/html/**/*.html', './src/components/**/previews/**/*.html', './src/components/**/main.js', './src/components/**/manifest.json', './src/modules/**/*.jsx'],
     // The theme section is where you define your color palette, font stacks,
     // type scale, border sizes, breakpoints — anything related to the visual
     // design of your site.

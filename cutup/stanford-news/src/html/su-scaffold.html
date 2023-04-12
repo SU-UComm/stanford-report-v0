@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Stanford University</title>
+        <title>Stanford University - Scaffold component</title>
         ${require('src/html/fragments/head.html')}
     </head>
 
@@ -12,17 +12,11 @@
             <!--endnoindex-->
 
             <main class="main" role="main">
-                <div class="container su-py-10">
-                    <h2>Components</h2>
-                    <ul>
-                        <li><a href="su-scaffold.html">Scaffold component</a></li>
-                    </ul>
+                <div class="su-py-10">
+                    ${require('dxpLoader?dataFile=/su-scaffold/data/sample.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
                 </div>
-                <div class="container su-py-10">
-                    <h2>React</h2>
-                    <ul>
-                        <li><a href="reactApp.html">React App with Contexts</a></li>
-                    </ul>
+                <div class="su-py-10">
+                    ${require('dxpLoader?dataFile=/su-scaffold/data/sample2.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
                 </div>
             </main>
             <!-- /.main -->
