@@ -10,7 +10,8 @@
     "test:all": "npm-run-all test cypress:ci:dev ",
     "build": "webpack --config webpack/webpack.prod.js --env minify=false",
     "build-min": "webpack --config webpack/webpack.prod.js --env minify=true",
-    "dev": "concurrently \"npm run serve:no-open\" \"npm run dxp\"",
+    "dev": "concurrently \"npm run serve:no-open\" \"npm run dxp\" \"npm run loco\"",
+    "devServe": "concurrently \"npm run serve\" \"npm run loco\"",
     "dxp": "dxp-next cmp dev ./src/components",
     "serve": "webpack-dev-server --open --config webpack/webpack.dev.js",
     "serve:no-open": "webpack-dev-server --config webpack/webpack.dev.js",
@@ -26,7 +27,7 @@
     "cypress:ci:dev": "cypress run --browser chrome --headless --config-file cypress.development.json",
     "cypress:ci": "cypress run --browser chrome --headless --config-file cypress.json",
     "loco": "loco loco.json",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "concurrently \"start-storybook -p 6006\" \"npm run serve:no-open\" \"npm run loco\"",
     "build-storybook": "build-storybook"
   },
   "moduleNameMapper": {},
