@@ -24,8 +24,8 @@
     "cypress:verify": "cypress verify",
     "cypress:dev": "npx cypress open --config-file cypress.development.config.js",
     "cypress:prod": "npx cypress open --config-file cypress.production.config.js",
-    "cypress:ci:dev": "cypress run --browser chrome --headless --config-file cypress.development.json",
-    "cypress:ci": "cypress run --browser chrome --headless --config-file cypress.json",
+    "cypress:ci:dev": "cypress run --browser chrome --headless --config-file cypress.development.config.js",
+    "cypress:ci": "cypress run --browser chrome --headless --config-file cypress.production.config.js",
     "loco": "loco loco.json",
     "storybook": "concurrently \"start-storybook -p 6006\" \"npm run serve:no-open\" \"npm run loco\"",
     "build-storybook": "build-storybook"

@@ -12,7 +12,7 @@ module.exports = defineConfig({
         setupNodeEvents(on, config) {
             return require('./cypress/plugins/index.js')(on, config);
         },
-        baseUrl: 'http://127.0.0.1:3000',
+        baseUrl: 'http://127.0.0.1:4000',
         specPattern: './src//**/__cypress__/*.spec.js',
     },
 });
