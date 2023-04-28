@@ -29,15 +29,19 @@ module.exports = {
     entry: {
         global: glob.sync('./src/**/global.js'),
         reactApp: './src/modules/_ReactApp/render.jsx',
+        reactComponentsClient: glob.sync('./src/components/**/client.jsx'),
         reactScaffoldServer: {
-            import: './src/components/su-reactScaffold/src/component/server.jsx',
-            filename: '../src/components/su-reactScaffold/src/component/dist/server.js',
+            import: './src/components/su-react_component/src/component/server.jsx',
+            filename: '../src/components/su-react_component/src/component/dist/server.js',
             library: {
                 type: 'commonjs2',
                 export: 'default',
             },
         },
-        reactScaffoldClient: {import: './src/components/su-reactScaffold/src/component/client.jsx', filename: '../src/components/su-reactScaffold/src/component/dist/client.js'},
+        reactScaffoldClient: {
+            import: './src/components/su-react_component/src/component/client.jsx',
+            filename: '../src/components/su-react_component/src/component/dist/client.js',
+        },
     },
     chunks: {
         allPages: ['global'],
