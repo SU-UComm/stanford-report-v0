@@ -1,0 +1,76 @@
+{
+  "$schema": "http://localhost:3000/schemas/v1.json",
+  "name": "react_caffold",
+  "namespace": "stanford-components",
+  "displayName": "React Scaffold",
+  "description": "React component scaffold",
+  "version": "0.0.1",
+  "mainFunction": "main",
+  "environment": [],
+  "functions": [
+    {
+      "name": "main",
+      "entry": "dist/server.js",
+      "input": {
+        "type": "object",
+        "title": "React component scaffold",
+        "description": "",
+        "required": [],
+        "properties": {
+          "content": {
+            "type": "string",
+            "title": "content",
+            "default": ""
+          }
+        }
+      },
+      "output": {
+        "responseType": "html",
+        "staticFiles": [
+          {
+            "location": "header",
+            "file": {
+              "type": "css",
+              "filepath": "http://127.0.0.1:4000/global.css"
+            }
+          },
+          {
+            "location": "footer",
+            "file": {
+              "type": "js",
+              "filepath": "client.js"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "previews": {
+    "server": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/preview.data.json"
+          }
+        }
+      }
+    },
+    "client": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/preview.data.json"
+          },
+          "wrapper": {
+            "path": "previews/preview.wrapper.html"
+          }
+        }
+      }
+    }
+  },
+  "staticFiles": {
+    "locationRoot": "dist"
+  }
+}

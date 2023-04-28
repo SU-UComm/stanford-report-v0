@@ -19,7 +19,7 @@
         "properties": {
           "content": {
             "type": "string",
-            "title": "Content",
+            "title": "content",
             "default": ""
           },
           "textColor": {
