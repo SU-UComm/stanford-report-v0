@@ -14,7 +14,7 @@ export default async (args, info) => {
     };
 
     const htmlMarkup = renderToString(
-        <div data-hydration-component="event-spotlight" data-hydration-props={JSON.stringify({...componentArgs})}>
+        <div data-hydration-component="su-react_component" data-hydration-props={JSON.stringify({...componentArgs})}>
             <SampleComponent {...componentArgs} />
         </div>,
     );
