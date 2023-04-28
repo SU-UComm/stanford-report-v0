@@ -106,9 +106,9 @@ const copyWebPack = new CopyWebpackPlugin({
 module.exports = {
     entry: config.entry,
     output: {
-        publicPath: config.publicPath,
+        filename: 'js/[name].js', // JS output path,
         path: path.resolve(__dirname, `../${config.buildFolder}`), // Output folder
-        filename: 'js/[name].js', // JS output path
+        publicPath: config.publicPath,
     },
     resolve: {
         alias: config.alias,
