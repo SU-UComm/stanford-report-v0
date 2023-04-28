@@ -2,9 +2,9 @@
   "$schema": "http://localhost:3000/schemas/v1.json",
   "name": "su-react_component",
   "namespace": "stanford-components",
-  "displayName": "React Scaffold",
+  "displayName": "React Scaffold with alert",
   "description": "React component scaffold",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "mainFunction": "main",
   "environment": [],
   "functions": [
