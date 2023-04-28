@@ -33,6 +33,7 @@ module.exports = {
         reactScaffoldServer: {
             import: './src/components/su-react_component/src/component/server.jsx',
             filename: '../src/components/su-react_component/src/component/dist/server.js',
+
             library: {
                 type: 'commonjs2',
                 export: 'default',
