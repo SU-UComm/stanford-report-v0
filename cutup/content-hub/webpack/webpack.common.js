@@ -72,7 +72,6 @@ const htmlPlugins = generateHtmlPlugins('../src/html');
 class WatchForHotHTMLChanges {
     apply(compiler) {
         compiler.hooks.watchRun.tap('WatchForHotHTMLChanges', (comp) => {
-            console.log(comp.modifiedFiles);
             if (comp.modifiedFiles) {
                 const changedFiles = Array.from(comp.modifiedFiles, (file) => `\n  ${file}`).join('');
                 console.log('===============================');

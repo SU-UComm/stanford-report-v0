@@ -7,12 +7,13 @@ const SampleComponent = ({content}) => {
     };
 
     return (
-        <div className="su-flex su-justify-center">
+        <div className="su-flex su-justify-center su-bg-black-10">
             <div className="su-px-30 su-py-10 su-max-w-500">
                 <p className="currentDate">{new Date().toJSON().slice(0, 10).replace(/-/g, '/')}</p>
                 <p>{content}</p>
             </div>
             <button
+                className="su-p-10"
                 onClick={() => {
                     sampleOnClick();
                 }}
