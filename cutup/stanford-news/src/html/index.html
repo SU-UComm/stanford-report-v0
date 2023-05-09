@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Stanford University</title>
-        ${require('src/html/fragments/head.html')}
-    </head>
 
-    <body>
-        <div class="page-wrapper">
-            <!--noindex-->
-            ${require('src/html/fragments/global-header.html')}
-            <!--endnoindex-->
+<head>
+    <title>Stanford University</title>
+    ${require('src/html/fragments/head.html')}
+    ${require('src/html/fragments/su-head.html')}
+</head>
 
-            <main class="main" role="main">
-                <div class="container su-py-10">
-                    <h2>Components</h2>
-                    <ul>
-                        <li><a href="su-scaffold.html">Scaffold component</a></li>
-                    </ul>
-                </div>
-                <div class="container su-py-10">
-                    <h2>React</h2>
-                    <ul>
-                        <li><a href="reactApp.html">React App with Contexts</a></li>
-                        <li><a href="su-react_component.html">React Component sample</a></li>
-                    </ul>
-                </div>
-            </main>
-            <!-- /.main -->
-
-            <!--noindex-->
-            ${require('src/html/fragments/global-footer.html')}
-            <!--endnoindex-->
+<body>
+    ${require('src/html/fragments/su-header-simple.html')}
+    <main class="main" role="main">
+        <div class="container su-py-10">
+            <h2>Components</h2>
+            <ul>
+                <li><a href="su-scaffold.html">Scaffold component</a></li>
+                <li><a href="su-pullquote.html">Pullquote</a></li>
+            </ul>
         </div>
-        <!-- /.page-wrapper -->
-    </body>
+        <div class="container su-py-10">
+            <h2>React</h2>
+            <ul>
+                <li><a href="reactApp.html">React App with Contexts</a></li>
+                <li><a href="su-react_component.html">React Component sample</a></li>
+            </ul>
+        </div>
+    </main>
+    <!-- /.main -->
+</body>
+
 </html>

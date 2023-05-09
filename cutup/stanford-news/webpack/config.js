@@ -28,6 +28,7 @@ module.exports = {
     },
     entry: {
         global: glob.sync('./src/**/global.js'),
+        tailwind: glob.sync('./src/js/tailwind.js'),
         reactApp: './src/modules/_ReactApp/render.jsx',
         reactComponentsClient: glob.sync('./src/components/**/client.jsx'),
         reactScaffoldServer: {
@@ -50,6 +51,11 @@ module.exports = {
             {
                 pages: ['reactApp'],
                 addChunks: ['reactApp'],
+                removeChunks: [],
+            },
+            {
+                pages: ['su-react_component', 'su-scaffold'],
+                addChunks: ['tailwind'],
                 removeChunks: [],
             },
         ],

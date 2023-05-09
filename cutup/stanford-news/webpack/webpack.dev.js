@@ -1,10 +1,27 @@
 /* global */
-const path = require('path');
+//const path = require('path');
+const chalk = require('chalk');
 const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {merge} = require('webpack-merge');
 const common = require('./webpack.common.js');
 const config = require('./config');
+const exec = require('child_process').exec;
+
+class createProductionBuild {
+    apply(compiler) {
+        compiler.hooks.watchRun.tap('RebuildProdBuild', (comp) => {
+            // if (comp.modifiedFiles) {
+            //     console.log(chalk.cyan('==== Starting production build ===='));
+            //     exec('npm run build', (err, stdout, stderr) => {
+            //         if (stdout) console.log(stdout);
+            //         if (stderr) console.log(stderr);
+            //         console.log(chalk.cyan('==== Finished production build ===='));
+            //     });
+            // }
+        });
+    }
+}
 
 module.exports = merge(common, {
     mode: 'development',
@@ -57,5 +74,6 @@ module.exports = merge(common, {
             filename: '[name].css',
             chunkFilename: '[name].css',
         }),
+        new createProductionBuild(),
     ],
 });

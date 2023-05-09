@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Stanford University - Scaffold react component</title>
-        ${require('src/html/fragments/head.html')}
-    </head>
 
-    <body>
-        <div class="page-wrapper">
-            <!--noindex-->
-            ${require('src/html/fragments/global-header.html')}
-            <!--endnoindex-->
+<head>
+    <title>Stanford University - Scaffold react component</title>
+    ${require('src/html/fragments/head.html')}
+</head>
 
-            <main class="main" role="main">
-                <div class="su-py-10">
-                    ${require('dxpLoader?dataFile=/su-react_component/src/component/previews/preview.data.json&componentFile=/su-react_component/src/component/dist/server.js!src/components/su-react_component/src/component/dist/server.js')}
-                </div>
-                <div class="su-py-10">
-                    ${require('dxpLoader?dataFile=/su-react_component/src/component/previews/preview.data2.json&componentFile=/su-react_component/src/component/dist/server.js!src/components/su-react_component/src/component/dist/server.js')}
-                </div>
-            </main>
-            <!-- /.main -->
+<body>
 
-            <!--noindex-->
-            ${require('src/html/fragments/react-footer.html')}
-            <!--endnoindex-->
+    <main class="main" role="main">
+        <div class="su-py-10">
+            ${require('dxpLoader?dataFile=/su-react_component/src/component/previews/preview.data.json&componentFile=/su-react_component/src/component/dist/server.js!src/components/su-react_component/src/component/server.jsx')}
+            ${require('dxpLoader?dataFile=/su-react_component/src/component/previews/preview.data2.json&componentFile=/su-react_component/src/component/dist/server.js!src/components/su-react_component/src/component/server.jsx')}
         </div>
-        <!-- /.page-wrapper -->
-    </body>
+    </main>
+
+    <script src="/js/reactComponentsClient.js"></script>
+</body>
+
 </html>

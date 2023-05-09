@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const {getOptions} = require('loader-utils');
 const config = require('../config');
 const chalk = require('chalk');
@@ -26,7 +28,7 @@ module.exports = function () {
 
     // Load component and data sample
     const data = requireUncached(dataFile);
-    const component = requireUncached(componentFile);
+    const component = fs.existsSync(path.resolve(__dirname, componentFile)) ? requireUncached(componentFile) : () => {};
 
     (async () => {
         const result = await component(data);

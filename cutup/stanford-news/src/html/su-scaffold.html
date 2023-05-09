@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Stanford University - Scaffold component</title>
-        ${require('src/html/fragments/head.html')}
-    </head>
 
-    <body>
-        <div class="page-wrapper">
-            <!--noindex-->
-            ${require('src/html/fragments/global-header.html')}
-            <!--endnoindex-->
+<head>
+    <title>Stanford University - Scaffold component</title>
+    ${require('src/html/fragments/head.html')}
+</head>
 
-            <main class="main" role="main">
-                <div class="su-py-10">
-                    ${require('dxpLoader?dataFile=/su-scaffold/data/sample.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
-                </div>
-                <div class="su-py-10">
-                    ${require('dxpLoader?dataFile=/su-scaffold/data/sample2.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
-                </div>
-            </main>
-            <!-- /.main -->
+<body>
 
-            <!--noindex-->
-            ${require('src/html/fragments/global-footer.html')}
-            <!--endnoindex-->
+    <main class="main" role="main">
+        <div class="su-py-10">
+            ${require('dxpLoader?dataFile=/su-scaffold/data/sample.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
         </div>
-        <!-- /.page-wrapper -->
-    </body>
+        <div class="su-py-10">
+            ${require('dxpLoader?dataFile=/su-scaffold/data/sample2.json&componentFile=/su-scaffold/main.js!src/components/su-scaffold/main.js')}
+        </div>
+    </main>
+    <!-- /.main -->
+
+</body>
+
 </html>
