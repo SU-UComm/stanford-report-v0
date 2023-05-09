@@ -19,6 +19,10 @@ The main differences are:
 This version is tested under:
 * Node v16
 * NPM 9
+* dxp-next-cli
+```
+npm i -g @squiz/dxp-cli-next
+```
 
 # Docs
 
