@@ -44,6 +44,15 @@ module.exports = {
             import: './src/components/su-react_component/src/component/client.jsx',
             filename: '../src/components/su-react_component/src/component/dist/client.js',
         },
+        reactPullquoteServer: {
+            import: './src/components/su-pullquote-react/server.jsx',
+            filename: '../src/components/su-pullquote-react/dist/server.js',
+
+            library: {
+                type: 'commonjs2',
+                export: 'default',
+            },
+        },
     },
     chunks: {
         allPages: ['global'],

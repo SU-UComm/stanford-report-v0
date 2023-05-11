@@ -11,14 +11,14 @@ const exec = require('child_process').exec;
 class createProductionBuild {
     apply(compiler) {
         compiler.hooks.watchRun.tap('RebuildProdBuild', (comp) => {
-            // if (comp.modifiedFiles) {
-            //     console.log(chalk.cyan('==== Starting production build ===='));
-            //     exec('npm run build', (err, stdout, stderr) => {
-            //         if (stdout) console.log(stdout);
-            //         if (stderr) console.log(stderr);
-            //         console.log(chalk.cyan('==== Finished production build ===='));
-            //     });
-            // }
+            if (comp.modifiedFiles) {
+                console.log(chalk.cyan('==== Starting server only production build ===='));
+                exec('npm run build -- --env serverOnly', (err, stdout, stderr) => {
+                    if (stdout) console.log(stdout);
+                    if (stderr) console.log(stderr);
+                    console.log(chalk.cyan('==== Finished server only production build ===='));
+                });
+            }
         });
     }
 }

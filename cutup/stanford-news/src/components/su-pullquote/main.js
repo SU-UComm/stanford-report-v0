@@ -16,18 +16,16 @@ module.exports = async (input) => {
 
     return `
     <div class="pullquote ${alignmentClass}">
-        <img src="${input.image}" class="headshot" alt="${input.attribution}" decoding="async" srcset="https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-100x100.jpg 100w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-555x555.jpg 555w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-795x795.jpg 795w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-960x960.jpg 960w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square.jpg 1343w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-100x100@2x.jpg 200w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-555x555@2x.jpg 1110w" sizes="(max-width: 100px) 100vw, 100px" loading="eager" /></p>
+        <img src="${input?.image?.imageVariations?.original?.url}" class="headshot" alt="${
+        input.attribution
+    }" decoding="async" srcset="https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-100x100.jpg 100w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-555x555.jpg 555w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-795x795.jpg 795w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-960x960.jpg 960w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square.jpg 1343w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-100x100@2x.jpg 200w, https://news.stanford.edu/wp-content/uploads/2018/10/Kovscek_square-555x555@2x.jpg 1110w" sizes="(max-width: 100px) 100vw, 100px" loading="eager" />
         <blockquote>
-            <p>“${input.text}’”</p>
+            <p>“${input.quote}’”</p>
             <p class="quote-attrib">—${input.attribution}</p>
             <p class="quote-attrib supplemental">${input.description}</p>
         </blockquote>
-    </div>`;
-
-    // <div class="su-flex su-justify-center">
-    //     <div class="${Object.values(input.bgColor)[0]} ${Object.values(input.textColor)[0]} su-px-30 su-py-10 su-max-w-500">
-    //         <p class="currentDate"></p>
-    //         <p>${input.content}</p>
-    //     </div>
-    // </div>
+    </div>
+    <pre><code>
+        ${JSON.stringify(input, null, 2)}
+    </code></pre>`;
 };
