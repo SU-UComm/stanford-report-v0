@@ -6,22 +6,7 @@ const Dotenv = require('dotenv-webpack');
 const config = require('./config');
 
 module.exports = (env) => {
-    // Handle entries list
-    let buildEntries = Object.assign({}, config.entry);
-    delete common.entry;
-
-    // Keep only server builds if required
-    if (env.serverOnly) {
-        Object.keys(buildEntries).forEach((entry) => {
-            if (buildEntries[entry]?.library?.type !== 'commonjs2') {
-                delete buildEntries[entry];
-            }
-        });
-        console.log(buildEntries);
-    }
-
     return merge(common, {
-        entry: buildEntries,
         mode: 'production',
         devtool: 'source-map',
         module: {
@@ -45,25 +30,19 @@ module.exports = (env) => {
                 },
             ],
         },
-        plugins: env.serverOnly
-            ? [
-                  new Dotenv({
-                      path: `.env`,
-                  }),
-              ]
-            : [
-                  new Dotenv({
-                      path: `.env`,
-                  }),
-                  new MiniCssExtractPlugin({
-                      filename: 'css/[name].css',
-                      chunkFilename: 'css/[name].css',
-                  }),
-                  new CleanWebpackPlugin({
-                      cleanAfterEveryBuildPatterns: [config.buildFolder],
-                      verbose: true,
-                  }),
-              ],
+        plugins: [
+            new Dotenv({
+                path: `.env`,
+            }),
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].css',
+                chunkFilename: 'css/[name].css',
+            }),
+            new CleanWebpackPlugin({
+                cleanAfterEveryBuildPatterns: [config.buildFolder],
+                verbose: true,
+            }),
+        ],
         optimization: {
             minimize: env.minify === 'true' ? true : false,
         },

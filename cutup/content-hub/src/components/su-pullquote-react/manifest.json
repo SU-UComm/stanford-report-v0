@@ -1,10 +1,10 @@
 {
-  "$schema": "http://localhost:3000/schemas/v1.json",
+  "$schema": "https://render.dx-team-dev-1650.components.dev.dx.squiz.cloud/schemas/v1.json",
   "name": "su-pullquote-react",
   "namespace": "stanford-components",
   "displayName": "React pullquote",
   "description": "React pullquote component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "mainFunction": "main",
   "environment": [],
   "functions": [
@@ -17,7 +17,7 @@
         "description": "",
         "required": [],
         "properties": {
-          "content": {
+          "quote": {
             "type": "string",
             "title": "Quote text",
             "default": ""
@@ -33,9 +33,9 @@
             "default": ""
           },
           "image": {
-            "type": "string",
-            "title": "Image URL",
-            "default": ""
+            "type": "SquizImage",
+            "title": "Image",
+            "description": "Quote author image"
           },
           "alignment": {
             "type": "string",

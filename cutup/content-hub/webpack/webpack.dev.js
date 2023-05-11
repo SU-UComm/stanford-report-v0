@@ -1,5 +1,3 @@
-/* global */
-//const path = require('path');
 const chalk = require('chalk');
 const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -13,7 +11,7 @@ class createProductionBuild {
         compiler.hooks.watchRun.tap('RebuildProdBuild', (comp) => {
             if (comp.modifiedFiles) {
                 console.log(chalk.cyan('==== Starting server only production build ===='));
-                exec('npm run build -- --env serverOnly', (err, stdout, stderr) => {
+                exec('npm run build:server', (err, stdout, stderr) => {
                     if (stdout) console.log(stdout);
                     if (stderr) console.log(stderr);
                     console.log(chalk.cyan('==== Finished server only production build ===='));

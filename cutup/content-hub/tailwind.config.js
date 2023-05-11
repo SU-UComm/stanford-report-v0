@@ -62,7 +62,7 @@ module.exports = {
         // 3rd Party Plugins;
         require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/forms'),
-        require('@tailwindcss/line-clamp'),
+        //require('@tailwindcss/line-clamp'),
 
         // @tailwind base;
         require(`${dir}/base/base.js`)(),
