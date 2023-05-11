@@ -1,10 +1,10 @@
 {
-  "$schema": "http://localhost:3000/schemas/v1.json",
+  "$schema": "https://render.dx-team-dev-1650.components.dev.dx.squiz.cloud/schemas/v1.json",
   "name": "pullquote",
   "namespace": "stanford-components",
   "displayName": "Pullquote",
   "description": "Pullquote component",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "mainFunction": "main",
   "environment": [],
   "functions": [
