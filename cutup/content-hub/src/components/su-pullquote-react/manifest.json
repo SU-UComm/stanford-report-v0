@@ -1,23 +1,23 @@
 {
   "$schema": "http://localhost:3000/schemas/v1.json",
-  "name": "pullquote",
+  "name": "su-pullquote-react",
   "namespace": "stanford-components",
-  "displayName": "Pullquote",
-  "description": "Pullquote component",
-  "version": "0.0.3",
+  "displayName": "React pullquote",
+  "description": "React pullquote component",
+  "version": "0.0.1",
   "mainFunction": "main",
   "environment": [],
   "functions": [
     {
       "name": "main",
-      "entry": "main.js",
+      "entry": "dist/server.js",
       "input": {
         "type": "object",
-        "title": "Pullquote",
+        "title": "React pullquote component",
         "description": "",
         "required": [],
         "properties": {
-          "quote": {
+          "content": {
             "type": "string",
             "title": "Quote text",
             "default": ""
@@ -33,9 +33,9 @@
             "default": ""
           },
           "image": {
-            "type": "SquizImage",
-            "title": "Image",
-            "description": "Quote author image"
+            "type": "string",
+            "title": "Image URL",
+            "default": ""
           },
           "alignment": {
             "type": "string",
@@ -56,26 +56,41 @@
       },
       "output": {
         "responseType": "html",
-        "staticFiles": []
+        "staticFiles": [
+          {
+            "location": "header",
+            "file": {
+              "type": "css",
+              "filepath": "http://127.0.0.1:4000/global.css"
+            }
+          },
+          {
+            "location": "footer",
+            "file": {
+              "type": "js",
+              "filepath": "http://127.0.0.1:4000/js/global.js"
+            }
+          }
+        ]
       }
     }
   ],
   "previews": {
-    "default": {
+    "server": {
       "functionData": {
         "main": {
           "inputData": {
             "type": "file",
-            "path": "data/sample.json"
+            "path": "previews/preview.data.json"
           },
           "wrapper": {
-            "path": "previews/wrapper.html"
+            "path": "previews/preview.wrapper.html"
           }
         }
       }
     }
   },
   "staticFiles": {
-    "locationRoot": "static"
+    "locationRoot": "dist"
   }
 }

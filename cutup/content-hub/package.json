@@ -14,6 +14,7 @@
     "devServe": "concurrently \"npm run serve\" \"npm run loco\"",
     "dxp": "dxp-next cmp dev ./src/components",
     "serve": "webpack-dev-server --open --config webpack/webpack.dev.js",
+    "build:serve": "npm run build && webpack-dev-server --open --config webpack/webpack.dev.js",
     "serve:no-open": "webpack-dev-server --config webpack/webpack.dev.js",
     "lint": "npm-run-all lint:js lint:css",
     "lint:js": "eslint -f codeframe \"./src/**/*.js\" \"./src/**/*.jsx\" --no-error-on-unmatched-pattern",
