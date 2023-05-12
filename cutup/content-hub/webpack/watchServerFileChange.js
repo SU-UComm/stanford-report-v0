@@ -19,7 +19,7 @@ fs.watch('./src/components', {recursive: true, interval: 1000}, (event, filename
             const component = filename.replace(/\/.+|\\.+/g, '');
             const cmd = `npx webpack --config webpack/webpack.server.js --env component=${component}`;
             console.log(`File modified in component ${chalk.green('→')} ${chalk.yellow(component)}`);
-            console.log(chalk.gray(`[${new Date().toTimeString().split(' ')[0]}]`), chalk.cyan(`☕ Starting: ${chalk.blue(cmd)}`));
+            console.log(chalk.gray(`[${new Date().toTimeString().split(' ')[0]}]`), chalk.cyan(`☕ Rebuilding (${chalk.yellow(component)}): ${chalk.blue(cmd)}`));
 
             exec(cmd, (error, stdout, stderr) => {
                 if (error) {
@@ -32,7 +32,7 @@ fs.watch('./src/components', {recursive: true, interval: 1000}, (event, filename
                     return;
                 }
 
-                console.log(chalk.gray(`[${new Date().toTimeString().split(' ')[0]}]`), chalk.cyan(`😃 Finished: ${chalk.blue(cmd)}`));
+                console.log(chalk.gray(`[${new Date().toTimeString().split(' ')[0]}]`), chalk.cyan(`😃 Finished (${chalk.yellow(component)}): ${chalk.blue(cmd)}`));
             });
         }
     }
