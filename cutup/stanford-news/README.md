@@ -38,11 +38,10 @@ Some of the webpack options can be configured using **/webpack/config.js**
 - chunks - chunks configuration lets you specify which chunks should be used in which html page template
 - rewrites - [rewrites](https://webpack.js.org/configuration/dev-server/#devserverhistoryapifallback) to be used with things like [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
 
-## Commands
+## NPM scripts
 - dxp - default dxp-next build
 - dxpServe - run webpack dev server and dxp and watch for server jsx changes to build
 - dxpLogin - login to DXP
-- dxpDeploy - deploy component from current folder
 - audit - npm audit on production dependencies
 - test - jest tests
 - test:coverage - generate jest tests coverage
@@ -65,6 +64,12 @@ Some of the webpack options can be configured using **/webpack/config.js**
 - loco - run loco dev proxy
 - storybook - run storybook and serve:no-open
 - build-storybook: [build storybook](https://storybook.js.org/docs/react/sharing/publish-storybook#build-storybook-as-a-static-web-application) as a static web application
+
+# Other commands
+- deploy dxp component
+```
+dxp-next cmp deploy ./
+```
 
 # React Component Service
 When developing a DXP React component you can use:
