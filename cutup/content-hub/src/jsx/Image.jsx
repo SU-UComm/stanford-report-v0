@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Image = ({image, attribution}) => {
+const Image = ({image, alt}) => {
     let srcset = [];
     image.imageVariations.aspectRatios.forEach((img) => {
         if (img.width === 100 && img.height === 100) {
@@ -25,7 +25,7 @@ const Image = ({image, attribution}) => {
         <img
             src={image?.imageVariations?.original?.url}
             className="headshot"
-            alt={attribution}
+            alt={alt}
             decoding="async"
             srcSet={srcset.join(', ')}
             sizes="(max-width: 100px) 100vw, 100px"
@@ -38,5 +38,5 @@ export default Image;
 
 Image.propTypes = {
     image: PropTypes.object,
-    attribution: PropTypes.string,
+    alt: PropTypes.string,
 };
