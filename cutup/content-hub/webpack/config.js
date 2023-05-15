@@ -11,6 +11,8 @@ module.exports = {
         overlay: {errors: true, warnings: false},
     },
     dxpComponentsPathPrefix: '../../src/components',
+    dxpComponentsWatchPath: './src/components',
+    dxpComponentsGlobalWatchPath: './src/jsx',
     publicPath: '/',
     proxy: {
         // '/api': {
@@ -23,6 +25,7 @@ module.exports = {
         nodeModules: path.resolve(__dirname, '../node_modules/'),
         src: path.resolve(__dirname, '../src/'),
         modules: path.resolve(__dirname, '../src/modules'),
+        jsx: path.resolve(__dirname, '../src/jsx'),
         helpers: path.resolve(__dirname, '../src/helpers'),
         images: path.resolve(__dirname, '../src/images'),
     },

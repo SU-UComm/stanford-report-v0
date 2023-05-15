@@ -7,6 +7,7 @@
     "baseUrl": "./",
     "paths": {
       "src/*": ["src/*"],
+      "jsx/*": ["src/jsx/*"],
       "modules/*": ["src/modules/*"],
       "helpers/*": ["src/helpers/*"]
     }
