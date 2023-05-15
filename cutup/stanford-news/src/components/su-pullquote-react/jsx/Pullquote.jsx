@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from './Image.jsx';
+import Image from 'jsx/Image.jsx';
 import PropTypes from 'prop-types';
 
 const Pullquote = ({quote, attribution, alignment, image, description}) => {

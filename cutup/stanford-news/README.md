@@ -32,6 +32,8 @@ Some of the webpack options can be configured using **/webpack/config.js**
 - watchFiles - array of files to watch by devServer
 - devServerClient - devServer client configuration
 - dxpComponentsPathPrefix - dxp component service path relative to the dxpLoader location
+- dxpComponentsWatchPath - path used by watchServerFileChanges.js to rebuild a single SSR bundle
+- dxpComponentsGlobalWatchPath - path used by watchServerFileChanges.js to rebuild a all SSR bundles
 - publicPath - webpack [Public Path](https://webpack.js.org/guides/public-path/)
 - alias - webpack aliases used in imports
 - entry - webpack [entry points](https://webpack.js.org/concepts/entry-points/)
