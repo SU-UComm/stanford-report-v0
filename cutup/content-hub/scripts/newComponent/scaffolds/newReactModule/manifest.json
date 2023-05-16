@@ -1,10 +1,10 @@
 {
-  "$schema": "http://localhost:3000/schemas/v1.json",
-  "name": "su-react_component",
-  "namespace": "stanford-components",
-  "displayName": "React Scaffold with alert",
-  "description": "React component scaffold",
-  "version": "0.0.2",
+  "$schema": "https://render.dx-team-dev-1650.components.dev.dx.squiz.cloud/schemas/v1.json",
+  "name": "{NAME_lowercase}",
+  "namespace": "{NAMESPACE}",
+  "displayName": "{NAME}",
+  "description": "{DESCRIPTION}",
+  "version": "0.0.1",
   "mainFunction": "main",
   "environment": [],
   "functions": [
@@ -13,14 +13,19 @@
       "entry": "dist/server.js",
       "input": {
         "type": "object",
-        "title": "React component scaffold",
+        "title": "{NAME}",
         "description": "",
         "required": [],
         "properties": {
-          "content": {
+          "text": {
             "type": "string",
-            "title": "content",
+            "title": "Text",
             "default": ""
+          },
+          "image": {
+            "type": "SquizImage",
+            "title": "Image",
+            "description": "Sample image"
           }
         }
       },
@@ -51,7 +56,7 @@
         "main": {
           "inputData": {
             "type": "file",
-            "path": "previews/preview.data.json"
+            "path": "previews/sample.json"
           }
         }
       }
@@ -61,10 +66,10 @@
         "main": {
           "inputData": {
             "type": "file",
-            "path": "previews/preview.data.json"
+            "path": "previews/sample.json"
           },
           "wrapper": {
-            "path": "previews/preview.wrapper.html"
+            "path": "previews/wrapper.html"
           }
         }
       }

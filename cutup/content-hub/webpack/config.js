@@ -1,5 +1,6 @@
 const glob = require('glob');
 const path = require('path');
+const entryHelpers = require('./helpers/entries');
 
 module.exports = {
     buildFolder: 'build',
@@ -13,6 +14,8 @@ module.exports = {
     dxpComponentsPathPrefix: '../../src/components',
     dxpComponentsWatchPath: './src/components',
     dxpComponentsGlobalWatchPath: './src/jsx',
+    dxpComponentsNamespace: 'stanford-components',
+    dxpComponentsNamePrefix: 'su-',
     publicPath: '/',
     proxy: {
         // '/api': {
@@ -29,34 +32,15 @@ module.exports = {
         helpers: path.resolve(__dirname, '../src/helpers'),
         images: path.resolve(__dirname, '../src/images'),
     },
-    entry: {
-        global: glob.sync('./src/**/global.js'),
-        tailwind: glob.sync('./src/js/tailwind.js'),
-        reactApp: './src/modules/_ReactApp/render.jsx',
-        reactComponentsClient: glob.sync('./src/components/**/client.jsx'),
-        reactScaffoldServer: {
-            import: './src/components/su-react_component/src/component/server.jsx',
-            filename: '../src/components/su-react_component/src/component/dist/server.js',
-
-            library: {
-                type: 'commonjs2',
-                export: 'default',
-            },
+    entry: Object.assign(
+        {
+            global: glob.sync('./src/**/global.js'),
+            tailwind: glob.sync('./src/js/tailwind.js'),
+            reactApp: './src/modules/_ReactApp/render.jsx',
+            reactComponentsClient: glob.sync('./src/components/**/client.jsx'),
         },
-        reactScaffoldClient: {
-            import: './src/components/su-react_component/src/component/client.jsx',
-            filename: '../src/components/su-react_component/src/component/dist/client.js',
-        },
-        reactPullquoteServer: {
-            import: './src/components/su-pullquote-react/server.jsx',
-            filename: '../src/components/su-pullquote-react/dist/server.js',
-
-            library: {
-                type: 'commonjs2',
-                export: 'default',
-            },
-        },
-    },
+        ...entryHelpers.buildComponentEntries('./src/components'),
+    ),
     chunks: {
         allPages: ['global'],
         pages: [

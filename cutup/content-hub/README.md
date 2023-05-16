@@ -34,6 +34,8 @@ Some of the webpack options can be configured using **/webpack/config.js**
 - dxpComponentsPathPrefix - dxp component service path relative to the dxpLoader location
 - dxpComponentsWatchPath - path used by watchServerFileChanges.js to rebuild a single SSR bundle
 - dxpComponentsGlobalWatchPath - path used by watchServerFileChanges.js to rebuild a all SSR bundles
+- dxpComponentsNamespace - namespace used in dxp components when creating from scaffold using ```npm run addComponent```
+- dxpComponentsNamePrefix - component folder prefix when creating from scaffold using ```npm run addComponent```
 - publicPath - webpack [Public Path](https://webpack.js.org/guides/public-path/)
 - alias - webpack aliases used in imports
 - entry - webpack [entry points](https://webpack.js.org/concepts/entry-points/)
@@ -41,6 +43,7 @@ Some of the webpack options can be configured using **/webpack/config.js**
 - rewrites - [rewrites](https://webpack.js.org/configuration/dev-server/#devserverhistoryapifallback) to be used with things like [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
 
 ## NPM scripts
+- addComponent - add new component from scaffold
 - dxp - default dxp-next build
 - dxpServe - run webpack dev server and dxp and watch for server jsx changes to build
 - dxpLogin - login to DXP

@@ -1,0 +1,39 @@
+{
+  "text": "Ullamco culpa Lorem aute aute excepteur exercitation amet.",
+  "image": {
+    "name": "A1CF8BE6-1689-43FF-BEEE-9146BE76F885.jpeg",
+    "alt": "",
+    "caption": "",
+    "imageVariations": {
+      "original": {
+        "url": "https://placehold.co/799x1200",
+        "width": 799,
+        "height": 1200,
+        "byteSize": 179638,
+        "mimeType": "image/jpeg",
+        "aspectRatio": "4:3",
+        "sha1Hash": ""
+      },
+      "aspectRatios": [
+        {
+          "url": "https://placehold.co/200x200",
+          "width": 200,
+          "height": 200,
+          "byteSize": 8470,
+          "mimeType": "image/jpeg",
+          "aspectRatio": "4:3",
+          "sha1Hash": ""
+        },
+        {
+          "url": "https://placehold.co/100x100",
+          "width": 100,
+          "height": 100,
+          "byteSize": 3277,
+          "mimeType": "image/jpeg",
+          "aspectRatio": "4:3",
+          "sha1Hash": ""
+        }
+      ]
+    }
+  }
+}
