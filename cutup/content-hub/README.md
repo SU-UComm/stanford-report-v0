@@ -92,29 +92,17 @@ example usage in an HTML file located under **./src/html**:
 </div>
 ```
 
-One important configuration bit is the webpack entry configuration for server chunks. Each component requires a separate entry like:
-```
-reactPullquoteServer: {
-    import: './src/components/su-pullquote-react/server.jsx',
-    filename: '../src/components/su-pullquote-react/dist/server.js',
-
-    library: {
-        type: 'commonjs2',
-        export: 'default',
-    },
-},
-```
-Path for import and filename need to be adjusted accordingly for each component. Client side js responsible for hydration on the client side is bundled to one file using:
+## Webpack entries configuration
+Client side js responsible for hydration on the client side is bundled to one file using:
 ```
 reactComponentsClient: glob.sync('./src/components/**/client.jsx'),
 ```
-If you intend to use dxpServe or dxp for development additional entry is required to generate client side js:
+
+Client and server side bundles are created automatically as long as you keep the naming convention and file location as per scaffold. Therefor it is recommended to create new component using
 ```
-reactScaffoldClient: {
-    import: './src/components/su-react_component/src/component/client.jsx',
-    filename: '../src/components/su-react_component/src/component/dist/client.js',
-},
+npm run addComponent
 ```
+It is possible to create a different component structure but in that case you need to update webpack config.js manually.
 
 If you encounter any errors suggesting missing files run
 ```
