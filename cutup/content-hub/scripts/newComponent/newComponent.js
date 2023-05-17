@@ -27,7 +27,7 @@ const copyScaffold = (srcDir, options) => {
         .join('');
 
     if (!fs.existsSync(dest)) {
-        fs.cpSync(`./scripts/newModule/${srcDir}`, dest, {recursive: true});
+        fs.cpSync(`./scripts/newComponent/${srcDir}`, dest, {recursive: true});
         if (options.type === 'React') {
             fs.renameSync(`${dest}/jsx/ComponentName.jsx`, `${dest}/jsx/${comelcaseName}.jsx`);
         }
@@ -89,10 +89,10 @@ inquirer
     .then((answers) => {
         switch (answers.type) {
             case 'Standard':
-                copyScaffold('scaffolds/newModule', answers);
+                copyScaffold('scaffolds/newComponent', answers);
                 break;
             case 'React':
-                copyScaffold('scaffolds/newReactModule', answers);
+                copyScaffold('scaffolds/newReactComponent', answers);
                 break;
             default:
                 console.log(chalk.yellow(`Type "${answers.type}" is not supported.`));
