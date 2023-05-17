@@ -1,0 +1,87 @@
+{
+  "$schema": "https://render.dx-team-dev-1650.components.dev.dx.squiz.cloud/schemas/v1.json",
+  "name": "infobox",
+  "namespace": "stanford-components",
+  "displayName": "Infobox",
+  "description": "Side box with a popup",
+  "version": "0.0.1",
+  "mainFunction": "main",
+  "environment": [],
+  "functions": [
+    {
+      "name": "main",
+      "entry": "dist/server.js",
+      "input": {
+        "type": "object",
+        "title": "Infobox",
+        "description": "",
+        "required": [],
+        "properties": {
+          "image": {
+            "type": "SquizImage",
+            "title": "Image",
+            "description": "Top image"
+          },
+          "content": {
+            "type": "string",
+            "title": "Text",
+            "description": "Box content"
+          },
+          "buttonText": {
+            "type": "string",
+            "title": "Text",
+            "description": "Button text",
+            "default": "See all stories"
+          }
+        }
+      },
+      "output": {
+        "responseType": "html",
+        "staticFiles": [
+          {
+            "location": "header",
+            "file": {
+              "type": "css",
+              "filepath": "http://127.0.0.1:4000/global.css"
+            }
+          },
+          {
+            "location": "footer",
+            "file": {
+              "type": "js",
+              "filepath": "client.js"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "previews": {
+    "server": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/sample.json"
+          }
+        }
+      }
+    },
+    "client": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/sample.json"
+          },
+          "wrapper": {
+            "path": "previews/wrapper.html"
+          }
+        }
+      }
+    }
+  },
+  "staticFiles": {
+    "locationRoot": "dist"
+  }
+}
