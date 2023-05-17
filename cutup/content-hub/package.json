@@ -8,7 +8,7 @@
     "dxp": "dxp-next cmp dev ./src/components",
     "dxpServe": "concurrently \"npm run build:server && webpack-dev-server --config webpack/webpack.dev.js\" \"npm run dxp\" \"node ./scripts/watchServerFileChange/watchServerFileChange.js\"",
     "dxpLogin": "dxp-next auth login --tenant=sug-9278",
-    "audit": "npm audit --production",
+    "audit": "npm audit --omit=dev",
     "test": "jest --verbose --passWithNoTests",
     "test:coverage": "jest --coverage",
     "test:all": "npm-run-all test cypress:ci:dev ",

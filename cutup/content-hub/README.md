@@ -18,7 +18,7 @@ The main differences are:
 
 # Requirements
 This version is tested under:
-- Node v16
+- Node v18 LTS
 - NPM 9
 - dxp-next-cli - [install instructions](https://docs.squiz.net/developers/latest/component-service/getting-started.html#installation)
 
