@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Infobox = ({image, content, buttonText}) => {
+    const randomId = (Math.random() + 1).toString(36).substring(7);
+
     return (
         <aside className="card story-supplement infobox pull-left pull-left-narrow pushdown">
             <div className="story-supplement-content">
@@ -11,7 +13,7 @@ const Infobox = ({image, content, buttonText}) => {
                     <p></p>
                     <p className="text-center">
                         {buttonText && (
-                            <a href="#" className="btn btn-primary" data-toggle="modal" data-target="#popup-0">
+                            <a href="#" className="btn btn-primary" data-toggle="modal" data-target={`#popup-${randomId}`}>
                                 {buttonText}
                             </a>
                         )}
@@ -19,15 +21,15 @@ const Infobox = ({image, content, buttonText}) => {
                 </div>
             </div>
 
-            <div className="modal fade" id="popup-0" tabIndex="-1" role="dialog" aria-labelledby="modalTitle-0">
+            <div className="modal fade" id={`popup-${randomId}`} tabIndex="-1" role="dialog" aria-labelledby={`modalTitle-${randomId}`}>
                 <div className="modal-dialog modal-md" role="document">
                     <div className="modal-content ">
                         <div className="modal-header">
-                            <h3 className="modal-title" id="modalTitle-0">
+                            <h3 className="modal-title" id={`modalTitle-${randomId}`}>
                                 Related stories
                             </h3>
                         </div>
-                        <div className="modal-body" id="modalText-0">
+                        <div className="modal-body" id={`modalText-${randomId}`}>
                             <ul className="post-list">
                                 <li>
                                     <a href="https://news.stanford.edu/2021/03/26/qa-environmental-policies-americans/">Q&amp;A: Environmental policies for all Americans?</a>
@@ -52,7 +54,7 @@ const Infobox = ({image, content, buttonText}) => {
                             </ul>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" data-dismiss="modal" id="modalButton-0">
+                            <button type="button" className="btn btn-primary" data-dismiss="modal" id={`modalButton-${randomId}`}>
                                 Close
                             </button>
                         </div>
