@@ -1,0 +1,40 @@
+{
+  "content": "President Biden has made it clear that environmental issues will be among his highest priorities while in office. <a href=\"https://news.stanford.edu/2021/03/23/making-america-green/\">This series of stories</a> explores recommendations and insights from Stanford experts on how the administration can achieve some of its ambitious goals:",
+  "image": {
+    "name": "A1CF8BE6-1689-43FF-BEEE-9146BE76F885.jpeg",
+    "alt": "",
+    "caption": "",
+    "imageVariations": {
+      "original": {
+        "url": "https://placehold.co/100x100",
+        "width": 100,
+        "height": 100,
+        "byteSize": 3277,
+        "mimeType": "image/jpeg",
+        "aspectRatio": "4:3",
+        "sha1Hash": ""
+      },
+      "aspectRatios": [
+        {
+          "url": "https://placehold.co/200x200",
+          "width": 200,
+          "height": 200,
+          "byteSize": 8470,
+          "mimeType": "image/jpeg",
+          "aspectRatio": "4:3",
+          "sha1Hash": ""
+        },
+        {
+          "url": "https://placehold.co/100x100",
+          "width": 100,
+          "height": 100,
+          "byteSize": 3277,
+          "mimeType": "image/jpeg",
+          "aspectRatio": "4:3",
+          "sha1Hash": ""
+        }
+      ]
+    }
+  },
+  "buttonText": "See all stories"
+}
