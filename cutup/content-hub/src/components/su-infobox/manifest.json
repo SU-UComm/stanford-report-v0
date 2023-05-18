@@ -4,7 +4,7 @@
   "namespace": "stanford-components",
   "displayName": "Infobox",
   "description": "Side box with a popup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "mainFunction": "main",
   "environment": [],
   "functions": [
@@ -23,7 +23,7 @@
             "description": "Top image"
           },
           "content": {
-            "type": "string",
+            "type": "FormattedText",
             "title": "Text",
             "description": "Box content"
           },

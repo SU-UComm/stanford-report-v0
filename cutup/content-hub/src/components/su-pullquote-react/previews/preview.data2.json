@@ -1,5 +1,5 @@
 {
-  "quote": "It’s happened more than once, where someone will say, ‘Well, you just can’t do it.’ And I point to our results and say, ‘Well, I beg to differ.",
+  "quote": "<p>It’s happened more than once, where someone will say, ‘Well, you just can’t do it.’ And I point to our results and say, ‘Well, I beg to differ.</p>",
   "attribution": "Tchelepi Hamdi",
   "description": "Energy Resources Engineering Professor",
   "image": {
@@ -83,7 +83,5 @@
       ]
     }
   },
-  "alignment": "right",
-  "bgColor": "",
-  "width": "wide"
+  "alignment": "right"
 }

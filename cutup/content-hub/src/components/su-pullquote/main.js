@@ -49,7 +49,7 @@ module.exports = async (input) => {
     <div class="pullquote ${alignmentClass}">
         ${image}
         <blockquote>
-            <p>“${input.quote}”</p>
+            ${input.quote}
             <p class="quote-attrib">—${input.attribution}</p>
             <p class="quote-attrib supplemental">${input.description}</p>
         </blockquote>
