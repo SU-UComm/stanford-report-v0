@@ -22,7 +22,7 @@ const Pullquote = ({quote, attribution, alignment, image, description}) => {
         <div className={`pullquote ${alignmentClass}`}>
             {image && <Image image={image} alt={attribution} />}
             <blockquote>
-                <p>“{quote}”</p>
+                <p dangerouslySetInnerHTML={{__html: quote}}></p>
                 <p className="quote-attrib">—{attribution}</p>
                 <p className="quote-attrib supplemental">{description}</p>
             </blockquote>

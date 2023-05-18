@@ -4,7 +4,7 @@
   "namespace": "stanford-components",
   "displayName": "Pullquote",
   "description": "Pullquote component",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "mainFunction": "main",
   "environment": [],
   "functions": [
@@ -18,7 +18,7 @@
         "required": [],
         "properties": {
           "quote": {
-            "type": "string",
+            "type": "FormattedText",
             "title": "Quote text",
             "default": ""
           },
@@ -41,16 +41,6 @@
             "type": "string",
             "title": "Alignment",
             "enum": ["left", "center", "right"]
-          },
-          "bgColor": {
-            "type": "string",
-            "title": "Background Color",
-            "default": ""
-          },
-          "width": {
-            "type": "string",
-            "title": "Width",
-            "enum": ["content", "wide", "full"]
           }
         }
       },
