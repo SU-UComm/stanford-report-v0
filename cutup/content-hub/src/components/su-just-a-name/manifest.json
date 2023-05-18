@@ -1,0 +1,77 @@
+{
+  "$schema": "https://render.dx-team-dev-1650.components.dev.dx.squiz.cloud/schemas/v1.json",
+  "name": "just-a-name",
+  "namespace": "stanford-components",
+  "displayName": "just a name",
+  "description": "Description",
+  "version": "0.0.1",
+  "mainFunction": "main",
+  "environment": [],
+  "functions": [
+    {
+      "name": "main",
+      "entry": "main.js",
+      "input": {
+        "type": "object",
+        "title": "Story Acknowledgement Details",
+        "description": "",
+        "required": [],
+        "properties": {
+          "containerId": {
+            "type": "string",
+            "title": "Container ID",
+            "default": ""
+          },
+          "content": {
+            "type": "FormattedText",
+            "title": "Acknowledgement Box Content",
+            "default": ""
+          },
+          "bgColour": {
+            "type": "string",
+            "title": "Background Color",
+            "enum": ["Default", "Red", "Blue", "White", "White (Red Border)", "White (Blue Border)"],
+            "description": "Applied to container as class.",
+            "default": ""
+          },
+          "textColour": {
+            "type": "string",
+            "title": "Text Color",
+            "enum": ["Dark", "Light"],
+            "default": "Dark"
+          }
+        }
+      },
+      "output": {
+        "responseType": "html",
+        "staticFiles": [
+          {
+            "location": "header",
+            "file": {
+              "type": "css",
+              "filepath": "storyAcknowledgement.css"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "previews": {
+    "default": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/sample.json"
+          },
+          "wrapper": {
+            "path": "previews/wrapper.html"
+          }
+        }
+      }
+    }
+  },
+  "staticFiles": {
+    "locationRoot": "static"
+  }
+}
