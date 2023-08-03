@@ -37,6 +37,7 @@ module.exports = {
             global: glob.sync('./src/**/global.js'),
             tailwind: glob.sync('./src/js/tailwind.js'),
             reactApp: './src/modules/_ReactApp/render.jsx',
+            searchPage: './src/html/searchPage.html',
             reactComponentsClient: glob.sync('./src/components/**/client.jsx'),
         },
         ...entryHelpers.buildComponentEntries('./src/components'),
@@ -47,6 +48,11 @@ module.exports = {
             {
                 pages: ['reactApp'],
                 addChunks: ['reactApp'],
+                removeChunks: [],
+            },
+            {
+                pages: ['searchPage'],
+                addChunks: ['tailwind'],
                 removeChunks: [],
             },
             {
