@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>Stanford University</title>
+        ${require('src/html/fragments/head.html')} ${require('src/html/fragments/su-head.html')}
+    </head>
 
-<head>
-    <title>Stanford University</title>
-    ${require('src/html/fragments/head.html')}
-    ${require('src/html/fragments/su-head.html')}
-</head>
+    <body>
+        ${require('src/html/fragments/su-header-simple.html')}
+        <main class="main" role="main">
+            <div class="container su-bg-black su-py-10">
+                <h2>Components</h2>
+                <ul>
+                    <li><a href="su-scaffold.html">Scaffold component</a></li>
+                    <li><a href="su-pullquote.html">Pullquote</a></li>
+                    <li><a href="su-pullquote-react.html">Pullquote (React)</a></li>
+                    <li><a href="su-infobox.html">Infobox (React)</a></li>
+                </ul>
+            </div>
+            <div class="container su-p-30">
+                <h2>React</h2>
+                <ul>
+                    <li><a href="reactApp.html">React App with Contexts</a></li>
+                </ul>
+            </div>
 
-<body>
-    ${require('src/html/fragments/su-header-simple.html')}
-    <main class="main" role="main">
-        <div class="container su-bg-black su-py-10">
-            <h2>Components</h2>
-            <ul>
-                <li><a href="su-scaffold.html">Scaffold component</a></li>
-                <li><a href="su-pullquote.html">Pullquote</a></li>
-                <li><a href="su-pullquote-react.html">Pullquote (React)</a></li>
-                <li><a href="su-infobox.html">Infobox (React)</a></li>
-            </ul>
-        </div>
-        <div class="container su-p-30">
-            <h2>React</h2>
-            <ul>
-                <li><a href="reactApp.html">React App with Contexts</a></li>
-            </ul>
-        </div>
-
-        <div class="container su-py-30">
-            <h2>Cutups</h2>
-            <ul>
-                <li><a href="searchPage.html">Search page</a></li>
-            </ul>
-        </div>
-    </main>
-    <!-- /.main -->
-</body>
-
+            <div class="container su-py-30">
+                <h2>Cutups</h2>
+                <ul>
+                    <li><a href="searchPage.html">News page</a></li>
+                </ul>
+                <ul>
+                    <li><a href="videosPage.html">Video page</a></li>
+                </ul>
+                <ul>
+                    <li><a href="podcastsPage.html">Podcast page</a></li>
+                </ul>
+                <ul>
+                    <li><a href="bestBets.html">Best bets page</a></li>
+                </ul>
+            </div>
+        </main>
+        <!-- /.main -->
+    </body>
 </html>

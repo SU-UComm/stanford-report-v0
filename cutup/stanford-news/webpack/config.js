@@ -51,7 +51,7 @@ module.exports = {
                 removeChunks: [],
             },
             {
-                pages: ['searchPage'],
+                pages: ['searchPage', 'videosPage', 'bestBets', 'podcastsPage'],
                 addChunks: ['tailwind'],
                 removeChunks: [],
             },
