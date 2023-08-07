@@ -218,7 +218,6 @@
                 }
             }
 
-            /* Styles for the overlay */
             .overlay {
                 position: fixed;
                 z-index: 9999;
@@ -762,6 +761,27 @@
             </main>
             <!-- /.main -->
         </div>
+
+        <dialog id="overlay" class="overlay">
+            <div class="embed-container">
+                <iframe
+                    width="560"
+                    height="315"
+                    src=""
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""
+                ></iframe>
+                <button id="closeBtn" class="close-btn">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M28.9959 23.5575L38.3 14.3367C39.2 13.445 39.2063 11.995 38.3146 11.095C37.4229 10.195 35.9729 10.1909 35.0729 11.0804L25.7396 20.3304L16.4084 11.0804C15.5104 10.1909 14.0584 10.1992 13.1667 11.0971C12.275 11.995 12.2813 13.445 13.1813 14.3367L22.4834 23.5575L13.1792 32.7784C12.2792 33.67 12.2729 35.12 13.1646 36.02C13.6125 36.4721 14.2021 36.6971 14.7917 36.6971C15.375 36.6971 15.9584 36.4784 16.4042 36.0346L25.7396 26.7846L35.0709 36.0346C35.5188 36.4784 36.1 36.6971 36.6834 36.6971C37.2729 36.6971 37.8625 36.4721 38.3104 36.02C39.2021 35.12 39.1959 33.67 38.2959 32.7784L28.9959 23.5575Z"
+                            fill="white"
+                        />
+                    </svg>
+                </button>
+            </div>
+        </dialog>
 
         <!--noindex-->
         <!-- ${require('src/html/fragments/su-footer.html')} -->
