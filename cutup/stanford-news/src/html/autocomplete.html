@@ -296,9 +296,9 @@
                     </a>
                 </div>
 
-                <section class="search-header su-mt-[15px] su-overflow-x-auto">
+                <section class="search-header su-mt-[15px] su-overflow-x-visible su-overflow-y-visible">
                     <div
-                        class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30"
+                        class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30 focus-within:su-border-digital-blue"
                     >
                         <input type="text" class="input" placeholder="Artificial intelligence" />
                         <button class="clear-input su-text-digital-blue su-text-[18px]">clear</button>
@@ -312,18 +312,47 @@
                                 />
                             </svg>
                         </button>
+
+                        <div
+                            class="su-absolute su-z-[9999] su-shadow-lg su-mt-[2px] su-left-[20px] su-h-auto su-right-[20px] su-pl-[26px] su-pt-[35px] su-w-auto su-bg-white su-top-full su-flex su-flex-col"
+                        >
+                            <span class="su-font-serif su-text-digital-red">Suggestions</span>
+                            <ul class="su-list-none su-p-0 su-font-sans su-font-normal su-mt-[12px]">
+                                <li class="su-text-[18px]">
+                                    <a
+                                        class="su-no-underline su-font-normal su-text-black hover:su-text-digital-red hover:su-underline focus:su-text-digital-red focus:su-underline"
+                                        href=""
+                                        ><span class="su-font-semibold">artificial intelligence</span></a
+                                    >
+                                </li>
+                                <li class="su-text-[18px]">
+                                    <a
+                                        class="su-no-underline su-font-normal su-text-black hover:su-text-digital-red hover:su-underline focus:su-text-digital-red focus:su-underline"
+                                        href=""
+                                        ><span class="su-font-semibold">artificial intelligence</span> in the workplace</a
+                                    >
+                                </li>
+                                <li class="su-text-[18px]">
+                                    <a
+                                        class="su-no-underline su-font-normal su-text-black hover:su-text-digital-red hover:su-underline focus:su-text-digital-red focus:su-underline"
+                                        href=""
+                                        >the future of <span class="su-font-semibold">artificial intelligence</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="reset-list-styles su-flex su-font-sans su-flex-row su-overflow-x-auto su-mt-[20px] su-space-x-[21px] su-list-none su-p-0">
+                    <ul class="reset-list-styles su-flex su-flex-row su-overflow-x-auto su-mt-[20px] su-space-x-[21px] su-list-none su-p-0">
                         <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px] su-border-b-4 su-border-digital-red">
-                            <a class="su-no-underline hover:su-underline su-text-black su-text-digital-red" href="">Stanford Report</a>
+                            <a class="su-no-underline hover:su-underline su-text-black" href="">Stanford Report</a>
                         </li>
-                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px]">
+                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px] su-border-b-4 su-border-digital-red">
                             <a class="su-no-underline hover:su-underline su-text-black" href="">Other campus news</a>
                         </li>
-                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px]">
+                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px] su-border-b-4 su-border-digital-red">
                             <a class="su-no-underline hover:su-underline su-text-black" href="">Video</a>
                         </li>
-                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px]">
+                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px] su-border-b-4 su-border-digital-red">
                             <a class="su-no-underline hover:su-underline su-text-black" href="">Podcasts</a>
                         </li>
                     </ul>
