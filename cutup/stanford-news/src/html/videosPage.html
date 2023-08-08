@@ -313,17 +313,17 @@
                         </button>
                     </div>
                     <ul class="reset-list-styles su-flex su-font-sans su-flex-row su-overflow-x-auto su-mt-[20px] su-space-x-[21px] su-list-none su-p-0">
-                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px] su-border-b-4 su-border-digital-red">
-                            <a class="su-no-underline hover:su-underline su-text-black su-text-digital-red" href="">Stanford Report</a>
+                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px] su-border-b-4 su-border-digital-red hover:su-border-digital-red">
+                            <a class="su-no-underline su-text-black su-text-digital-red su-font-bold" href="">Stanford Report</a>
                         </li>
-                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px]">
-                            <a class="su-no-underline hover:su-underline su-text-black" href="">Other campus news</a>
+                        <li class="su-flex-shrink-0 hover:su-border-b-4 hover:su-border-digital-red su-text-[16px] su-w-auto su-px-[8px]">
+                            <a class="su-no-underline su-text-black su-font-normal" href="">Other campus news</a>
                         </li>
-                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px]">
-                            <a class="su-no-underline hover:su-underline su-text-black" href="">Video</a>
+                        <li class="su-flex-shrink-0 hover:su-border-b-4 hover:su-border-digital-red su-text-[16px] su-w-auto su-px-[8px]">
+                            <a class="su-no-underline su-text-black su-font-normal" href="">Video</a>
                         </li>
-                        <li class="su-flex-shrink-0 su-text-[16px] su-w-auto su-px-[8px]">
-                            <a class="su-no-underline hover:su-underline su-text-black" href="">Podcasts</a>
+                        <li class="su-flex-shrink-0 hover:su-border-b-4 hover:su-border-digital-red su-text-[16px] su-w-auto su-px-[8px]">
+                            <a class="su-no-underline su-text-black su-font-normal" href="">Podcasts</a>
                         </li>
                     </ul>
                     <button
@@ -533,11 +533,11 @@
                         <h1 class="su-type-2 su-mb-0 su-font-sans md:su-hidden su-text-black">Stanford Report results</h1>
                         <div class="su-hidden md:su-flex su-items-start su-justify-between su-mb-[25px]">
                             <div>
-                                <h1 class="su-type-2 su-mb-0 su-font-sans md:hidden su-text-black">Podcast results</h1>
+                                <h1 class="su-type-2 su-mb-0 su-font-sans md:hidden su-text-black">Video results</h1>
                                 <span class="su-text-[18px] su-text-black">1 – 10 of 99 items</span>
                             </div>
                             <div class="su-flex su-gap-[18px]">
-                                <div class="sorting-select__wrapper">
+                                <div class="su-flex su-justify-center su-items-start su-flex-col">
                                     <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
                                     <select id="date" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
                                         <option value="7days">Last 7 days</option>
@@ -546,7 +546,7 @@
                                     </select>
                                 </div>
 
-                                <div class="sorting-select__wrapper">
+                                <div class="su-flex su-justify-center su-items-start su-flex-col">
                                     <label for="sort" class="su-text-[16px] su-text-black su-font-semibold">Sorted by:</label>
                                     <select id="sort" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
                                         <option value="newest">Newest first</option>
@@ -567,8 +567,11 @@
                                 <div class="su-flex su-flex-wrap su-mt-[9px]">
                                     <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
                                     <span class="su-w-1/2">
-                                        <a class="su-font-semibold su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end" href="">
-                                            Save
+                                        <a
+                                            class="su-font-semibold hover:su-underline save-btn__active su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                            href=""
+                                        >
+                                            <span>Save</span>
                                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
@@ -616,8 +619,11 @@
                                 <div class="su-flex su-flex-wrap su-mt-[9px]">
                                     <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
                                     <span class="su-w-1/2">
-                                        <a class="su-font-semibold su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end" href="">
-                                            Save
+                                        <a
+                                            class="su-font-semibold hover:su-underline su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                            href=""
+                                        >
+                                            <span>Save</span>
                                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
@@ -665,8 +671,11 @@
                                 <div class="su-flex su-flex-wrap su-mt-[9px]">
                                     <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
                                     <span class="su-w-1/2">
-                                        <a class="su-font-semibold su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end" href="">
-                                            Save
+                                        <a
+                                            class="su-font-semibold hover:su-underline su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                            href=""
+                                        >
+                                            <span>Save</span>
                                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
@@ -894,7 +903,7 @@
 
     class VideoPlayer {
         constructor() {
-            this.videoLinks = document.querySelectorAll('.video-item a');
+            this.videoLinks = document.querySelectorAll('.video-item h3 a');
 
             // Get dialog and video iframe elements
             this.dialog = document.getElementById('overlay');
