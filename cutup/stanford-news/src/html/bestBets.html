@@ -105,7 +105,7 @@
             }
 
             .pagination li:not(.pagination-btn__disabled) svg {
-                fill: #2e2d29; /* Your default SVG color */
+                fill: #2e2d29;
             }
 
             .pagination-btn__disabled svg {
@@ -278,12 +278,18 @@
     </head>
 
     <body>
-        ${require('src/html/fragments/su-header.html')}
-
-        <div class="page-wrapper">
-            <main class="main su-max-w-[1066px] su-mx-auto su-flex su-flex-col su-px-[20px]" role="main">
+        <header class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-bg-digital-red">
+                <div id="" class="su-max-w-[1256px] su-mx-auto">
+                    <a href="http://www.stanford.edu/" data-ga-action="logo"><img class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University" /></a>
+                </div>
+            </div>
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-bg-black-10">Site header - logo + local links</div>
+        </header>
+        <div class="page-wrapper su-mt-[32px] su-mb-[116px]">
+            <main class="main su-max-w-[1066px] su-relative su-mx-auto su-flex su-flex-col su-px-[20px]" role="main">
                 <div class="su-flex su-mt-[15px] su-flex-row su-w-full su-items-center su-justify-end">
-                    <a href="" class="su-flex su-flex-row su-items-center su-text-[16px] su-text-black su-no-underline su-font-normal">
+                    <a href="" class="su-flex su-flex-row su-items-center hover:su-underline su-text-[16px] su-text-black su-no-underline su-font-normal">
                         Saved (12)
                         <svg class="su-ml-[3px]" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -301,7 +307,7 @@
                         class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30"
                     >
                         <input type="text" class="input" placeholder="Artificial intelligence" />
-                        <button class="clear-input su-text-digital-blue su-text-[18px]">clear</button>
+                        <button class="clear-input su-invisible su-text-digital-blue su-text-[18px]">clear</button>
                         <span class="search-bar__divider su-h-[32px] su-w-[2px] su-mx-[15px] su-bg-black-30"></span>
 
                         <button class="">
@@ -353,7 +359,7 @@
                         class="mobile-hidden su-bg-white md:su-w-full md:su-max-w-[216px] su-px-[24px] md:su-px-0 su-bg-white su-pt-30 md:su-relative md:su-pt-0 search-filters"
                     >
                         <section class="sorting su-flex su-flex-col [@media(min-width:390px)]:su-flex-row su-gap-[20px] desktop-hidden md:su-hidden">
-                            <div class="su-flex su-justify-center su-items-start su-flex-row">
+                            <div class="su-flex su-justify-center su-items-start su-flex-col">
                                 <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
                                 <select id="date" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
                                     <option value="7days">Last 7 days</option>
@@ -362,7 +368,7 @@
                                 </select>
                             </div>
 
-                            <div class="sorting-select__wrapper">
+                            <div class="su-flex su-justify-center su-items-start su-flex-col">
                                 <label for="sort" class="su-text-[16px] su-text-black su-font-semibold">Sorted by:</label>
                                 <select id="sort" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
                                     <option value="newest">Newest first</option>
@@ -532,13 +538,39 @@
                     </aside>
                     <section class="search-results su-flex su-flex-col su-mt-[20px] su-relative">
                         <h1 class="su-type-2 su-mb-0 su-font-sans md:su-hidden su-text-black">Stanford Report results</h1>
-                        <div class="su-hidden md:su-flex su-items-start su-justify-between su-mb-[25px]">
+                        <div class="su-hidden md:su-flex su-items-start su-justify-between">
                             <div>
-                                <h1 class="su-type-2 su-mb-0 su-font-sans md:hidden su-text-black">Podcast results</h1>
+                                <h1 class="su-type-2 su-mb-0 su-font-sans md:hidden su-text-black">News results</h1>
                                 <span class="su-text-[18px] su-text-black">1 – 10 of 99 items</span>
+                                <div class="su-w-full su-flex su-gap-[12px] su-flex-wrap su-mt-[26px] su-min-h-[20px]">
+                                    <a class="su-flex hover:su-text-digital-blue hover:su-underline su-items-center su-no-underline su-font-normal su-text-[18px]" href=""
+                                        >Arts
+                                        <svg class="su-ml-[3px]" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="6" cy="6" r="6" fill="#006CB8" />
+                                            <path
+                                                d="M6.73784 6.00015L8.8461 3.89498C9.05003 3.6914 9.05145 3.36036 8.84941 3.15488C8.64736 2.94941 8.3188 2.94846 8.11487 3.15155L6 5.26339L3.88561 3.15155C3.68214 2.94846 3.35311 2.95036 3.15107 3.15536C2.94902 3.36036 2.95044 3.6914 3.15437 3.89498L5.26216 6.00015L3.1539 8.10533C2.94997 8.3089 2.94855 8.63994 3.15059 8.84542C3.25209 8.94863 3.38568 9 3.51928 9C3.65146 9 3.78364 8.95006 3.88466 8.84875L6 6.73691L8.1144 8.84875C8.21589 8.95006 8.3476 9 8.47978 9C8.61337 9 8.74697 8.94863 8.84846 8.84542C9.05051 8.63994 9.04909 8.3089 8.84516 8.10533L6.73784 6.00015Z"
+                                                fill="white"
+                                            />
+                                        </svg>
+                                    </a>
+                                    <a class="su-flex hover:su-text-digital-blue hover:su-underline su-items-center su-no-underline su-font-normal su-text-[18px]" href=""
+                                        >Science and engineering
+                                        <svg class="su-ml-[3px]" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="6" cy="6" r="6" fill="#006CB8" />
+                                            <path
+                                                d="M6.73784 6.00015L8.8461 3.89498C9.05003 3.6914 9.05145 3.36036 8.84941 3.15488C8.64736 2.94941 8.3188 2.94846 8.11487 3.15155L6 5.26339L3.88561 3.15155C3.68214 2.94846 3.35311 2.95036 3.15107 3.15536C2.94902 3.36036 2.95044 3.6914 3.15437 3.89498L5.26216 6.00015L3.1539 8.10533C2.94997 8.3089 2.94855 8.63994 3.15059 8.84542C3.25209 8.94863 3.38568 9 3.51928 9C3.65146 9 3.78364 8.95006 3.88466 8.84875L6 6.73691L8.1144 8.84875C8.21589 8.95006 8.3476 9 8.47978 9C8.61337 9 8.74697 8.94863 8.84846 8.84542C9.05051 8.63994 9.04909 8.3089 8.84516 8.10533L6.73784 6.00015Z"
+                                                fill="white"
+                                            />
+                                        </svg>
+                                    </a>
+                                    <a class="su-flex hover:su-text-digital-blue hover:su-underline su-items-center su-no-underline su-font-normal su-text-[18px]" href=""
+                                        >Clear all
+                                    </a>
+                                </div>
                             </div>
+
                             <div class="su-flex su-gap-[18px]">
-                                <div class="sorting-select__wrapper">
+                                <div class="sorting-select__wrapper su-text-[16px] su-flex su-flex-col su-text-black su-font-semibold">
                                     <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
                                     <select id="date" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
                                         <option value="7days">Last 7 days</option>
@@ -547,7 +579,7 @@
                                     </select>
                                 </div>
 
-                                <div class="sorting-select__wrapper">
+                                <div class="sorting-select__wrapper su-text-[16px] su-flex su-flex-col su-text-black su-font-semibold">
                                     <label for="sort" class="su-text-[16px] su-text-black su-font-semibold">Sorted by:</label>
                                     <select id="sort" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
                                         <option value="newest">Newest first</option>
@@ -561,7 +593,7 @@
                                 BEST BETS
                              -->
 
-                        <article class="su-flex su-mt-0 su-w-full su-flex-col-reverse md:su-flex-row su-h-auto su-border-[1px] su-border-black">
+                        <article class="su-flex su-mt-[20px] su-w-full su-flex-col-reverse md:su-flex-row su-h-auto su-border-[1px] su-border-black">
                             <div class="su-flex su-p-20 su-w-2/3 su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
                                 <h3 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
                                     <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href=""
@@ -597,7 +629,7 @@
                             </div>
                         </article>
 
-                        <article class="su-flex su-mt-0 su-w-full su-flex-col-reverse md:su-flex-row su-py-20 su-h-auto su-border-b-[1px] md:su-border-none">
+                        <article class="su-flex su-mt-[20px] su-w-full su-flex-col-reverse md:su-flex-row su-py-20 su-h-auto su-border-b-[1px] md:su-border-none">
                             <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
                                 <h3
                                     class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] hover:su-text-digital-red"
@@ -624,7 +656,7 @@
                             />
                         </article>
 
-                        <article class="su-flex su-mt-0 su-flex-col-reverse md:su-flex-row su-w-full su-h-auto su-border-[1px] su-bg-black">
+                        <article class="su-flex su-mt-[20px] su-flex-col-reverse md:su-flex-row su-w-full su-h-auto su-border-[1px] su-bg-black">
                             <div class="su-flex su-p-20 su-w-2/3 su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
                                 <h3 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[23px] md:su-text-[35px]">
                                     <a class="su-no-uderline hover:su-underline su-text-white hover:su-text-digital-red" href="">Meet Stanford’s Graduating Class</a>
@@ -651,8 +683,8 @@
                         </article>
 
                         <!-- 
-                                BEST BETS END
-                              -->
+                                    BEST BETS END
+                                  -->
 
                         <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] su-border-black-30">
                             <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
@@ -742,6 +774,153 @@
                                     <a class="su-no-uderline hover:su-underline su-text-black" href=""
                                         >Stanford joins international initiative to strengthen democracy and foster…</a
                                     >
+                                </h3>
+                                <p class="su-text-[18px] su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <span class="su-mt-[5px] su-text-[14px] su-text-black-60">June 7, 2023</span>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt=""
+                            />
+                        </article>
+
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30 md:su-border-none">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold save-btn__active su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href=""
+                                    >
+                                        <span>Save</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
+                                                stroke="#006CB8"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h3
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="">
+                                        Stanford joins international initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h3>
+                                <p class="su-text-[18px] su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <div class="su-w-full su-flex su-items-center">
+                                    <span class="su-mt-[5px] su-text-[14px] su-font-semibold su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-text-[14px] su-ml-[3px] su-text-black-60"> | Stanford Business</span>
+                                </div>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt=""
+                            />
+                        </article>
+
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href=""
+                                    >
+                                        <span>Save</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
+                                                stroke="#006CB8"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h3
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="http://www.stanford.edu/">
+                                        Stanford joins international initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h3>
+                                <p class="su-text-[18px] su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <div class="su-w-full su-flex su-items-center">
+                                    <span class="su-mt-[5px] su-text-[14px] su-font-semibold su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-text-[14px] su-ml-[3px] su-text-black-60"> | Stanford Business</span>
+                                </div>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt=""
+                            />
+                        </article>
+
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href=""
+                                    >
+                                        <span>Save</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
+                                                stroke="#006CB8"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h3
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="">
+                                        Stanford joins international initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
                                 </h3>
                                 <p class="su-text-[18px] su-mt-[6px] su-mb-0">
                                     A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
@@ -812,11 +991,11 @@
             </main>
             <!-- /.main -->
         </div>
+        <footer class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-10">Pre-Footer - logo + local links</div>
 
-        <!--noindex-->
-        <!-- ${require('src/html/fragments/su-footer.html')} -->
-        <!-- ${require('src/html/fragments/su-foot.html')} -->
-        <!--endnoindex-->
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
+        </footer>
     </body>
 </html>
 
@@ -861,13 +1040,13 @@
                 button.setAttribute('role', 'button');
 
                 button.addEventListener('click', () => {
-                    button.nextElementSibling.classList.toggle('hidden');
+                    button.nextElementSibling.classList.toggle('su-hidden');
                     button.classList.toggle('facets__toggle-rev');
                 });
 
                 button.addEventListener('keydown', (event) => {
                     if (event.key === ' ' || event.key === 'Enter') {
-                        button.nextElementSibling.classList.toggle('hidden');
+                        button.nextElementSibling.classList.toggle('su-hidden');
                         button.classList.toggle('facets__toggle-rev');
                     }
                 });
@@ -911,7 +1090,6 @@
     const handleAudioElements = () => {
         const playButtons = document.querySelectorAll('.play-btn');
 
-        console.log(playButtons);
         playButtons.forEach((button) => {
             button.addEventListener('click', () => {
                 const audio = button.nextElementSibling;
@@ -922,5 +1100,41 @@
         });
     };
 
-    handleAudioElements();
+    const handleClearButton = () => {
+        const input = document.querySelector('.search-bar input');
+        const clearButton = document.querySelector('.clear-input');
+
+        input.addEventListener('keyup', () => {
+            if (input.value.length > 3) {
+                clearButton.classList.remove('su-invisible');
+            } else {
+                clearButton.classList.add('su-invisible');
+            }
+        });
+    };
+
+    const isExternalLink = (link) => {
+        const currentHostname = window.location.hostname;
+        const linkHostname = new URL(link).hostname;
+
+        return currentHostname !== linkHostname;
+    };
+
+    const handleExternalLinks = () => {
+        const links = document.querySelectorAll('article h3 a');
+
+        links.forEach((link) => {
+            if (isExternalLink(link.href)) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+                link.nextElementSibling.classList.remove('su-hidden');
+            }
+        });
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+        handleAudioElements();
+        handleExternalLinks();
+        handleClearButton();
+    });
 </script>

@@ -278,10 +278,15 @@
     </head>
 
     <body>
-        ${require('src/html/fragments/su-header.html')}
+        <div class="su-w-full su-bg-digital-red">
+            <div id="" class="su-max-w-[1256px] su-mx-auto">
+                <a href="http://www.stanford.edu/" data-ga-action="logo"><img class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University" /></a>
+            </div>
+        </div>
+        <div class="page-wrapper su-relative su-mb-[116px]">
+            <header class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-bg-black-10">Site header - logo + local links</header>
 
-        <div class="page-wrapper">
-            <main class="main su-max-w-[1066px] su-relative su-mx-auto su-flex su-flex-col su-px-[20px]" role="main">
+            <main class="main su-max-w-[1066px] su-mx-auto su-flex su-flex-col su-mt-[32px] su-px-[20px]" role="main">
                 <div class="su-flex su-mt-[15px] su-flex-row su-w-full su-items-center su-justify-end">
                     <a href="" class="su-flex su-flex-row su-items-center hover:su-underline su-text-[16px] su-text-black su-no-underline su-font-normal">
                         Saved (12)
@@ -301,7 +306,7 @@
                         class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30"
                     >
                         <input type="text" class="input" placeholder="Artificial intelligence" />
-                        <button class="clear-input su-text-digital-blue su-text-[18px]">clear</button>
+                        <button class="clear-input su-invisible su-text-digital-blue su-text-[18px]">clear</button>
                         <span class="search-bar__divider su-h-[32px] su-w-[2px] su-mx-[15px] su-bg-black-30"></span>
 
                         <button class="">
@@ -350,7 +355,7 @@
                 <div class="su-flex su-flex-row">
                     <aside
                         id="search-filters"
-                        class="mobile-hidden su-bg-white md:su-w-full md:su-max-w-[216px] su-px-[24px] md:su-px-0 su-bg-white su-pt-30 md:su-relative md:su-pt-0 search-filters"
+                        class="mobile-hidden su-bg-white md:su-w-full md:su-max-w-[216px] su-overflow-y-auto su-h-[100vh] md:su-h-auto su-pb-[230px] md:su-pb-[130px] su-px-[24px] md:su-px-0 su-bg-white su-pt-30 md:su-relative md:su-pt-0 search-filters"
                     >
                         <section class="sorting su-flex su-flex-col [@media(min-width:390px)]:su-flex-row su-gap-[20px] desktop-hidden md:su-hidden">
                             <div class="su-flex su-justify-center su-items-start su-flex-col">
@@ -460,7 +465,7 @@
                                 </ul>
                             </fieldset>
 
-                            <fieldset class="su-p-0 su-w-full">
+                            <fieldset class="su-p-0 su-w-full su-mb-[26px]">
                                 <legend
                                     class="facets__toggle-btn su-border-none su-w-full su-flex su-mb-0 su-items-center su-justify-between su-text-[18px] su-text-black su-font-semibold"
                                 >
@@ -530,7 +535,7 @@
                             </button>
                         </div>
                     </aside>
-                    <section class="search-results su-flex su-flex-col su-mt-[20px] su-relative">
+                    <section class="search-results su-flex su-flex-col su-mt-[20px] su-relative su-pb-[64px]">
                         <h1 class="su-type-2 su-mb-0 su-font-sans md:su-hidden su-text-black">Stanford Report results</h1>
                         <div class="su-hidden md:su-flex su-items-start su-justify-between">
                             <div>
@@ -786,11 +791,11 @@
             </main>
             <!-- /.main -->
         </div>
+        <footer class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-10">Pre-Footer - logo + local links</div>
 
-        <!--noindex-->
-        <!-- ${require('src/html/fragments/su-footer.html')} -->
-        <!-- ${require('src/html/fragments/su-foot.html')} -->
-        <!--endnoindex-->
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
+        </footer>
     </body>
 </html>
 
@@ -835,13 +840,13 @@
                 button.setAttribute('role', 'button');
 
                 button.addEventListener('click', () => {
-                    button.nextElementSibling.classList.toggle('hidden');
+                    button.nextElementSibling.classList.toggle('su-hidden');
                     button.classList.toggle('facets__toggle-rev');
                 });
 
                 button.addEventListener('keydown', (event) => {
                     if (event.key === ' ' || event.key === 'Enter') {
-                        button.nextElementSibling.classList.toggle('hidden');
+                        button.nextElementSibling.classList.toggle('su-hidden');
                         button.classList.toggle('facets__toggle-rev');
                     }
                 });
@@ -851,6 +856,8 @@
         showFilters() {
             this.searchFilters.classList.remove('mobile-hidden');
             this.searchFiltersControls.classList.remove('mobile-hidden');
+            document.body.classList.add('block-scroll');
+            window.scrollTo(0, 0);
             setTimeout(() => {
                 this.firstFocusableElement.focus(); // Set initial focus to the first element inside the modal
             }, 0);
@@ -859,6 +866,7 @@
         hideFilters() {
             this.searchFilters.classList.add('mobile-hidden');
             this.searchFiltersControls.classList.add('mobile-hidden');
+            document.body.classList.remove('block-scroll');
         }
 
         clearInputValue() {
@@ -885,7 +893,6 @@
     const handleAudioElements = () => {
         const playButtons = document.querySelectorAll('.play-btn');
 
-        console.log(playButtons);
         playButtons.forEach((button) => {
             button.addEventListener('click', () => {
                 const audio = button.nextElementSibling;
@@ -893,6 +900,19 @@
                 audio.classList.remove('su-hidden');
                 button.classList.add('su-hidden');
             });
+        });
+    };
+
+    const handleClearButton = () => {
+        const input = document.querySelector('.search-bar input');
+        const clearButton = document.querySelector('.clear-input');
+
+        input.addEventListener('keyup', () => {
+            if (input.value.length > 3) {
+                clearButton.classList.remove('su-invisible');
+            } else {
+                clearButton.classList.add('su-invisible');
+            }
         });
     };
 
@@ -915,9 +935,9 @@
         });
     };
 
-    handleExternalLinks();
-
     window.addEventListener('DOMContentLoaded', () => {
         handleAudioElements();
+        handleExternalLinks();
+        handleClearButton();
     });
 </script>

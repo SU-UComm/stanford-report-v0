@@ -277,12 +277,17 @@
     </head>
 
     <body>
-        ${require('src/html/fragments/su-header.html')}
+        <div class="su-w-full su-bg-digital-red">
+            <div id="" class="su-max-w-[1256px] su-mx-auto">
+                <a href="http://www.stanford.edu/" data-ga-action="logo"><img class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University" /></a>
+            </div>
+        </div>
+        <div class="page-wrapper su-relative su-mb-[116px]">
+            <header class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-bg-black-10">Site header - logo + local links</header>
 
-        <div class="page-wrapper">
             <main class="main su-max-w-[1066px] su-mx-auto su-flex su-flex-col su-px-[20px]" role="main">
                 <div class="su-flex su-mt-[15px] su-flex-row su-w-full su-items-center su-justify-end">
-                    <a href="" class="su-flex su-flex-row su-items-center su-text-[16px] su-text-black su-no-underline su-font-normal">
+                    <a href="" class="su-flex su-flex-row su-items-center su-text-[16px] su-text-black su-no-underline su-font-normal hover:su-underline">
                         Saved (12)
                         <svg class="su-ml-[3px]" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -300,7 +305,7 @@
                         class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30"
                     >
                         <input type="text" class="input" placeholder="Artificial intelligence" />
-                        <button class="clear-input su-text-digital-blue su-text-[18px]">clear</button>
+                        <button class="clear-input su-text-digital-blue su-text-[18px] su-invisible">clear</button>
                         <span class="search-bar__divider su-h-[32px] su-w-[2px] su-mx-[15px] su-bg-black-30"></span>
 
                         <button class="">
@@ -349,10 +354,10 @@
                 <div class="su-flex su-flex-row">
                     <aside
                         id="search-filters"
-                        class="mobile-hidden su-bg-white md:su-w-full md:su-max-w-[216px] su-px-[24px] md:su-px-0 su-bg-white su-pt-30 md:su-relative md:su-pt-0 search-filters"
+                        class="mobile-hidden su-bg-white md:su-w-full md:su-max-w-[216px] su-overflow-y-auto su-h-[100vh] md:su-h-auto su-pb-[230px] md:su-pb-[130px] su-px-[24px] md:su-px-0 su-bg-white su-pt-30 md:su-relative md:su-pt-0 search-filters"
                     >
                         <section class="sorting su-flex su-flex-col [@media(min-width:390px)]:su-flex-row su-gap-[20px] desktop-hidden md:su-hidden">
-                            <div class="su-flex su-justify-center su-items-start su-flex-row">
+                            <div class="su-flex su-justify-center su-items-start su-flex-col">
                                 <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
                                 <select id="date" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
                                     <option value="7days">Last 7 days</option>
@@ -529,12 +534,13 @@
                             </button>
                         </div>
                     </aside>
-                    <section class="search-results su-w-full su-flex su-flex-col su-mt-[20px] su-relative">
+                    <section class="search-results su-w-full su-flex su-flex-col su-mt-[20px] su-relative su-pb-[64px]">
                         <h1 class="su-type-2 su-mb-0 su-font-sans md:su-hidden su-text-black">Stanford Report results</h1>
-                        <div class="su-hidden md:su-flex su-items-start su-justify-between su-mb-[25px]">
+                        <div class="su-hidden md:su-flex su-items-start su-justify-between">
                             <div>
                                 <h1 class="su-type-2 su-mb-0 su-font-sans md:hidden su-text-black">Video results</h1>
                                 <span class="su-text-[18px] su-text-black">1 – 10 of 99 items</span>
+                                <div class="su-w-full su-flex su-gap-[12px] su-flex-wrap su-mt-[26px] su-min-h-[20px]"></div>
                             </div>
                             <div class="su-flex su-gap-[18px]">
                                 <div class="su-flex su-justify-center su-items-start su-flex-col">
@@ -586,6 +592,14 @@
                                         <a data-videoId="0qHWub21h5c" class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href=""
                                             >Stanford joins international initiative to strengthen democracy and foster…</a
                                         >
+                                        <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                                fill="#B1040E"
+                                            />
+                                        </svg>
                                     </h3>
                                     <p class="su-text-[18px] su-mt-[6px] su-mb-0 su-hidden md:su-block">
                                         A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
@@ -638,6 +652,14 @@
                                         <a data-videoId="0qHWub21h5c" class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href=""
                                             >Stanford joins international initiative to strengthen democracy and foster…</a
                                         >
+                                        <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                                fill="#B1040E"
+                                            />
+                                        </svg>
                                     </h3>
                                     <p class="su-text-[18px] su-mt-[6px] su-mb-0 su-hidden md:su-block">
                                         A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
@@ -690,6 +712,14 @@
                                         <a data-videoId="0qHWub21h5c" class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href=""
                                             >Stanford joins international initiative to strengthen democracy and foster…</a
                                         >
+                                        <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                                fill="#B1040E"
+                                            />
+                                        </svg>
                                     </h3>
                                     <p class="su-text-[18px] su-mt-[6px] su-mb-0 su-hidden md:su-block">
                                         A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
@@ -771,6 +801,12 @@
             <!-- /.main -->
         </div>
 
+        <footer class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-10">Pre-Footer - logo + local links</div>
+
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
+        </footer>
+
         <dialog id="overlay" class="overlay">
             <div class="embed-container">
                 <iframe
@@ -791,11 +827,6 @@
                 </button>
             </div>
         </dialog>
-
-        <!--noindex-->
-        <!-- ${require('src/html/fragments/su-footer.html')} -->
-        <!-- ${require('src/html/fragments/su-foot.html')} -->
-        <!--endnoindex-->
     </body>
 </html>
 
@@ -856,6 +887,8 @@
         showFilters() {
             this.searchFilters.classList.remove('mobile-hidden');
             this.searchFiltersControls.classList.remove('mobile-hidden');
+            document.body.classList.add('block-scroll');
+            window.scrollTo(0, 0);
             setTimeout(() => {
                 this.firstFocusableElement.focus(); // Set initial focus to the first element inside the modal
             }, 0);
@@ -864,6 +897,7 @@
         hideFilters() {
             this.searchFilters.classList.add('mobile-hidden');
             this.searchFiltersControls.classList.add('mobile-hidden');
+            document.body.classList.remove('block-scroll');
         }
 
         clearInputValue() {
@@ -885,19 +919,48 @@
         }
     }
 
-    const filtersManager = new FiltersManager();
+    const handleClearButton = () => {
+        const input = document.querySelector('.search-bar input');
+        const clearButton = document.querySelector('.clear-input');
 
-    const handleAudioElements = () => {
-        const playButtons = document.querySelectorAll('.play-btn');
+        input.addEventListener('keyup', () => {
+            if (input.value.length > 3) {
+                clearButton.classList.remove('su-invisible');
+            } else {
+                clearButton.classList.add('su-invisible');
+            }
+        });
+    };
 
-        console.log(playButtons);
-        playButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                const audio = button.nextElementSibling;
+    const isExternalLink = (link) => {
+        const currentHostname = window.location.hostname;
+        const linkHostname = new URL(link).hostname;
 
-                audio.classList.remove('su-hidden');
-                button.classList.add('su-hidden');
-            });
+        return currentHostname !== linkHostname;
+    };
+
+    const isVideoLink = (link) => {
+        if (link.hasAttribute('data-videoid')) {
+            return true;
+        }
+
+        return false;
+    };
+
+    const handleExternalLinks = () => {
+        const links = document.querySelectorAll('article h3 a');
+
+        links.forEach((link) => {
+            if (isExternalLink(link.href)) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+                link.nextElementSibling.classList.remove('su-hidden');
+            }
+
+            if (isVideoLink(link)) {
+                link.setAttribute('aria-label', 'Open video in a modal');
+                link.nextElementSibling.classList.remove('su-hidden');
+            }
         });
     };
 
@@ -909,7 +972,6 @@
             this.dialog = document.getElementById('overlay');
             this.videoIframe = document.querySelector('.embed-container iframe');
 
-            // Attach click event to each video link
             this.videoLinks.forEach((link) => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
@@ -918,25 +980,50 @@
                 });
             });
 
-            // Attach click event to the close button
             const closeButton = document.getElementById('closeBtn');
             closeButton.addEventListener('click', () => {
                 this.closeDialog();
             });
+
+            this.dialog.addEventListener('keydown', (event) => this.trapFocus(event));
         }
 
         openDialog(videoId) {
             this.videoIframe.src = 'https://www.youtube.com/embed/' + videoId;
             this.dialog.setAttribute('open', '');
+            this.dialog.focus(); // Set initial focus to the dialog
         }
 
         closeDialog() {
             this.dialog.removeAttribute('open');
             this.videoIframe.src = '';
         }
+
+        trapFocus(event) {
+            const keyboardfocusableElements = this.dialog.querySelectorAll('a[href], button, iframe ,input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+            const firstFocusableElement = keyboardfocusableElements[0];
+            const lastFocusableElement = keyboardfocusableElements[keyboardfocusableElements.length - 1];
+
+            if (event.key === 'Tab') {
+                const isShiftKey = event.shiftKey;
+
+                if (isShiftKey && document.activeElement === firstFocusableElement) {
+                    event.preventDefault();
+                    lastFocusableElement.focus();
+                    console.log('iframe');
+                } else if (!isShiftKey && document.activeElement === lastFocusableElement) {
+                    event.preventDefault();
+                    firstFocusableElement.focus();
+                }
+            }
+        }
     }
 
     const videoPlayer = new VideoPlayer();
+    const filtersManager = new FiltersManager();
 
-    handleAudioElements();
+    window.addEventListener('DOMContentLoaded', () => {
+        handleExternalLinks();
+        handleClearButton();
+    });
 </script>
