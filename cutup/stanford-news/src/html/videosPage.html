@@ -1014,7 +1014,6 @@
                 if (isShiftKey && document.activeElement === firstFocusableElement) {
                     event.preventDefault();
                     lastFocusableElement.focus();
-                    console.log('iframe');
                 } else if (!isShiftKey && document.activeElement === lastFocusableElement) {
                     event.preventDefault();
                     firstFocusableElement.focus();
