@@ -361,16 +361,16 @@
                             <div class="su-flex su-justify-center su-items-start su-flex-col">
                                 <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
                                 <select id="date" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
-                                    <option value="7days">Last 7 days</option>
+                                    <option selected disabled value="7days" title="Last 7 days">Last 7 days</option>
                                     <option value="30days">Last 30 days</option>
                                     <option value="year">This year</option>
                                 </select>
                             </div>
 
-                            <div class="sorting-select__wrapper">
+                            <div class="su-flex su-justify-center su-items-start su-flex-col">
                                 <label for="sort" class="su-text-[16px] su-text-black su-font-semibold">Sorted by:</label>
-                                <select id="sort" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
-                                    <option value="newest">Newest first</option>
+                                <select id="sort" title="Sort" name="Sort" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
+                                    <option selected disabled value="newest">Newest first</option>
                                     <option value="alphabetically">Alphabetically</option>
                                 </select>
                             </div>
@@ -443,29 +443,29 @@
                                         <label for="Teaching and learning">Awards and honors</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="Teaching and learning" name="Teaching and learning" value="Teaching and learning" />
-                                        <label for="Teaching and learning">Student experience</label>
+                                        <input type="checkbox" id="Student experience" name="Student experience" value="Student experience" />
+                                        <label for="Student experience">Student experience</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="Teaching and learning" name="Teaching and learning" value="Teaching and learning" />
-                                        <label for="Teaching and learning">Events</label>
+                                        <input type="checkbox" id="Events" name="Events" value="Events" />
+                                        <label for="Events">Events</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="Teaching and learning" name="Teaching and learning" value="Teaching and learning" />
-                                        <label for="Teaching and learning">Labs</label>
+                                        <input type="checkbox" id="Labs" name="Labs" value="Labs" />
+                                        <label for="Labs">Labs</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="Teaching and learning" name="Teaching and learning" value="Teaching and learning" />
-                                        <label for="Teaching and learning">University affairs</label>
+                                        <input type="checkbox" id="University affairs" name="University affairs" value="University affairs" />
+                                        <label for="University affairs">University affairs</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="Teaching and learning" name="Teaching and learning" value="Teaching and learning" />
-                                        <label for="Teaching and learning">Messages from leadership</label>
+                                        <input type="checkbox" id="Messages from leadership" name="Messages from leadership" value="Messages from leadership" />
+                                        <label for="Messages from leadership">Messages from leadership</label>
                                     </li>
                                 </ul>
                             </fieldset>
 
-                            <fieldset class="su-p-0 su-w-full">
+                            <fieldset class="su-p-0 su-w-full su-mb-[26px]">
                                 <legend
                                     class="facets__toggle-btn su-border-none su-w-full su-flex su-mb-0 su-items-center su-justify-between su-text-[18px] su-text-black su-font-semibold"
                                 >
@@ -481,40 +481,40 @@
                                 </legend>
                                 <ul class="su-list-none su-font-sans su-pl-[14px]">
                                     <li>
-                                        <input type="checkbox" id="Law" name="Law" value="Law" />
-                                        <label for="Law">Business</label>
+                                        <input type="checkbox" id="Business" name="Business" value="Business" />
+                                        <label for="Business">Business</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Health and medicine" name="Health and medicine" value="Health and medicine" />
+                                        <label for="Health and medicine">Health and medicine</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Economics" name="Economics" value="Economics" />
+                                        <label for="Economics">Economics</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Education" name="Education" value="Education" />
+                                        <label for="Education">Education</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Humanities" name="Humanities" value="Humanities" />
+                                        <label for="Humanities">Humanities</label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="Law" name="Law" value="Law" />
-                                        <label for="Law">Health and medicine</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="Law" name="Law" value="Law" />
-                                        <label for="Law">Economics</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="Law" name="Law" value="Law" />
-                                        <label for="Law">Education</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="Social sciences" name="Social sciences" value="Social sciences" />
-                                        <label for="Social sciences">Humanities</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="Science and engineering" name="Science and engineering" value="Science and engineering" />
-                                        <label for="Science and engineering">Law</label>
+                                        <label for="Law">Law</label>
                                     </li>
                                     <li>
                                         <input type="checkbox" id="Social sciences" name="Social sciences" value="Social sciences" />
                                         <label for="Social sciences">Social sciences</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="Social sciences" name="Social sciences" value="Social sciences" />
-                                        <label for="Social sciences">Science and engineering</label>
+                                        <input type="checkbox" id="Science and engineering" name="Science and engineering" value="Science and engineering" />
+                                        <label for="Science and engineering">Science and engineering</label>
                                     </li>
                                     <li>
-                                        <input type="checkbox" id="Social sciences" name="Social sciences" value="Social sciences" />
-                                        <label for="Social sciences">Earth and climate</label>
+                                        <input type="checkbox" id="Earth and climate" name="Earth and climate" value="Earth and climate" />
+                                        <label for="Earth and climate">Earth and climate</label>
                                     </li>
                                 </ul>
                             </fieldset>
@@ -547,7 +547,7 @@
                                 <div class="su-flex su-justify-center su-items-start su-flex-col">
                                     <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
                                     <select id="date" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
-                                        <option value="7days">Last 7 days</option>
+                                        <option selected disabled value="7days">Last 7 days</option>
                                         <option value="30days">Last 30 days</option>
                                         <option value="year">This year</option>
                                     </select>
@@ -556,7 +556,7 @@
                                 <div class="su-flex su-justify-center su-items-start su-flex-col">
                                     <label for="sort" class="su-text-[16px] su-text-black su-font-semibold">Sorted by:</label>
                                     <select id="sort" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
-                                        <option value="newest">Newest first</option>
+                                        <option selected disabled value="newest">Newest first</option>
                                         <option value="alphabetically">Alphabetically</option>
                                     </select>
                                 </div>
@@ -564,7 +564,7 @@
                         </div>
 
                         <article class="su-flex su-flex-row su-flex-wrap su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
-                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
+                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
 
                             <span class="su-w-1/2">
                                 <a
@@ -586,16 +586,24 @@
                             <img
                                 class="su-w-full su-h-[150px] su-mt-[15px] md:su-w-[95px] md:su-h-[95px] su-object-cover"
                                 src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
-                                alt=""
+                                alt="Stanford University Courtyard with fountain"
                             />
 
                             <div class="su-flex su-w-3/4 su-mt-[9px] su-flex-wrap su-ml-[12px]">
-                                <h3 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
-                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">The future of computational linguistics</a>
-                                </h3>
-                                <p class="su-text-[18px] su-mt-[6px] su-mb-0">
-                                    An expert in understanding language using machine learning explains why even he was surprised by the linguistic capabilities of ChatGPT.
-                                </p>
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="http://www.stanford.edu/"
+                                        >The future of computational linguistics</a
+                                    >
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-mt-[6px] su-mb-0">Ilya Sutskever is the co-founder and chief scient…</p>
 
                                 <div class="su-w-full su-flex su-mt-[6px] su-items-center">
                                     <button class="play-btn su-flex su-items-center su-text-[16px] su-text-digital-blue hover:su-underline su-my-[12px]">
@@ -616,12 +624,12 @@
                                         <a href="#" class="su-text-[16px] su-ml-[8px] su-no-underline hover:su-underline">Subscribe</a>
                                     </div>
                                 </div>
-                                <span class="su-mt-[5px] su-text-[14px] su-text-black-60">June 7, 2023</span>
+                                <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
                             </div>
                         </article>
 
                         <article class="su-flex su-flex-row su-flex-wrap su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
-                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
+                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
 
                             <span class="su-w-1/2">
                                 <a class="su-font-semibold su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end" href="#">
@@ -640,13 +648,23 @@
                             <img
                                 class="su-w-full su-h-[150px] su-mt-[15px] md:su-w-[95px] md:su-h-[95px] su-object-cover"
                                 src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
-                                alt=""
+                                alt="Stanford University Courtyard with fountain"
                             />
 
                             <div class="su-flex su-w-3/4 su-mt-[9px] su-flex-wrap su-ml-[12px]">
-                                <h3 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
-                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">The future of computational linguistics</a>
-                                </h3>
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="http://www.stanford.edu/"
+                                        >The future of computational linguistics</a
+                                    >
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
                                 <p class="su-text-[18px] su-mt-[6px] su-mb-0">
                                     An expert in understanding language using machine learning explains why even he was surprised by the linguistic capabilities of ChatGPT.
                                 </p>
@@ -670,12 +688,12 @@
                                         <a href="#" class="su-text-[16px] su-ml-[8px] su-no-underline hover:su-underline">Subscribe</a>
                                     </div>
                                 </div>
-                                <span class="su-mt-[5px] su-text-[14px] su-text-black-60">June 7, 2023</span>
+                                <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
                             </div>
                         </article>
 
                         <article class="su-flex su-flex-row su-flex-wrap su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
-                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] su-font-semibold">Institutional news</span>
+                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
 
                             <span class="su-w-1/2">
                                 <a class="su-font-semibold su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end" href="#">
@@ -694,13 +712,21 @@
                             <img
                                 class="su-w-full su-h-[150px] su-mt-[15px] md:su-w-[95px] md:su-h-[95px] su-object-cover"
                                 src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
-                                alt=""
+                                alt="Stanford University Courtyard with fountain"
                             />
 
                             <div class="su-flex su-w-3/4 su-mt-[9px] su-flex-wrap su-ml-[12px]">
-                                <h3 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
                                     <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">The future of computational linguistics</a>
-                                </h3>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
                                 <p class="su-text-[18px] su-mt-[6px] su-mb-0">
                                     An expert in understanding language using machine learning explains why even he was surprised by the linguistic capabilities of ChatGPT.
                                 </p>
@@ -724,7 +750,7 @@
                                         <a href="#" class="su-text-[16px] su-ml-[8px] su-no-underline hover:su-underline">Subscribe</a>
                                     </div>
                                 </div>
-                                <span class="su-mt-[5px] su-text-[14px] su-text-black-60">June 7, 2023</span>
+                                <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
                             </div>
                         </article>
 
@@ -732,6 +758,7 @@
                             <ul class="pagination reset-list-styles su-flex su-justify-center su-items-center su-mt-0 su-gap-[10px] su-p-0 su-list-none su-font-serif">
                                 <li class="pagination-btn__disabled su-relative su-w-[24px] su-h-[24px] su-flex su-justify-center">
                                     <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to previous page</span>
                                         <svg width="24" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 fill-rule="evenodd"
@@ -768,6 +795,8 @@
 
                                 <li class="su-w-[24px] su-h-[24px] su-relative su-flex su-justify-center">
                                     <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to next page</span>
+
                                         <svg width="24" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 fill-rule="evenodd"
@@ -918,7 +947,7 @@
     };
 
     const handleExternalLinks = () => {
-        const links = document.querySelectorAll('article h3 a');
+        const links = document.querySelectorAll('article h2 a');
 
         links.forEach((link) => {
             if (isExternalLink(link.href)) {
