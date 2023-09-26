@@ -64,6 +64,10 @@
                 height: 18px;
             }
 
+            .facets input[type='checkbox']:focus {
+                outline: none;
+            }
+
             .reset-list-styles li:last-of-type {
                 margin-bottom: 0.5em;
             }
@@ -209,10 +213,10 @@
             }
 
             .video-item {
-                max-width: calc(50% - 5px);
+                max-width: 100%;
             }
 
-            @media screen and (min-width: 768px) {
+            @media screen and (min-width: 576px) {
                 .video-item {
                     max-width: calc(50% - 20px);
                 }
@@ -273,6 +277,34 @@
             .save-btn__active span {
                 display: none;
             }
+
+            /*  */
+
+            .video-thumbnail:hover,
+            .video-thumbnail:focus {
+                outline: 2px solid #2563eb;
+                outline-offset: 2px;
+            }
+
+            .video-thumbnail:hover img,
+            .video-thumbnail:focus img,
+            .video-thumbnail:focus-within img {
+                opacity: 0.5;
+            }
+
+            .video-thumbnail:hover button,
+            .video-thumbnail:focus button,
+            .video-thumbnail:focus-within button {
+                display: flex;
+            }
+
+            .video-thumbnail button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+            }
         </style>
     </head>
 
@@ -302,9 +334,9 @@
 
                 <section class="search-header su-mt-[15px] su-overflow-x-auto">
                     <div
-                        class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30"
+                        class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30 focus-within:su-border-digital-blue"
                     >
-                        <input type="text" aria-label="Search query input" class="input" placeholder="Artificial intelligence" />
+                        <input type="text" aria-label="Search query input" value="science" class="input" placeholder="Artificial intelligence" />
                         <button class="clear-input su-invisible su-text-digital-blue su-text-[18px]">clear</button>
                         <span class="search-bar__divider su-h-[32px] su-w-[2px] su-mx-[15px] su-bg-black-30"></span>
 
@@ -563,12 +595,17 @@
                         </div>
 
                         <div class="su-flex su-items-between su-justify-between su-flex-wrap">
-                            <article class="video-item su-flex su-flex-col su-w-1/2 su-mt-0 su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
-                                <img
-                                    class="su-w-full su-h-[100px] md:su-h-[217px] su-object-cover"
-                                    src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
-                                    alt="Stanford University Courtyard with fountain"
-                                />
+                            <article class="video-item su-flex su-flex-col su-w-full sm:su-w-1/2 su-mt-0 su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
+                                <div class="su-relative video-thumbnail" data-videoId="0qHWub21h5c" tabindex="0">
+                                    <img
+                                        class="su-w-full hover:su-opacity-30 su-h-[100px] md:su-h-[217px] su-object-cover"
+                                        src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                        alt="Stanford University Courtyard with fountain"
+                                    />
+                                    <button class="su-hidden su-bg-digital-red su-absolute su-top-1/2 su-left-1/2 su-transform -su-translate-x-1/2 -su-translate-y-1/2">
+                                        Play video
+                                    </button>
+                                </div>
 
                                 <div class="su-flex su-flex-wrap su-mt-[9px]">
                                     <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
@@ -589,7 +626,7 @@
                                         </a>
                                     </span>
                                     <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
-                                        <a data-videoId="0qHWub21h5c" class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#"
+                                        <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red focus:su-text-digital-red focus:su-underline" href="#"
                                             >Stanford joins international initiative to strengthen democracy and foster…</a
                                         >
                                         <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -810,8 +847,8 @@
             <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
         </footer>
 
-        <dialog id="overlay" class="overlay">
-            <div class="embed-container">
+        <dialog id="overlay" class="overlay" tabindex="-1">
+            <div class="embed-container" tabindex="0" aria-label="YouTube video container">
                 <iframe
                     width="560"
                     height="315"
@@ -855,6 +892,7 @@
             this.clearAll.addEventListener('click', () => this.hideFilters());
             this.showFiltersButton.addEventListener('click', () => this.showFilters());
             this.clearInput.addEventListener('click', () => this.clearInputValue());
+            document.body.classList.remove('block-scroll');
 
             // Obtain all keyboard-focusable elements within the modal
             this.keyboardfocusableElements = this.modal.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
@@ -970,11 +1008,12 @@
 
     class VideoPlayer {
         constructor() {
-            this.videoLinks = document.querySelectorAll('.video-item h2 a');
+            this.videoLinks = document.querySelectorAll('.video-thumbnail');
 
             // Get dialog and video iframe elements
             this.dialog = document.getElementById('overlay');
             this.videoIframe = document.querySelector('.embed-container iframe');
+            this.pageWrapper = document.querySelector('.page-wrapper');
 
             this.videoLinks.forEach((link) => {
                 link.addEventListener('click', (event) => {
@@ -989,17 +1028,19 @@
                 this.closeDialog();
             });
 
-            this.dialog.addEventListener('keydown', (event) => this.trapFocus(event));
+            window.addEventListener('keydown', (event) => this.trapFocus(event));
         }
 
         openDialog(videoId) {
             this.videoIframe.src = 'https://www.youtube.com/embed/' + videoId;
             this.dialog.setAttribute('open', '');
-            this.dialog.focus(); // Set initial focus to the dialog
+            this.pageWrapper.setAttribute('aria-hidden', 'true');
+            this.videoIframe.focus(); // Set initial focus to the dialog
         }
 
         closeDialog() {
             this.dialog.removeAttribute('open');
+            this.pageWrapper.removeAttribute('aria-hidden');
             this.videoIframe.src = '';
         }
 
