@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Stanford University - Scaffold component</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+        <style>
+            .basic-story__quote blockquote {
+                position: relative;
+            }
+
+            .basic-story__quote blockquote::before {
+                color: #2e2d29;
+                line-height: 92px;
+                font-size: 93px;
+                transform: translateY(-6px);
+                content: '“';
+            }
+
+            .basic-story__quote figcaption {
+                color: #2e2d29;
+                font-size: 21px;
+            }
+
+            /* .basic-story__text-callout div {
+                border-bottom: 2px solid red;
+            } */
+
+            /* .basic-story__text-callout h3::after {
+                content: '';
+                position: absolute;
+                bottom: 4px;
+                right: 0;
+                width: 100%;
+                height: 2px;
+                background-color: #000;
+            } */
+
+            .swiper {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .swiper-wrapper {
+                position: relative;
+            }
+
+            .swiper-controls {
+                position: absolute;
+                width: 100px;
+                right: 60px;
+                top: 400px;
+                content: '';
+                z-index: 999;
+                display: flex;
+                justify-content: flex-end;
+                gap: 13px;
+                height: auto;
+                flex-wrap: wrap;
+            }
+
+            .swiper-pagination {
+                width: auto;
+                height: auto;
+                position: relative;
+                font-size: 16px;
+                font-weight: 700;
+                margin-right: 2px;
+                font-family: 'Source Serif Pro', Georgia, Times, 'Times New Roman', serif;
+            }
+
+            .swiper-controls button:disabled {
+                background: #585754;
+                opacity: 0.35;
+                border: 1px solid #d5d5d4;
+            }
+
+            .swiper-slide {
+                text-align: center;
+                font-size: 18px;
+                background: #fff;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                min-width: 523px !important;
+                max-width: 525px !important;
+
+                height: auto;
+                opacity: 0.35;
+            }
+
+            .swiper-slide p,
+            .swiper-slide h3,
+            .swiper-slide span {
+                visibility: hidden;
+            }
+
+            .fully-visible {
+                opacity: 1;
+            }
+
+            .fully-visible p,
+            .fully-visible h3,
+            .fully-visible span {
+                visibility: visible;
+            }
+
+            .swiper-prev,
+            .swiper-next {
+                width: 100px;
+                height: 100px;
+                background: violet;
+            }
+
+            .swiper-slide img {
+                display: block;
+                width: 100%;
+                height: 348px;
+                object-fit: cover;
+            }
+
+            .basic-story__read-next-title {
+                background: #b1040e;
+                background: linear-gradient(90deg, #b1040e 0%, #620059 100%);
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                margin-bottom: 22px;
+                font-size: 64px;
+                font-weight: 700;
+                display: inline;
+            }
+
+            .basic-story__read-next-divider {
+                background: linear-gradient(90deg, #b1040e 0%, #620059 100%);
+                width: 100%;
+                margin-top: 22px;
+                height: 4px;
+            }
+
+            .basic-story__text-content h2 {
+                font-family: 'Source Serif Pro', Georgia, Times, 'Times New Roman', serif;
+                font-size: 35px;
+            }
+
+            .basic-story__text-content p {
+                margin-bottom: 38px;
+                font-size: 23px;
+            }
+
+            .basic-story__text-content a {
+                color: #2e2d29;
+                text-decoration: underline;
+                font-weight: normal;
+                font-size: 23px;
+            }
+
+            .basic-story__wrapper a {
+                color: #2e2d29;
+                text-decoration: none;
+            }
+
+            .basic-story__text-content p + section {
+                margin-top: 7px;
+            }
+
+            .basic-story__footer p {
+                margin-bottom: 0;
+            }
+        </style>
+    </head>
+
+    <body class="">
+        <div class="su-w-full su-bg-digital-red">
+            <div id="" class="su-max-w-[1256px] su-mx-auto">
+                <a href="http://www.stanford.edu/" data-ga-action="logo"><img class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University" /></a>
+            </div>
+        </div>
+        <div class="su-relative su-mb-[116px]">
+            <header class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-bg-black-10">Site header - logo + local links</header>
+        </div>
+        <main class="basic-story__wrapper su-max-w-[1511px] su-px-[50px] su-pb-[200px] lg:su-px-[100px] su-mx-auto">
+            <article>
+                <header>
+                    <div class="su-px-[113px]">
+                        <div class="su-flex su-justify-between">
+                            <span class="su-flex su-items-center su-justify-center"> <time class="su-m-0 su-basefont-23 su-font-semibold">April 27, 2023 </time> | 5 min read</span>
+                            <span class="su-font-semibold su-text-digital-red su-text-[24px]">Taxonomy Term</span>
+                        </div>
+                        <h1 class="su-mt-[58px] su-font-serif">Give and Go program finds new purpose for tons of unwanted items</h1>
+                        <p class="su-font-serif su-intro-text">
+                            The Give & Go program run by Stanford’s Residential & Dining Enterprises has helped to divert nearly 500 tons of material from landfills.
+                        </p>
+                    </div>
+                    <figure class="su-mt-[72px]">
+                        <img
+                            src="https://s3-alpha-sig.figma.com/img/5d0a/0117/4cd8949b28afa79c4d01d8b847fd16d9?Expires=1696809600&Signature=gvbGAJnzq~jgYblDTxRfGtreZXtZcspVhBYKci64Io0n71omFPVxdSKrL8p36~Z3s73jbWbBBWseVT3yDWpfOjTo4osc464gColiTP2YUxiY3XQaMWPcl1YJSyYGm-XiHjPJtK-PWJsV~H5utNCdXphON3WD9gvfyX-jK6TPXB0UVKVGSq2iJF91e0WtQeaD2zZJNJArwZODyJ7YaPCTKO1ILS4NYd5pTNwVQu9l5K~o9ndbO1czh~SAPpEZrVAZVuAPJni4EiBtpUhY-iFRwlIxt59QjRIsxwlBtG18IqFYoKAMoJP4EGkLWo6pD0aWFQzOuhgrrWOookdoKvx79Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                        />
+                        <figcaption class="su-text-black su-text-[16px]">Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum</figcaption>
+                    </figure>
+                </header>
+                <div
+                    class="main su-grid su-auto-rows su-grid-cols-1 lg:su-grid-cols-3 lg:su-grid-rows-1 su-grid-gap su-mt-[100px] lg:su-pr-[113px] lg:su-pl-[100px] xl:su-pl-[225px] su-pb-[72px]"
+                >
+                    <div class="su-col-span-2">
+                        <div class="basic-story__text-content">
+                            <div class="su-border-b-2 su-border-black-20">
+                                <h2 class="su-font-serif su-basefont-23 su-m-0">In brief</h2>
+                                <ul class="su-basefont-19 su-flex su-flex-col su-gap-[18px] su-pt-[38px] su-pb-[27px]">
+                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</li>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit amet,
+                                        consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectur adipiscing
+                                    </li>
+                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</li>
+                                </ul>
+                            </div>
+
+                            <p
+                                class="su-mt-[45px] first-letter:su-font-bold first-letter:su-float-left first-letter:su-text-[85px] first-letter:su-p-0 first-letter:su-m-0 first-letter:su-font-serif first-letter:su-leading-none"
+                            >
+                                Thirty-five bales of hay. A smattering of silverware. Cast-off business attire. A guitar. These are just a few of the many unwanted items Stanford
+                                University sustainability waste specialist Haley Todd has recovered on campus as part of Residential & Dining Enterprises’ (R&DE) efforts to reduce,
+                                reuse, recycle, or compost materials that might otherwise end up in a trash bin.
+                            </p>
+
+                            <h2>Campus sustainability efforts</h2>
+                            <p>
+                                Part of Todd’s job is to oversee Give & Go, a year-round donation program. Sustainability is a core value in R&DE and the organization has been
+                                supporting reuse for more than two decades (and recycling for many more). The Give & Go program, formalized in 2013, expanded those efforts
+                                significantly. In 10 years, Give & Go, known among students for the images of alpacas that accompany its branding (“Alpaca my stuff …”), has
+                                diverted 456 tons of waste from landfills, including through innovative partnerships with local community organizations and the First-Generation
+                                and/or Low-Income (FLI) Student Success Center on campus. Give & Go is just one part of R&DE’s sustainability program, which in turn is part of
+                                Stanford’s broader mission to achieve zero waste by 2030. (Stanford has placed first in the National Wildlife Federation’s Campus Race to Zero
+                                competition in the per-capita recycling category for two years in a row.)
+                            </p>
+
+                            <section
+                                class="su-w-full su-my-[45px] su-min-h-[360px] su-px-[39px] su-pt-[39px] su-pb-[26px] su-bg-black-10 su-flex-col su-justify-start su-items-start su-inline-flex"
+                            >
+                                <h3 class="su-text-[23px]">More to know about zero waste at Stanford</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
+
+                                <div class="su-w-full su-h-auto su-justify-center su-items-center su-justify-between su-inline-flex">
+                                    <div class="su-h-[13px] su-justify-start su-items-start su-gap-[10px] su-flex">
+                                        <div class="su-w-[13px] su-h-[13px] su-bg-zinc-100 su-rounded-full su-border-2 su-border-black [&.active]:su-bg-black"></div>
+                                        <div class="active su-w-[13px] su-h-[13px] su-bg-zinc-800 su-rounded-full su-border-2 su-border-black [&.active]:su-bg-black"></div>
+                                        <div class="su-w-[13px] su-h-[13px] su-bg-zinc-100 su-rounded-full su-border-2 su-border-black [&.active]:su-bg-black"></div>
+                                    </div>
+                                    <div class="su-pt-[19px] su-justify-center su-items-center su-gap-[19px] su-flex">
+                                        <div
+                                            class="su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <path
+                                                    d="M11.8747 15.0415L6.33301 9.49984L11.8747 3.95817"
+                                                    stroke="#2E2D29"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </div>
+                                        <div
+                                            class="su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <path
+                                                    d="M7.12533 3.9585L12.667 9.50016L7.12532 15.0418"
+                                                    stroke="#2E2D29"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <p>
+                                The Office of Sustainability’s Julie Muir, manager of Stanford’s zero waste program, says Give & Go is a huge part of sustainability efforts on
+                                campus. “The hierarchy in waste management is waste reduction, then reuse, which is what Give & Go is all about,” Muir says. “The amount of material
+                                they donate is truly amazing.”
+                            </p>
+                            <p>
+                                The flagship of the Give & Go program is Stanford’s move-out period in June when more than 7,000 students leave campus within a week’s time. Todd
+                                coordinates with Goodwill Industries, which provides several trailers around campus, but also sends her team – mostly interns and volunteers – to
+                                monitor dumpsters and recover any materials that can be recycled or redistributed.
+                            </p>
+                            <p>
+                                But the Give & Go program is available to students throughout the year. Fourteen stations that support Recycle for Change, a nonprofit that donates
+                                or sells used clothes, shoes, and other goods, are located around campus. And Todd and her team regularly survey trash enclosures for potential
+                                treasures and coordinate with anyone who has items they don’t want to go to waste.
+                            </p>
+                            <section class="basic-story__quote su-my-[45px] su-flex su-flex-col su-items-center su-gap-[18px] su-py-[36px]">
+                                <div class="su-w-[212px] su-object-cover su-relative su-h-[212px] su-rounded-full su-overflow-hidden">
+                                    <img
+                                        class="su-rounded-full su-h-[200px] su-w-[200px] su-object-cover su-m-[6px] su-z-10 su-border-solid su-border-gradient-to-r su-from-digital-red su-to-white su-w-[200px]"
+                                        src="https://s3-alpha-sig.figma.com/img/edab/9405/943dc32be541a82e47f4cf2bfdfa67e9?Expires=1696809600&Signature=aQ4WNklDnjKH5JejjiX2jVCz5vbdMVMsPg4Z8zgSTxWzffHETJPNbaZxQSYEYTWk7WUhSJ70P9IFWC9Z423W74jr~LXauFU9-hGIWhBB7-brHIdpG69Ym3z5YGqU0E41v6~drhM5jo4LkgvblMPjQvg-Wycac3bDQYw7QqN2PaxOnGjm8XFfODofQu0z7ZNOrBwSpnYJCBowAkd~8NQpOd1TxKAbOmwfkdeSEn2oZ0RuiBVZXsNFPD9kLyEPWBc685pI5geAwkTM4i16iMN0zYxwqVChw9FX2Wxo5dYyG3njUTQ-HUSNUfR-o1RIn02MNPTeZQw44tMxTJDbdQqw1A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                    />
+                                    <div style="z-index: -1" class="su-w-full su-z-0 su-top-0 su-h-full su-absolute su-bg-gradient-to-r su-from-digital-red su-to-plum"></div>
+                                </div>
+                                <figure class="su-flex su-flex-col su-gap-[18px]">
+                                    <blockquote class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black su-font-semibold su-text-[36px]">
+                                        The hierarchy in waste management is waste reduction, then reuse, which is what Give & Go is all about. The amount of material they donate
+                                        is truly amazing.”
+                                    </blockquote>
+                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col">
+                                        <strong>Julie Muir</strong> Zero Waste Manager, Office of Sustainability
+                                    </figcaption>
+                                </figure>
+                            </section>
+                            <p>
+                                One of Give & Go’s main on-campus partners is the student-run First-Generation and/or Low-Income Partnership (FLIP). Each fall, FLIP, Give & Go, and
+                                Students for Sustainable Stanford host a FLI Drive featuring recovered items that students may arrive on campus in need of, such as bikes,
+                                mini-fridges, microwaves, and other items. In October 2022, 530 FLI students took home Give & Go items in a single day. Todd also holds mini-FLI
+                                drives whenever she collects a critical mass of material.
+                            </p>
+                            <p>In addition, Give & Go works with Roble Reuse, which keeps assorted business attire that students can borrow for interviews.</p>
+                            <p>
+                                Todd loves her matchmaking role, which facilitates the circular economy. The bales of hay – left over from a Halloween party – could have been
+                                composted, but instead, Todd gave them to the gardeners at <a href="#">R&DE’s Oak Road and Lane B BeWell community gardens</a>
+                            </p>
+
+                            <figure class="su-my-[45px]">
+                                <img
+                                    src="https://s3-alpha-sig.figma.com/img/12d8/8668/dd550c32dc7f2615d75725ee96cd3740?Expires=1696809600&Signature=Ou~qdK0H9SdtsNggdV9Pvnirqh8XxcfsHver-gRZWvi~PEV1GRvbYKjKJQMvd3GBb4dSJDRqzGTjrIhikMsdkZmmTQO-sPjw0lu5HGM2mMhHVepsL9v0MhuyYANwnU2~BH5MDMErnTi~KIG15blGYcOraBfRyR4YrgDKsYpcKitjCihwblUAGF8vdLuo8rKHy6XAPmhaMCaC6tMKAXEBslgzqwrn1X0XVdtFE~mTR~kbsxmNJPuP5YitZOVYTvBqm2AiOCM0SJafW6Tcm~SoLRzpM2k~4l5vfdTvOSP2fySy~X5k4Ai6XGZs~XB9s-t5WOo2iu~GmymHdq5b47DI9A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                />
+                                <figcaption>Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum</figcaption>
+                            </figure>
+
+                            <p>
+                                Samantha Bunke, a third-year chemical engineering PhD student studying plastic waste management in the Tarpeh Lab, has been working for nearly two
+                                years on a longer-term project, which is to create a zero-waste education facility on campus. The center would include on-site composting, a
+                                facility to audit waste streams more easily and regularly (to make sure materials end up in the right place), research opportunities for faculty and
+                                students – like Bunke – who are studying waste, and community education components.
+                            </p>
+
+                            <section class="basic-story__text-callout su-my-[45px] su-p-[36px] su-flex-col su-justify-start su-items-start su-bg-fog-light">
+                                <div class="su-relative su-justify-start su-items-center su-w-full su-gap-3 su-flex">
+                                    <h3 class="su-block su-w-max su-mb-0 su-text-[23px] su-font-black su-font-['Source Serif 4'] su-leading-7">
+                                        Text callout heading heading heading heading heading heading
+                                        <span class="su-bg-black-30">test</span>
+                                    </h3>
+                                </div>
+                                <p>
+                                    Text callout heading Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Sit amet cursus sit amet dictum sit amet. Dui id ornare arcu odio. Scelerisque in dictum non consectetur. Facilisi nullam vehicula ipsum a arcu
+                                    cursus vitae. Tempus quam pellentesque nec nam aliquam sem. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Tellus in
+                                    metus vulputate eu scelerisque felis imperdiet proin fermentum.
+                                </p>
+                                <p>
+                                    Porta non pulvinar neque laoreet. Lectus magna fringilla urna porttitor rhoncus. Vulputate dignissim suspendisse in est. Lacus sed turpis
+                                    tincidunt id aliquet risus feugiat in ante. Dignissim sodales ut eu sem integer vitae justo eget. Maecenas ultricies mi eget mauris pharetra et
+                                    ultrices neque ornare. Sit amet risus nullam eget felis eget nunc. Donec et odio pellentesque diam volutpat commodo sed. Suscipit tellus mauris
+                                    a diam. Pellentesque habitant morbi tristique senectus et netus et malesuada. Arcu ac tortor dignissim convallis aenean et.v
+                                </p>
+                            </section>
+
+                            <p>
+                                Bunke started as an R&DE intern and is now a Living Lab Fellow with the Office of Sustainability. For her project, Bunke regularly meets with
+                                faculty, students, and staff to discuss the future zero-waste center. But, even with that commitment and her research responsibilities, she still
+                                finds time to dumpster dive with Todd and the Give & Go team.
+                            </p>
+
+                            <p>
+                                “Working in a lab, everything is more abstract,” she explains. “You can’t really see it. [With Give & Go], I am literally getting up on the
+                                dumpsters, reaching in, and pulling stuff out. It’s so much fun.”
+                            </p>
+
+                            <p>
+                                Muir says every effort counts in the fight to reduce waste. “There is no one-size-fits-all” solution, she says. “We don’t need an all-or-nothing
+                                solution. We need several solutions that take us down a journey that gets us to that end result.”
+                            </p>
+
+                            <section class="basic-story__quote su-flex su-flex-col su-my-[45px] su-items-center su-gap-[18px] su-py-[36px]">
+                                <figure class="su-flex su-flex-col su-gap-[18px]">
+                                    <blockquote class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black su-font-semibold su-text-[36px]">
+                                        The hierarchy in waste management is waste reduction, then reuse, which is what Give & Go is all about. The amount of material they donate
+                                        is truly amazing.”
+                                    </blockquote>
+                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col">
+                                        <strong>Julie Muir</strong> Zero Waste Manager, Office of Sustainability
+                                    </figcaption>
+                                </figure>
+                            </section>
+
+                            <p>
+                                Muir says every effort counts in the fight to reduce waste. “There is no one-size-fits-all” solution, she says. “We don’t need an all-or-nothing
+                                solution. We need several solutions that take us down a journey that gets us to that end result.”
+                            </p>
+                        </div>
+                        <footer class="basic-story__footer su-mt-[72px]">
+                            <div aria-hidden="true" class="su-mb-[36px] su-w-[100px] su-h-[5px] su-bg-gradient-to-r su-from-digital-red su-to-plum"></div>
+                            <h2 class="sr-only">Article details</h2>
+                            <p class="su-basefont-19 su-pb-[36px]">
+                                Acknowledgement lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet
+                                cursus sit amet dictum sit amet. Dui id ornare arcu odio. Scelerisque in dictum non consectetur. Facilisi nullam vehicula ipsum a arcu cursus vitae.
+                                Tempus quam pellentesque nec nam aliquam sem. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Tellus in metus vulputate eu
+                                scelerisque felis imperdiet proin fermentum. Porta non pulvinar neque laoreet. Lectus magna fringilla urna porttitor rhoncus. Vulputate dignissim
+                                suspendisse in est. Lacus sed turpis tincidunt id aliquet risus feugiat in ante. Dignissim sodales ut eu sem integer vitae justo eget.
+                            </p>
+
+                            <div class="su-pt-[45px] su-pb-[22px] su-border-t-[1px] su-border-black-20">
+                                <h3 class="su-basefont-23 su-mb-[26px]">Author</h3>
+                                <p class="">Rebecca Beyer</p>
+                            </div>
+                            <div class="su-pt-[45px] su-pb-[22px] su-border-t-[1px] su-border-black-20">
+                                <h3 class="su-basefont-23 su-mb-[26px]">Media contact</h3>
+                                <div class="su-mb-[13px]">
+                                    <span>Firstname Lastname</span>
+                                    <span>Professional title goes here</span>
+                                </div>
+                                <a href="mailto:test@test.pl" class="su-mb-[13px] su-no-underline hover:su-underline su-text-black"> sunet@stanford.edu </a>
+                            </div>
+                            <div class="su-pt-[45px] su-pb-[22px] su-border-t-[1px] su-border-black-20">
+                                <h3 class="su-basefont-23 su-mb-[26px]">Campus unit</h3>
+                                <a href="#" class="su-no-underline hover:su-underline su-text-digital-red hover:su-text-digital-red">Stanford Office of Sustainability</a>
+                            </div>
+
+                            <div class="su-pt-[45px] su-pb-[12px] su-border-t-[1px] su-border-black-20">
+                                <a href="#" class="su-flex su-items-center su-gap-[10px] su-no-underline hover:su-underline"
+                                    >Share this story
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M15 8C16.6569 8 18 6.65685 18 5C18 3.34315 16.6569 2 15 2C13.3431 2 12 3.34315 12 5C12 5.12548 12.0077 5.24917 12.0227 5.37061L7.08259 7.84064C6.54303 7.32015 5.8089 7 5 7C3.34315 7 2 8.34315 2 10C2 11.6569 3.34315 13 5 13C5.80892 13 6.54306 12.6798 7.08263 12.1593L12.0227 14.6293C12.0077 14.7508 12 14.8745 12 15C12 16.6569 13.3431 18 15 18C16.6569 18 18 16.6569 18 15C18 13.3431 16.6569 12 15 12C14.1911 12 13.457 12.3201 12.9174 12.8406L7.97733 10.3706C7.9923 10.2492 8 10.1255 8 10C8 9.8745 7.99229 9.7508 7.97733 9.62934L12.9174 7.15932C13.4569 7.67984 14.1911 8 15 8Z"
+                                            fill="#006CB8"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
+                        </footer>
+                    </div>
+                    <aside class="su-grid su-auto-rows su-grid-cols-1 md:su-gap-[84px] !md:su-grid-cols-2 lg:su-grid-cols-1">
+                        <form class="su-flex su-flex-col su-gap-[10px]">
+                            <h2 class="su-font-sans su-text-[18px] su-m-0 su-p-0">Subscribe to Stanford Report</h2>
+                            <p class="su-m-0 su-p-0 su-text-[16px] su-font-normal su-font-sans">News, insights and events delivered to your inbox each weekday morning.</p>
+                            <input placeholder="Email address" class="su-w-full su-h-[48px] su-rounded-[3px] su-p-[12px] su-text-[16px]" type="text" />
+                            <button class="su-w-[95px] su-h-[40px] su-bg-digital-red su-text-[16px] su-text-white" type="submit">Sign up</button>
+                        </form>
+                        <section>
+                            <span class="su-flex su-gap-[6px] su-items-center su-justify-start su-text-[18px] su-font-sans su-font-bold su-text-black-60]"
+                                ><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                                    <g clip-path="url(#clip0_1559_94)">
+                                        <path
+                                            d="M13.5 23.625C19.0899 23.625 23.625 19.0898 23.625 13.5C23.625 7.91016 19.0899 3.375 13.5 3.375C7.91021 3.375 3.37505 7.91016 3.37505 13.5C3.37505 13.7057 3.38032 13.9113 3.39614 14.117L0.0949707 15.0873C0.0316894 14.5652 4.88181e-05 14.0379 4.88181e-05 13.5C4.88181e-05 6.04336 6.04341 0 13.5 0C20.9567 0 27 6.04336 27 13.5C27 20.9566 20.9567 27 13.5 27C12.9622 27 12.4348 26.9684 11.9127 26.9051L12.8831 23.6039C13.0887 23.6145 13.2944 23.625 13.5 23.625ZM13.6213 21.0938L14.6602 17.5605C16.4268 17.0543 17.7188 15.4301 17.7188 13.5053C17.7188 11.1744 15.8309 9.28652 13.5 9.28652C11.5752 9.28652 9.94575 10.5785 9.44478 12.3451L5.9063 13.3787C5.96958 9.23906 9.34458 5.90625 13.5 5.90625C17.6924 5.90625 21.0938 9.30762 21.0938 13.5C21.0938 17.6555 17.761 21.0305 13.6213 21.0938ZM2.05669 16.2686L12.8567 13.0939C13.4948 12.9041 14.0907 13.5 13.9061 14.1434L10.7315 24.9434C10.5153 25.6764 9.50806 25.766 9.16528 25.0805L7.65181 22.0588C7.61489 21.9902 7.57271 21.9217 7.51997 21.8637L2.87935 26.5043C2.22017 27.1635 1.14966 27.1635 0.490479 26.5043C-0.168701 25.8451 -0.168701 24.7746 0.490479 24.1154L5.1311 19.4748C5.0731 19.4221 5.00981 19.3746 4.93599 19.343L1.91958 17.8348C1.23403 17.492 1.32368 16.4848 2.05669 16.2686Z"
+                                            fill="url(#paint0_linear_1559_94)"
+                                        />
+                                    </g>
+                                    <defs>
+                                        <linearGradient id="paint0_linear_1559_94" x1="-0.00390625" y1="0" x2="27" y2="3.0407e-08" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#B1040E" />
+                                            <stop offset="1" stop-color="#620059" />
+                                        </linearGradient>
+                                        <clipPath id="clip0_1559_94">
+                                            <rect width="27" height="27" fill="white" />
+                                        </clipPath>
+                                    </defs></svg
+                                >Stories for you</span
+                            >
+
+                            <ul class="su-list-none su-pt-[18px] su-px-0 su-flex su-flex-col">
+                                <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
+                                    <a href="#" class="su-font-bold hover:su-underline active:su-underline">Are you ready for the “longevity economy?”</a>
+                                </li>
+                                <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
+                                    <a href="#" class="su-font-bold hover:su-underline active:su-underline">Board Special Committee provides update</a>
+                                </li>
+                                <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
+                                    <a href="#" class="su-font-bold hover:su-underline active:su-underline">Report of the president: Academic Council Professoriate appointments</a>
+                                </li>
+                            </ul>
+                        </section>
+                        <section>
+                            <span class="su-flex su-gap-[6px] su-items-center su-justify-start su-text-[18px] su-font-sans su-font-bold su-text-black-60]"
+                                ><svg xmlns="http://www.w3.org/2000/svg" width="30" height="29" viewBox="0 0 30 29" fill="none">
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M18 10.15C17.1716 10.15 16.5 9.50081 16.5 8.7C16.5 7.89919 17.1716 7.25 18 7.25H25.5C26.3284 7.25 27 7.89919 27 8.7V15.95C27 16.7508 26.3284 17.4 25.5 17.4C24.6716 17.4 24 16.7508 24 15.95V12.2006L17.5607 18.4253C16.9749 18.9916 16.0251 18.9916 15.4393 18.4253L12 15.1006L5.56066 21.3253C4.97487 21.8916 4.02513 21.8916 3.43934 21.3253C2.85355 20.759 2.85355 19.841 3.43934 19.2747L10.9393 12.0247C11.5251 11.4584 12.4749 11.4584 13.0607 12.0247L16.5 15.3494L21.8787 10.15H18Z"
+                                        fill="url(#paint0_linear_1559_1070)"
+                                    />
+                                    <defs>
+                                        <linearGradient id="paint0_linear_1559_1070" x1="3" y1="7.25" x2="27" y2="7.25" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#B1040E" />
+                                            <stop offset="1" stop-color="#620059" />
+                                        </linearGradient>
+                                    </defs></svg
+                                >Popular stories</span
+                            >
+
+                            <ol class="su-mt-[18px]">
+                                <li>
+                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline">Stanford engineers create perching bird-like robot</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline">
+                                        Introducing MARTY, Stanford's self-driving, electric, drifting DeLorean</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline"
+                                        >OceanOneK, Stanford’s underwater humanoid robot, swims to new depths
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline"
+                                        >New model helps fill gaps in African American ancestry</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline"
+                                        >Consortium brings students together for conversations across political divides</a
+                                    >
+                                </li>
+                            </ol>
+                        </section>
+                    </aside>
+                </div>
+            </article>
+
+            <section>
+                <h2 class="basic-story__read-next-title su-font-serif">Read next</h2>
+                <div aria-hidden="true" class="basic-story__read-next-divider"></div>
+                <div class="swiper mySwiper su-mt-[20px] carousel-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                            />
+                            <span>Campus news</span>
+                            <h3>Teaching across America</h3>
+                            <p class="su-text-left">
+                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
+                                art, and physics for K-12 students along the way.
+                            </p>
+                        </div>
+                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                            />
+                            <span>Campus news</span>
+                            <h3>Teaching across America</h3>
+                            <p class="su-text-left">
+                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
+                                art, and physics for K-12 students along the way.
+                            </p>
+                        </div>
+                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                            />
+                            <span>Campus news</span>
+                            <h3>Teaching across America</h3>
+                            <p class="su-text-left">
+                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
+                                art, and physics for K-12 students along the way.
+                            </p>
+                        </div>
+                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                            />
+                            <span>Campus news</span>
+                            <h3>Teaching across America</h3>
+                            <p class="su-text-left">
+                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
+                                art, and physics for K-12 students along the way.
+                            </p>
+                        </div>
+                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                            />
+                            <span>Campus news</span>
+                            <h3>Teaching across America</h3>
+                            <p class="su-text-left">
+                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
+                                art, and physics for K-12 students along the way.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-controls">
+                        <button class="swiper-prev su-rounded-full su-h-[37px] su-w-[37px] su-bg-digital-red su-flex su-items-center su-justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                <path d="M11.8747 15.0416L6.33301 9.49996L11.8747 3.95829" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="swiper-next su-rounded-full su-h-[37px] su-w-[37px] su-bg-digital-red su-flex su-items-center su-justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                <path d="M7.62435 3.95837L13.166 9.50004L7.62435 15.0417" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="swiper-pagination cla"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-30">Pre-Footer - logo + local links</div>
+
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script type="javascript" src="http://127.0.0.1:4000/js/carousel.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper('.mySwiper', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'fraction',
+                },
+                navigation: {
+                    nextEl: '.swiper-next',
+                    prevEl: '.swiper-prev',
+                },
+                slidesPerView: 'auto',
+                centerSlides: true,
+                centeredSlidesBounds: true,
+                spaceBetween: 40,
+                enabled: true,
+                on: {
+                    slideChange: function () {
+                        console.log('slide changed');
+                    },
+                },
+            });
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fully-visible');
+                        } else {
+                            entry.target.classList.remove('fully-visible');
+                        }
+                    });
+                },
+                {threshold: 0.75},
+            );
+
+            const slides = document.querySelectorAll('.swiper-slide');
+            slides.forEach((slide) => {
+                observer.observe(slide);
+            });
+        </script>
+    </body>
+</html>
