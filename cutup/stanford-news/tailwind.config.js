@@ -6,8 +6,8 @@ const dir = path.resolve(__dirname, 'src/css/plugins');
 
 module.exports = {
     // Our own prefix.
+    darkMode: 'class',
     prefix: 'su-',
-
     content: [
         './src/html/**/*.html',
         './src/components/**/previews/**/*.html',

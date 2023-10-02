@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="su-dark" lang="en">
     <head>
         <title>Stanford University - Scaffold component</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <style>
             .basic-story__quote blockquote {
@@ -17,6 +18,14 @@
                 content: '“';
             }
 
+            .su-dark .basic-story__quote blockquote::before {
+                color: #fff;
+                line-height: 92px;
+                font-size: 93px;
+                transform: translateY(-6px);
+                content: '“';
+            }
+
             .basic-story__quote figcaption {
                 color: #2e2d29;
                 font-size: 21px;
@@ -25,16 +34,25 @@
             /* .basic-story__text-callout div {
                 border-bottom: 2px solid red;
             } */
+            .underline-title {
+                position: relative;
+                background: #fff;
+            }
 
-            /* .basic-story__text-callout h3::after {
+            .su-dark .basic-story__text-content a {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+            .underline-title::after {
                 content: '';
                 position: absolute;
-                bottom: 4px;
+                bottom: 7px;
                 right: 0;
                 width: 100%;
                 height: 2px;
                 background-color: #000;
-            } */
+            }
 
             .swiper {
                 width: 100%;
@@ -49,8 +67,8 @@
             .swiper-controls {
                 position: absolute;
                 width: 100px;
-                right: 60px;
-                top: 400px;
+                right: 0;
+                top: 250px;
                 content: '';
                 z-index: 999;
                 display: flex;
@@ -58,6 +76,22 @@
                 gap: 13px;
                 height: auto;
                 flex-wrap: wrap;
+            }
+
+            @media screen and (min-width: 768px) {
+                .swiper-controls {
+                    position: absolute;
+                    width: 100px;
+                    right: 0;
+                    top: 390px;
+                    content: '';
+                    z-index: 999;
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 13px;
+                    height: auto;
+                    flex-wrap: wrap;
+                }
             }
 
             .swiper-pagination {
@@ -76,48 +110,76 @@
                 border: 1px solid #d5d5d4;
             }
 
-            .swiper-slide {
+            .basic-story__read-next .swiper-slide {
                 text-align: center;
                 font-size: 18px;
-                background: #fff;
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
-                min-width: 523px !important;
-                max-width: 525px !important;
-
+                max-width: 250px !important;
+                text-align: left;
                 height: auto;
                 opacity: 0.35;
             }
 
-            .swiper-slide p,
-            .swiper-slide h3,
-            .swiper-slide span {
-                visibility: hidden;
+            .basic-story__read-next .swiper-slide img {
+                width: 250px !important;
+                height: 165px !important;
             }
 
-            .fully-visible {
+            @media (min-width: 768px) {
+                .basic-story__read-next .swiper-slide {
+                    max-width: 525px !important;
+                }
+
+                .basic-story__read-next .swiper-slide img {
+                    width: 523px !important;
+                    height: 348px !important;
+                }
+            }
+
+            .basic-story__read-next .swiper-slide p,
+            .basic-story__read-next .swiper-slide h3,
+            .basic-story__read-next .swiper-slide span {
+                visibility: hidden;
+                text-align: left;
+                width: 100%;
+            }
+
+            .basic-story__read-next .fully-visible {
                 opacity: 1;
             }
 
-            .fully-visible p,
-            .fully-visible h3,
-            .fully-visible span {
+            .basic-story__read-next .fully-visible p,
+            .basic-story__read-next .fully-visible h3,
+            .basic-story__read-next .fully-visible span {
                 visibility: visible;
             }
 
-            .swiper-prev,
-            .swiper-next {
-                width: 100px;
-                height: 100px;
-                background: violet;
-            }
-
-            .swiper-slide img {
+            .basic-story__read-next .swiper-slide img {
                 display: block;
                 width: 100%;
                 height: 348px;
                 object-fit: cover;
+            }
+
+            .su-dark .basic-story__read-next-title {
+                background: #017e7c;
+                background: linear-gradient(90deg, #017e7c 0%, #8f993e 100%);
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                margin-bottom: 22px;
+                font-size: 64px;
+                font-weight: 700;
+                display: inline;
+            }
+
+            .su-dark .basic-story__read-next-divider {
+                background: #017e7c;
+                background: linear-gradient(90deg, #017e7c 0%, #8f993e 100%);
+                width: 100%;
+                margin-top: 22px;
+                height: 4px;
             }
 
             .basic-story__read-next-title {
@@ -156,7 +218,6 @@
             }
 
             .basic-story__wrapper a {
-                color: #2e2d29;
                 text-decoration: none;
             }
 
@@ -167,45 +228,209 @@
             .basic-story__footer p {
                 margin-bottom: 0;
             }
+
+            .basic-story__content-carousel .swiper-button-disabled {
+                border-color: #f4f4f4;
+                opacity: 0.35;
+            }
+
+            .basic-story__read-next-swiper .swiper-wrapper .swiper-slide:last-child h3 {
+                padding-right: 100px;
+            }
+
+            .basic-story__content-carousel .swiper-wrapper {
+                width: 100%;
+            }
+
+            .basic-story__content-carousel .swiper-slide {
+                max-width: 800px !important;
+                background: transparent;
+                text-align: left;
+            }
+
+            .basic-story__content-carousel .swiper-pagination-bullet {
+                opacity: 1;
+                background: #f4f4f4;
+                width: 13px;
+                height: 13px;
+                border: 2px solid #2e2d29;
+            }
+
+            .su-dark .basic-story__content-carousel .swiper-pagination-bullet {
+                opacity: 1;
+                background: #2e2d29;
+                width: 13px;
+                height: 13px;
+                border: 2px solid #f4f4f4;
+            }
+
+            .basic-story__content-carousel .swiper-pagination-bullet-active {
+                background: #2e2d29;
+            }
+
+            .su-dark .basic-story__content-carousel .swiper-pagination-bullet-active {
+                background: #f4f4f4;
+            }
+
+            .basic-story__header-slider {
+                overflow: visible;
+            }
+
+            .basic-story__header-slider .swiper-slide-active {
+                opacity: 1;
+            }
+
+            .basic-story__header-slider .swiper-slide-next,
+            .basic-story__header-slider .swiper-slide-prev {
+                opacity: 0.35;
+            }
+
+            .basic-story__header-slider .swiper-slide-next figcaption,
+            .basic-story__header-slider .swiper-slide-prev figcaption {
+                visibility: hidden;
+            }
+
+            .basic-story__content-carousel-item {
+                opacity: 0.35;
+            }
+
+            .basic-story__content-carousel-item.fully-visible {
+                opacity: 1;
+            }
         </style>
     </head>
 
-    <body class="">
+    <body class="dark:su-bg-black-true dark:su-text-white">
         <div class="su-w-full su-bg-digital-red">
-            <div id="" class="su-max-w-[1256px] su-mx-auto">
-                <a href="http://www.stanford.edu/" data-ga-action="logo"><img class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University" /></a>
+            <div id="" class="su-max-w-[1256px] su-w-full su-mx-auto">
+                <a href="http://www.stanford.edu/" data-ga-action="logo"
+                    ><img alt="Stanford logo" class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University"
+                /></a>
             </div>
         </div>
-        <div class="su-relative su-mb-[116px]">
-            <header class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-bg-black-10">Site header - logo + local links</header>
+        <div class="su-relative su-shadow-[0_3px_6px_0_rgba(0,0,0,0.10)]">
+            <header class="su-w-full su-max-w-[1511px] su-px-[20px] su-mx-auto su-flex su-items-center su-justify-between su-h-[150px]">
+                <button
+                    class="su-w-[40px] su-h-[40px] su-flex su-items-center su-bg-black-20 dark:su-bg-black su-justify-center su-border-[1px] su-border-black-10 su-rounded-full"
+                >
+                    <!-- <svg width="40" height="36" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M29 12.0298H11V13.7485H29V12.0298Z" fill="#B1040E" />
+                        <path d="M29 22.3421H11V24.0608H29V22.3421Z" fill="#B1040E" />
+                        <path d="M29 17.1859H11V18.9046H29V17.1859Z" fill="#B1040E" />
+                    </svg> -->
+                </button>
+                <a href="http://www.stanford.edu/" class="dark:su-hidden" data-ga-action="logo"
+                    ><img class="img-responsive" src="../images/sr_logo.svg" alt="Stanford University"
+                /></a>
+
+                <a href="http://www.stanford.edu/" class="su-hidden dark:su-flex" data-ga-action="logo"
+                    ><img class="img-responsive" src="../images/srlogo_light.svg" alt="Stanford University"
+                /></a>
+                <button
+                    class="su-w-[40px] su-h-[40px] su-flex su-items-center su-bg-black-20 dark:su-bg-black su-justify-center su-border-[1px] su-border-black-10 su-rounded-full"
+                >
+                    <!-- <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M13.961 4.11401C10.241 4.11401 7.21498 7.14001 7.21498 10.861C7.21498 12.295 7.66798 13.623 8.43298 14.717L3.59998 19.55C3.18998 19.96 3.18998 20.624 3.59998 21.034C3.80498 21.239 4.07398 21.342 4.34198 21.342C4.60998 21.342 4.87998 21.239 5.08498 21.034L9.89098 16.228C11.024 17.089 12.431 17.607 13.961 17.607C17.681 17.607 20.707 14.581 20.707 10.86C20.707 7.13901 17.681 4.11401 13.961 4.11401ZM13.961 15.507C11.399 15.507 9.31498 13.422 9.31498 10.86C9.31498 8.29801 11.399 6.21301 13.961 6.21301C16.523 6.21301 18.607 8.29801 18.607 10.86C18.607 13.422 16.522 15.507 13.961 15.507Z"
+                            fill="#B1040E"
+                        />
+                    </svg> -->
+                </button>
+            </header>
         </div>
-        <main class="basic-story__wrapper su-max-w-[1511px] su-px-[50px] su-pb-[200px] lg:su-px-[100px] su-mx-auto">
+        <main
+            class="basic-story__wrapper su-max-w-[1511px] su-overflow-x-hidden su-pt-[32px] md:su-pt-[90px] su-px-[20px] md:su-px-[50px] su-pb-[200px] lg:su-px-[100px] su-mx-auto"
+        >
             <article>
                 <header>
-                    <div class="su-px-[113px]">
-                        <div class="su-flex su-justify-between">
-                            <span class="su-flex su-items-center su-justify-center"> <time class="su-m-0 su-basefont-23 su-font-semibold">April 27, 2023 </time> | 5 min read</span>
-                            <span class="su-font-semibold su-text-digital-red su-text-[24px]">Taxonomy Term</span>
+                    <div class="su-px-0 md:su-px-[113px]">
+                        <div class="su-flex su-justify-between su-flex-wrap">
+                            <span class="su-flex su-items-center su-justify-center su-text-[16px] md:su-basefont-23">
+                                <time class="su-m-0 su-mr-[4px] su-font-semibold">April 27, 2023 </time> | 5 min read</span
+                            >
+                            <span class="su-font-semibold su-text-digital-red su-text-[16px] md:su-basefont-23">Taxonomy Term</span>
                         </div>
-                        <h1 class="su-mt-[58px] su-font-serif">Give and Go program finds new purpose for tons of unwanted items</h1>
-                        <p class="su-font-serif su-intro-text">
+                        <h1 class="su-mt-[32px] md:su-mt-[58px] su-font-serif">Give and Go program finds new purpose for tons of unwanted items</h1>
+                        <p class="su-font-serif su-intro-text su-m-0">
                             The Give & Go program run by Stanford’s Residential & Dining Enterprises has helped to divert nearly 500 tons of material from landfills.
                         </p>
                     </div>
-                    <figure class="su-mt-[72px]">
-                        <img
-                            src="https://s3-alpha-sig.figma.com/img/5d0a/0117/4cd8949b28afa79c4d01d8b847fd16d9?Expires=1696809600&Signature=gvbGAJnzq~jgYblDTxRfGtreZXtZcspVhBYKci64Io0n71omFPVxdSKrL8p36~Z3s73jbWbBBWseVT3yDWpfOjTo4osc464gColiTP2YUxiY3XQaMWPcl1YJSyYGm-XiHjPJtK-PWJsV~H5utNCdXphON3WD9gvfyX-jK6TPXB0UVKVGSq2iJF91e0WtQeaD2zZJNJArwZODyJ7YaPCTKO1ILS4NYd5pTNwVQu9l5K~o9ndbO1czh~SAPpEZrVAZVuAPJni4EiBtpUhY-iFRwlIxt59QjRIsxwlBtG18IqFYoKAMoJP4EGkLWo6pD0aWFQzOuhgrrWOookdoKvx79Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                        />
-                        <figcaption class="su-text-black su-text-[16px]">Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum</figcaption>
-                    </figure>
+                    <div class="swiper basic-story__header-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <figure class="su-mt-[32px] md:su-mt-[72px]">
+                                    <img
+                                        src="https://s3-alpha-sig.figma.com/img/5d0a/0117/4cd8949b28afa79c4d01d8b847fd16d9?Expires=1696809600&Signature=gvbGAJnzq~jgYblDTxRfGtreZXtZcspVhBYKci64Io0n71omFPVxdSKrL8p36~Z3s73jbWbBBWseVT3yDWpfOjTo4osc464gColiTP2YUxiY3XQaMWPcl1YJSyYGm-XiHjPJtK-PWJsV~H5utNCdXphON3WD9gvfyX-jK6TPXB0UVKVGSq2iJF91e0WtQeaD2zZJNJArwZODyJ7YaPCTKO1ILS4NYd5pTNwVQu9l5K~o9ndbO1czh~SAPpEZrVAZVuAPJni4EiBtpUhY-iFRwlIxt59QjRIsxwlBtG18IqFYoKAMoJP4EGkLWo6pD0aWFQzOuhgrrWOookdoKvx79Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                        alt=""
+                                    />
+                                    <figcaption class="su-text-black dark:su-text-white su-text-[16px]">
+                                        Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="swiper-slide">
+                                <figure class="su-mt-[32px] md:su-mt-[72px]">
+                                    <img
+                                        src="https://s3-alpha-sig.figma.com/img/5d0a/0117/4cd8949b28afa79c4d01d8b847fd16d9?Expires=1696809600&Signature=gvbGAJnzq~jgYblDTxRfGtreZXtZcspVhBYKci64Io0n71omFPVxdSKrL8p36~Z3s73jbWbBBWseVT3yDWpfOjTo4osc464gColiTP2YUxiY3XQaMWPcl1YJSyYGm-XiHjPJtK-PWJsV~H5utNCdXphON3WD9gvfyX-jK6TPXB0UVKVGSq2iJF91e0WtQeaD2zZJNJArwZODyJ7YaPCTKO1ILS4NYd5pTNwVQu9l5K~o9ndbO1czh~SAPpEZrVAZVuAPJni4EiBtpUhY-iFRwlIxt59QjRIsxwlBtG18IqFYoKAMoJP4EGkLWo6pD0aWFQzOuhgrrWOookdoKvx79Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                        alt=""
+                                    />
+                                    <figcaption class="su-text-black dark:su-text-white su-text-[16px]">
+                                        Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="swiper-slide">
+                                <figure class="su-mt-[32px] md:su-mt-[72px]">
+                                    <img
+                                        src="https://s3-alpha-sig.figma.com/img/5d0a/0117/4cd8949b28afa79c4d01d8b847fd16d9?Expires=1696809600&Signature=gvbGAJnzq~jgYblDTxRfGtreZXtZcspVhBYKci64Io0n71omFPVxdSKrL8p36~Z3s73jbWbBBWseVT3yDWpfOjTo4osc464gColiTP2YUxiY3XQaMWPcl1YJSyYGm-XiHjPJtK-PWJsV~H5utNCdXphON3WD9gvfyX-jK6TPXB0UVKVGSq2iJF91e0WtQeaD2zZJNJArwZODyJ7YaPCTKO1ILS4NYd5pTNwVQu9l5K~o9ndbO1czh~SAPpEZrVAZVuAPJni4EiBtpUhY-iFRwlIxt59QjRIsxwlBtG18IqFYoKAMoJP4EGkLWo6pD0aWFQzOuhgrrWOookdoKvx79Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                        alt=""
+                                    />
+                                    <figcaption class="su-text-black dark:su-text-white su-text-[16px]">
+                                        Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="su-flex su-justify-end su-items-center su-translate-y-[-15px]">
+                            <div class="swiper-pagination su-top-0 su-bottom-0 su-mr-[12px]"></div>
+
+                            <button
+                                class="basic-story__header-slider-prev su-rounded-full su-h-[37px] su-w-[37px] disabled:su-bg-black-30 su-mr-[12px] su-bg-digital-red su-flex su-items-center su-justify-center"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                    <path d="M11.8747 15.0416L6.33301 9.49996L11.8747 3.95829" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button
+                                class="basic-story__header-slider-next su-rounded-full su-h-[37px] su-w-[37px] disabled:su-bg-black-30 su-bg-digital-red su-flex su-items-center su-justify-center"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                    <path d="M7.62435 3.95837L13.166 9.50004L7.62435 15.0417" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </header>
+
                 <div
-                    class="main su-grid su-auto-rows su-grid-cols-1 lg:su-grid-cols-3 lg:su-grid-rows-1 su-grid-gap su-mt-[100px] lg:su-pr-[113px] lg:su-pl-[100px] xl:su-pl-[225px] su-pb-[72px]"
+                    class="main su-grid su-auto-rows su-grid-cols-1 lg:su-grid-cols-3 lg:su-grid-rows-1 su-grid-gap su-mt-[32px] md:su-mt-[100px] xl:su-pr-[113px] xl:su-pl-[225px] su-pb-[72px]"
                 >
                     <div class="su-col-span-2">
                         <div class="basic-story__text-content">
+                            <form class="su-flex su-flex-col su-my-[32px] su-gap-[10px] md:su-hidden">
+                                <h2 class="su-font-sans !su-text-[18px] su-m-0 su-p-0">Subscribe to Stanford Report</h2>
+                                <p class="su-m-0 su-p-0 !su-text-[16px] su-font-normal su-font-sans !su-m-0">
+                                    News, insights and events delivered to your inbox each weekday morning.
+                                </p>
+                                <input placeholder="Email address" class="su-w-full su-h-[48px] su-rounded-[3px] su-p-[12px] su-text-[16px]" type="text" />
+                                <button class="su-w-[95px] su-h-[40px] su-bg-digital-red su-text-[16px] su-text-white" type="submit">Sign up</button>
+                            </form>
+
                             <div class="su-border-b-2 su-border-black-20">
-                                <h2 class="su-font-serif su-basefont-23 su-m-0">In brief</h2>
+                                <div class="su-relative su-overflow-hidden">
+                                    <h2 class="su-font-serif su-inline su-bg-white dark:su-bg-black-true !su-text-[23px] su-pr-[10px] su-m-0">In brief</h2>
+                                    <span class="su-w-full su-bg-black-20 su-h-[1px] su-absolute su-bottom-[4px]"></span>
+                                </div>
                                 <ul class="su-basefont-19 su-flex su-flex-col su-gap-[18px] su-pt-[38px] su-pb-[27px]">
                                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</li>
                                     <li>
@@ -217,7 +442,7 @@
                             </div>
 
                             <p
-                                class="su-mt-[45px] first-letter:su-font-bold first-letter:su-float-left first-letter:su-text-[85px] first-letter:su-p-0 first-letter:su-m-0 first-letter:su-font-serif first-letter:su-leading-none"
+                                class="su-mt-[45px] first-letter:su-font-bold first-letter:su-float-left first-letter:su-text-[85px] first-letter:su-p-0 first-letter:su-mt-[-9px] first-letter:su-mr-[9px] first-letter:su-font-serif first-letter:su-leading-none"
                             >
                                 Thirty-five bales of hay. A smattering of silverware. Cast-off business attire. A guitar. These are just a few of the many unwanted items Stanford
                                 University sustainability waste specialist Haley Todd has recovered on campus as part of Residential & Dining Enterprises’ (R&DE) efforts to reduce,
@@ -236,43 +461,64 @@
                             </p>
 
                             <section
-                                class="su-w-full su-my-[45px] su-min-h-[360px] su-px-[39px] su-pt-[39px] su-pb-[26px] su-bg-black-10 su-flex-col su-justify-start su-items-start su-inline-flex"
+                                class="su-w-full su-my-[45px] su-min-h-[360px] su-px-[39px] su-pt-[39px] su-pb-[26px] su-bg-black-10 dark:su-bg-black su-flex-col su-justify-start su-items-start su-inline-flex"
                             >
                                 <h3 class="su-text-[23px]">More to know about zero waste at Stanford</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
 
-                                <div class="su-w-full su-h-auto su-justify-center su-items-center su-justify-between su-inline-flex">
-                                    <div class="su-h-[13px] su-justify-start su-items-start su-gap-[10px] su-flex">
-                                        <div class="su-w-[13px] su-h-[13px] su-bg-zinc-100 su-rounded-full su-border-2 su-border-black [&.active]:su-bg-black"></div>
-                                        <div class="active su-w-[13px] su-h-[13px] su-bg-zinc-800 su-rounded-full su-border-2 su-border-black [&.active]:su-bg-black"></div>
-                                        <div class="su-w-[13px] su-h-[13px] su-bg-zinc-100 su-rounded-full su-border-2 su-border-black [&.active]:su-bg-black"></div>
-                                    </div>
-                                    <div class="su-pt-[19px] su-justify-center su-items-center su-gap-[19px] su-flex">
-                                        <div
-                                            class="su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                <path
-                                                    d="M11.8747 15.0415L6.33301 9.49984L11.8747 3.95817"
-                                                    stroke="#2E2D29"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                            </svg>
+                                <div class="swiper basic-story__content-carousel su-flex su-flex-col su-w-full">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px]">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit
+                                                amet, <a href="">consectetur adipiscing elit.</a> Lorem ipsum dolor sit amet, consectur adipiscing
+                                            </p>
                                         </div>
-                                        <div
-                                            class="su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                                <path
-                                                    d="M7.12533 3.9585L12.667 9.50016L7.12532 15.0418"
-                                                    stroke="#2E2D29"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                            </svg>
+                                        <div class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px] su-w-full">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit
+                                                amet, <a href="">consectetur adipiscing elit.</a> Lorem ipsum dolor sit amet, consectur adipiscing
+                                            </p>
+                                        </div>
+                                        <div class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px] su-w-full">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit
+                                                amet, <a href="">consectetur adipiscing elit.</a> Lorem ipsum dolor sit amet, consectur adipiscing
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="su-w-full su-h-auto su-justify-center su-items-center su-justify-between su-inline-flex">
+                                        <div class="swiper-pagination su-h-[13px] su-justify-start su-items-start su-gap-[10px] su-flex"></div>
+                                        <div class="su-pt-[19px] su-justify-center su-items-center su-gap-[19px] su-flex">
+                                            <button
+                                                class="basic-story__content-carousel-prev su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                    <path
+                                                        d="M11.8747 15.0415L6.33301 9.49984L11.8747 3.95817"
+                                                        stroke="#2E2D29"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                            </button>
+                                            <button
+                                                class="basic-story__content-carousel-next su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                    <path
+                                                        d="M7.12533 3.9585L12.667 9.50016L7.12532 15.0418"
+                                                        stroke="#2E2D29"
+                                                        stroke-width="2"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -298,15 +544,19 @@
                                     <img
                                         class="su-rounded-full su-h-[200px] su-w-[200px] su-object-cover su-m-[6px] su-z-10 su-border-solid su-border-gradient-to-r su-from-digital-red su-to-white su-w-[200px]"
                                         src="https://s3-alpha-sig.figma.com/img/edab/9405/943dc32be541a82e47f4cf2bfdfa67e9?Expires=1696809600&Signature=aQ4WNklDnjKH5JejjiX2jVCz5vbdMVMsPg4Z8zgSTxWzffHETJPNbaZxQSYEYTWk7WUhSJ70P9IFWC9Z423W74jr~LXauFU9-hGIWhBB7-brHIdpG69Ym3z5YGqU0E41v6~drhM5jo4LkgvblMPjQvg-Wycac3bDQYw7QqN2PaxOnGjm8XFfODofQu0z7ZNOrBwSpnYJCBowAkd~8NQpOd1TxKAbOmwfkdeSEn2oZ0RuiBVZXsNFPD9kLyEPWBc685pI5geAwkTM4i16iMN0zYxwqVChw9FX2Wxo5dYyG3njUTQ-HUSNUfR-o1RIn02MNPTeZQw44tMxTJDbdQqw1A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                        alt=""
                                     />
-                                    <div style="z-index: -1" class="su-w-full su-z-0 su-top-0 su-h-full su-absolute su-bg-gradient-to-r su-from-digital-red su-to-plum"></div>
+                                    <div
+                                        style="z-index: -1"
+                                        class="su-w-full su-z-0 su-top-0 su-h-full su-absolute su-bg-gradient-to-r su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive"
+                                    ></div>
                                 </div>
                                 <figure class="su-flex su-flex-col su-gap-[18px]">
-                                    <blockquote class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black su-font-semibold su-text-[36px]">
+                                    <blockquote class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black dark:su-text-white su-font-semibold su-text-[36px]">
                                         The hierarchy in waste management is waste reduction, then reuse, which is what Give & Go is all about. The amount of material they donate
                                         is truly amazing.”
                                     </blockquote>
-                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col">
+                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col dark:su-text-white">
                                         <strong>Julie Muir</strong> Zero Waste Manager, Office of Sustainability
                                     </figcaption>
                                 </figure>
@@ -326,8 +576,9 @@
                             <figure class="su-my-[45px]">
                                 <img
                                     src="https://s3-alpha-sig.figma.com/img/12d8/8668/dd550c32dc7f2615d75725ee96cd3740?Expires=1696809600&Signature=Ou~qdK0H9SdtsNggdV9Pvnirqh8XxcfsHver-gRZWvi~PEV1GRvbYKjKJQMvd3GBb4dSJDRqzGTjrIhikMsdkZmmTQO-sPjw0lu5HGM2mMhHVepsL9v0MhuyYANwnU2~BH5MDMErnTi~KIG15blGYcOraBfRyR4YrgDKsYpcKitjCihwblUAGF8vdLuo8rKHy6XAPmhaMCaC6tMKAXEBslgzqwrn1X0XVdtFE~mTR~kbsxmNJPuP5YitZOVYTvBqm2AiOCM0SJafW6Tcm~SoLRzpM2k~4l5vfdTvOSP2fySy~X5k4Ai6XGZs~XB9s-t5WOo2iu~GmymHdq5b47DI9A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                    alt=""
                                 />
-                                <figcaption>Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum</figcaption>
+                                <figcaption class="dark:!su-text-white">Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum</figcaption>
                             </figure>
 
                             <p>
@@ -337,11 +588,14 @@
                                 students – like Bunke – who are studying waste, and community education components.
                             </p>
 
-                            <section class="basic-story__text-callout su-my-[45px] su-p-[36px] su-flex-col su-justify-start su-items-start su-bg-fog-light">
+                            <section
+                                class="basic-story__text-callout su-my-[45px] su-p-[26px] md:su-p-[36px] su-flex-col su-justify-start su-items-start su-bg-fog-light dark:su-bg-black [&>p]:su-text-[16px] md:[&>p]:su-text-[18px] last-of-type:[&>p]:!su-mb-0"
+                            >
                                 <div class="su-relative su-justify-start su-items-center su-w-full su-gap-3 su-flex">
-                                    <h3 class="su-block su-w-max su-mb-0 su-text-[23px] su-font-black su-font-['Source Serif 4'] su-leading-7">
-                                        Text callout heading heading heading heading heading heading
-                                        <span class="su-bg-black-30">test</span>
+                                    <h3
+                                        class="su-block su-w-max su-mb-[12px] su-text-[23px] su-font-black dark:su-font-white su-font-['Source Serif 4'] su-leading-7 su-font-serif"
+                                    >
+                                        Text callout heading
                                     </h3>
                                 </div>
                                 <p>
@@ -376,11 +630,13 @@
 
                             <section class="basic-story__quote su-flex su-flex-col su-my-[45px] su-items-center su-gap-[18px] su-py-[36px]">
                                 <figure class="su-flex su-flex-col su-gap-[18px]">
-                                    <blockquote class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black su-font-semibold su-text-[36px]">
-                                        The hierarchy in waste management is waste reduction, then reuse, which is what Give & Go is all about. The amount of material they donate
-                                        is truly amazing.”
+                                    <blockquote
+                                        class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black dark:su-text-white su-font-semibold su-text-[28px] md:su-text-[36px] su-font-serif"
+                                    >
+                                        Working in a lab, everything is more abstract. You can’t really see it. [With Give & Go], I am literally getting up on the dumpsters,
+                                        reaching in, and pulling stuff out. It’s so much fun.”
                                     </blockquote>
-                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col">
+                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col dark:su-text-white">
                                         <strong>Julie Muir</strong> Zero Waste Manager, Office of Sustainability
                                     </figcaption>
                                 </figure>
@@ -392,7 +648,10 @@
                             </p>
                         </div>
                         <footer class="basic-story__footer su-mt-[72px]">
-                            <div aria-hidden="true" class="su-mb-[36px] su-w-[100px] su-h-[5px] su-bg-gradient-to-r su-from-digital-red su-to-plum"></div>
+                            <div
+                                aria-hidden="true"
+                                class="su-mb-[36px] su-w-[100px] su-h-[5px] su-bg-gradient-to-r su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive"
+                            ></div>
                             <h2 class="sr-only">Article details</h2>
                             <p class="su-basefont-19 su-pb-[36px]">
                                 Acknowledgement lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet
@@ -403,20 +662,24 @@
                             </p>
 
                             <div class="su-pt-[45px] su-pb-[22px] su-border-t-[1px] su-border-black-20">
-                                <h3 class="su-basefont-23 su-mb-[26px]">Author</h3>
+                                <h3 class="su-text-[23px] su-mb-[26px]">Author</h3>
                                 <p class="">Rebecca Beyer</p>
                             </div>
                             <div class="su-pt-[45px] su-pb-[22px] su-border-t-[1px] su-border-black-20">
-                                <h3 class="su-basefont-23 su-mb-[26px]">Media contact</h3>
-                                <div class="su-mb-[13px]">
+                                <h3 class="su-text-[23px] su-mb-[26px]">Media contact</h3>
+                                <div class="su-mb-[13px] su-text-[21px]">
                                     <span>Firstname Lastname</span>
                                     <span>Professional title goes here</span>
                                 </div>
-                                <a href="mailto:test@test.pl" class="su-mb-[13px] su-no-underline hover:su-underline su-text-black"> sunet@stanford.edu </a>
+                                <a href="mailto:test@test.pl" class="su-mb-[13px] su-text-[18px] su-no-underline hover:su-underline su-text-black dark:su-text-white">
+                                    sunet@stanford.edu
+                                </a>
                             </div>
                             <div class="su-pt-[45px] su-pb-[22px] su-border-t-[1px] su-border-black-20">
-                                <h3 class="su-basefont-23 su-mb-[26px]">Campus unit</h3>
-                                <a href="#" class="su-no-underline hover:su-underline su-text-digital-red hover:su-text-digital-red">Stanford Office of Sustainability</a>
+                                <h3 class="su-text-[23px] su-mb-[26px]">Campus unit</h3>
+                                <a href="#" class="su-no-underline hover:su-underline su-text-digital-red hover:su-text-digital-red su-text-[18px]"
+                                    >Stanford Office of Sustainability</a
+                                >
                             </div>
 
                             <div class="su-pt-[45px] su-pb-[12px] su-border-t-[1px] su-border-black-20">
@@ -432,8 +695,8 @@
                             </div>
                         </footer>
                     </div>
-                    <aside class="su-grid su-auto-rows su-grid-cols-1 md:su-gap-[84px] !md:su-grid-cols-2 lg:su-grid-cols-1">
-                        <form class="su-flex su-flex-col su-gap-[10px]">
+                    <aside class="su-grid su-auto-rows su-grid-cols-1 su-mt-[45px] md:su-mt-0 su-gap-[32px] md:su-gap-[84px] !md:su-grid-cols-2 lg:su-grid-cols-1">
+                        <form class="su-flex-col su-gap-[10px] su-hidden md:su-flex">
                             <h2 class="su-font-sans su-text-[18px] su-m-0 su-p-0">Subscribe to Stanford Report</h2>
                             <p class="su-m-0 su-p-0 su-text-[16px] su-font-normal su-font-sans">News, insights and events delivered to your inbox each weekday morning.</p>
                             <input placeholder="Email address" class="su-w-full su-h-[48px] su-rounded-[3px] su-p-[12px] su-text-[16px]" type="text" />
@@ -462,13 +725,19 @@
 
                             <ul class="su-list-none su-pt-[18px] su-px-0 su-flex su-flex-col">
                                 <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
-                                    <a href="#" class="su-font-bold hover:su-underline active:su-underline">Are you ready for the “longevity economy?”</a>
+                                    <a href="#" class="su-font-bold su-text-black dark:su-text-white su-font-serif hover:su-underline active:su-underline"
+                                        >Are you ready for the “longevity economy?”</a
+                                    >
                                 </li>
                                 <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
-                                    <a href="#" class="su-font-bold hover:su-underline active:su-underline">Board Special Committee provides update</a>
+                                    <a href="#" class="su-font-bold su-text-black dark:su-text-white su-font-serif hover:su-underline active:su-underline"
+                                        >Board Special Committee provides update</a
+                                    >
                                 </li>
                                 <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
-                                    <a href="#" class="su-font-bold hover:su-underline active:su-underline">Report of the president: Academic Council Professoriate appointments</a>
+                                    <a href="#" class="su-font-bold su-text-black dark:su-text-white su-font-serif hover:su-underline active:su-underline"
+                                        >Report of the president: Academic Council Professoriate appointments</a
+                                    >
                                 </li>
                             </ul>
                         </section>
@@ -492,25 +761,27 @@
 
                             <ol class="su-mt-[18px]">
                                 <li>
-                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline">Stanford engineers create perching bird-like robot</a>
+                                    <a href="#" class="su-font-normal su-text-[20px] su-text-black dark:su-text-white hover:su-underline active:su-underline"
+                                        >Stanford engineers create perching bird-like robot</a
+                                    >
                                 </li>
                                 <li>
-                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline">
+                                    <a href="#" class="su-font-normal su-text-[20px] su-text-black dark:su-text-white hover:su-underline active:su-underline">
                                         Introducing MARTY, Stanford's self-driving, electric, drifting DeLorean</a
                                     >
                                 </li>
                                 <li>
-                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline"
+                                    <a href="#" class="su-font-normal su-text-[20px] su-text-black dark:su-text-white hover:su-underline active:su-underline"
                                         >OceanOneK, Stanford’s underwater humanoid robot, swims to new depths
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline"
+                                    <a href="#" class="su-font-normal su-text-[20px] su-text-black dark:su-text-white hover:su-underline active:su-underline"
                                         >New model helps fill gaps in African American ancestry</a
                                     >
                                 </li>
                                 <li>
-                                    <a href="#" class="su-font-normal su-text-[20px] hover:su-underline active:su-underline"
+                                    <a href="#" class="su-font-normal su-text-[20px] su-text-black dark:su-text-white hover:su-underline active:su-underline"
                                         >Consortium brings students together for conversations across political divides</a
                                     >
                                 </li>
@@ -520,62 +791,103 @@
                 </div>
             </article>
 
-            <section>
+            <section class="basic-story__read-next">
                 <h2 class="basic-story__read-next-title su-font-serif">Read next</h2>
                 <div aria-hidden="true" class="basic-story__read-next-divider"></div>
-                <div class="swiper mySwiper su-mt-[20px] carousel-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                <div class="swiper basic-story__read-next-swiper su-mt-[20px] carousel-container">
+                    <div class="swiper-wrapper" role="region" aria-roledescription="carousel" aria-label="Read more">
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-bg-transparent su-items-start"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-1-heading"
+                            id="basic-story__read-next-slide-1"
+                        >
                             <img
-                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
                             />
-                            <span>Campus news</span>
-                            <h3>Teaching across America</h3>
-                            <p class="su-text-left">
+                            <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to An integrated approach to training data scientists article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-1-heading" class="su-m-0 su-font-serif">An integrated approach to training data scientists</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
+                                The gateway course for the new Data Science & Social Systems major teaches students how data can be used to address important social problems.
+                            </p>
+                        </div>
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-start"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-2-heading"
+                            id="basic-story__read-next-slide-2"
+                        >
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
+                            />
+                            <span class="su-text-digital-red su-font-semibold">Campus news</span>
+
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to Teaching across America article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-2-heading" class="su-m-0 su-font-serif">Teaching across America</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
                                 The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
                                 art, and physics for K-12 students along the way.
                             </p>
                         </div>
-                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su su-items-start"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-3-heading"
+                            id="basic-story__read-next-slide-3"
+                        >
                             <img
-                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
                             />
-                            <span>Campus news</span>
-                            <h3>Teaching across America</h3>
-                            <p class="su-text-left">
-                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
-                                art, and physics for K-12 students along the way.
+                            <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to An integrated approach to training data scientists article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-3-heading" class="su-m-0 su-font-serif">An integrated approach to training data scientists</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
+                                The gateway course for the new Data Science & Social Systems major teaches students how data can be used to address important social problems.
                             </p>
                         </div>
-                        <div class="swiper-slide su-flex su-flex-col su-items-start">
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-start"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-2-heading"
+                            id="basic-story__read-next-slide-2"
+                        >
                             <img
-                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
                             />
-                            <span>Campus news</span>
-                            <h3>Teaching across America</h3>
-                            <p class="su-text-left">
-                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
-                                art, and physics for K-12 students along the way.
-                            </p>
-                        </div>
-                        <div class="swiper-slide su-flex su-flex-col su-items-start">
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                            />
-                            <span>Campus news</span>
-                            <h3>Teaching across America</h3>
-                            <p class="su-text-left">
-                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
-                                art, and physics for K-12 students along the way.
-                            </p>
-                        </div>
-                        <div class="swiper-slide su-flex su-flex-col su-items-start">
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/5b11/d5bb/4a392c43c767e9bb0166140eca7d6f46?Expires=1696809600&Signature=oGCsv1a1OZo5ByEzLSuGCYSq6-MgC02QXoBm~irUM6Wwqy3b8r1f6c6B4RCFFab3TXoZD8pTY2P1g9tc1pDE1AZhpM6XNOiC6XfNtliAr8aXZlhZTSJf1nQ9hmH~U6fKAkv5GZRoLgJG9p9Joz-TqhJZoJ~1iVTZLUzQkc5zxQd9wvrQYsXvKEtTDa0sFF9e~i6WuUOlEuzQXRCYXyGqTZxtcDC-vT2XucFbbCI6tVb8-wjLCVQ~0X8q7ncSlHbiOORJnanjqCMR9tWUgSQrHb~RIl3ceyf3fi7s~Fsm5y0oXPVm4AnG0GSPqlrcFHVGT7NNYrUsS~NusGZw1RArlA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                            />
-                            <span>Campus news</span>
-                            <h3>Teaching across America</h3>
-                            <p class="su-text-left">
+                            <span class="su-text-digital-red su-font-semibold">Campus news</span>
+
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to Teaching across America article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-2-heading" class="su-m-0 su-font-serif">Teaching across America</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
                                 The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
                                 art, and physics for K-12 students along the way.
                             </p>
@@ -592,7 +904,7 @@
                                 <path d="M7.62435 3.95837L13.166 9.50004L7.62435 15.0417" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <div class="swiper-pagination cla"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </section>
@@ -608,7 +920,7 @@
 
         <!-- Initialize Swiper -->
         <script>
-            var swiper = new Swiper('.mySwiper', {
+            var swiper = new Swiper('.basic-story__read-next-swiper', {
                 pagination: {
                     el: '.swiper-pagination',
                     type: 'fraction',
@@ -621,12 +933,7 @@
                 centerSlides: true,
                 centeredSlidesBounds: true,
                 spaceBetween: 40,
-                enabled: true,
-                on: {
-                    slideChange: function () {
-                        console.log('slide changed');
-                    },
-                },
+                a11y: true,
             });
 
             const observer = new IntersectionObserver(
@@ -634,8 +941,10 @@
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('fully-visible');
+                            entry.target.setAttribute('aria-hidden', false);
                         } else {
                             entry.target.classList.remove('fully-visible');
+                            entry.target.setAttribute('aria-hidden', true);
                         }
                     });
                 },
@@ -645,6 +954,37 @@
             const slides = document.querySelectorAll('.swiper-slide');
             slides.forEach((slide) => {
                 observer.observe(slide);
+            });
+
+            const contentCarousels = document.querySelectorAll('.basic-story__content-carousel');
+            contentCarousels.forEach((carousel) => {
+                var swiper = new Swiper(carousel, {
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                    navigation: {
+                        nextEl: '.basic-story__content-carousel-next',
+                        prevEl: '.basic-story__content-carousel-prev',
+                    },
+                    slidesPerView: 'auto',
+                    spaceBetween: 0,
+                    a11y: true,
+                });
+            });
+
+            var swiper = new Swiper('.basic-story__header-slider', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'fraction',
+                },
+                navigation: {
+                    nextEl: '.basic-story__header-slider-next',
+                    prevEl: '.basic-story__header-slider-prev',
+                },
+
+                slidesPerView: 'auto',
+                spaceBetween: 26,
+                a11y: true,
             });
         </script>
     </body>
