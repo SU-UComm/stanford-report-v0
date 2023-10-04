@@ -6,10 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <style>
-            .basic-story__quote blockquote {
-                position: relative;
-            }
-
             .basic-story__quote blockquote::before {
                 color: #2e2d29;
                 line-height: 92px;
@@ -26,32 +22,13 @@
                 content: '“';
             }
 
-            .basic-story__quote figcaption {
-                color: #2e2d29;
-                font-size: 21px;
-            }
-
             /* .basic-story__text-callout div {
                 border-bottom: 2px solid red;
             } */
-            .underline-title {
-                position: relative;
-                background: #fff;
-            }
 
             .su-dark .basic-story__text-content a {
                 color: #fff;
                 text-decoration: underline;
-            }
-
-            .underline-title::after {
-                content: '';
-                position: absolute;
-                bottom: 7px;
-                right: 0;
-                width: 100%;
-                height: 2px;
-                background-color: #000;
             }
 
             .swiper {
@@ -111,14 +88,7 @@
             }
 
             .basic-story__read-next .swiper-slide {
-                text-align: center;
-                font-size: 18px;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
                 max-width: 250px !important;
-                text-align: left;
-                height: auto;
                 opacity: 0.35;
             }
 
@@ -146,22 +116,18 @@
                 width: 100%;
             }
 
-            .basic-story__read-next .fully-visible {
-                opacity: 1;
-            }
-
             .basic-story__read-next .fully-visible p,
             .basic-story__read-next .fully-visible h3,
             .basic-story__read-next .fully-visible span {
                 visibility: visible;
             }
 
-            .basic-story__read-next .swiper-slide img {
+            /* .basic-story__read-next .swiper-slide img {
                 display: block;
                 width: 100%;
                 height: 348px;
                 object-fit: cover;
-            }
+            } */
 
             .su-dark .basic-story__read-next-title {
                 background: #017e7c;
@@ -200,6 +166,7 @@
                 height: 4px;
             }
 
+            /* TEXT CONTENT GENERIC STYLING */
             .basic-story__text-content h2 {
                 font-family: 'Source Serif Pro', Georgia, Times, 'Times New Roman', serif;
                 font-size: 35px;
@@ -229,23 +196,16 @@
                 margin-bottom: 0;
             }
 
-            .basic-story__content-carousel .swiper-button-disabled {
-                border-color: #f4f4f4;
+            /* END - TEXT CONTENT GENERIC STYLING */
+
+            .swiper-button-disabled {
+                background: #585754;
                 opacity: 0.35;
+                border: 1px solid #d5d5d4;
             }
 
             .basic-story__read-next-swiper .swiper-wrapper .swiper-slide:last-child h3 {
                 padding-right: 100px;
-            }
-
-            .basic-story__content-carousel .swiper-wrapper {
-                width: 100%;
-            }
-
-            .basic-story__content-carousel .swiper-slide {
-                max-width: 800px !important;
-                background: transparent;
-                text-align: left;
             }
 
             .basic-story__content-carousel .swiper-pagination-bullet {
@@ -272,14 +232,6 @@
                 background: #f4f4f4;
             }
 
-            .basic-story__header-slider {
-                overflow: visible;
-            }
-
-            .basic-story__header-slider .swiper-slide-active {
-                opacity: 1;
-            }
-
             .basic-story__header-slider .swiper-slide-next,
             .basic-story__header-slider .swiper-slide-prev {
                 opacity: 0.35;
@@ -290,11 +242,7 @@
                 visibility: hidden;
             }
 
-            .basic-story__content-carousel-item {
-                opacity: 0.35;
-            }
-
-            .basic-story__content-carousel-item.fully-visible {
+            .swiper-slide.fully-visible {
                 opacity: 1;
             }
         </style>
@@ -355,7 +303,7 @@
                             The Give & Go program run by Stanford’s Residential & Dining Enterprises has helped to divert nearly 500 tons of material from landfills.
                         </p>
                     </div>
-                    <div class="swiper basic-story__header-slider">
+                    <div class="swiper basic-story__header-slider su-overflow-visible">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <figure class="su-mt-[32px] md:su-mt-[72px]">
@@ -466,8 +414,10 @@
                                 <h3 class="su-text-[23px]">More to know about zero waste at Stanford</h3>
 
                                 <div class="swiper basic-story__content-carousel su-flex su-flex-col su-w-full">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px]">
+                                    <div class="swiper-wrapper su-w-full">
+                                        <div
+                                            class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px] su-w-full su-bg-transparent su-text-left !su-max-w-[800px]"
+                                        >
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
                                             <p>
                                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit
@@ -556,7 +506,7 @@
                                         The hierarchy in waste management is waste reduction, then reuse, which is what Give & Go is all about. The amount of material they donate
                                         is truly amazing.”
                                     </blockquote>
-                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col dark:su-text-white">
+                                    <figcaption class="su-relative su-text-black su-basefont-21 su-mt-0 su-ml-[45px] su-flex su-flex-col dark:su-text-white">
                                         <strong>Julie Muir</strong> Zero Waste Manager, Office of Sustainability
                                     </figcaption>
                                 </figure>
@@ -631,12 +581,12 @@
                             <section class="basic-story__quote su-flex su-flex-col su-my-[45px] su-items-center su-gap-[18px] su-py-[36px]">
                                 <figure class="su-flex su-flex-col su-gap-[18px]">
                                     <blockquote
-                                        class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black dark:su-text-white su-font-semibold su-text-[28px] md:su-text-[36px] su-font-serif"
+                                        class="su-flex su-relative su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black dark:su-text-white su-font-semibold su-text-[28px] md:su-text-[36px] su-font-serif"
                                     >
                                         Working in a lab, everything is more abstract. You can’t really see it. [With Give & Go], I am literally getting up on the dumpsters,
                                         reaching in, and pulling stuff out. It’s so much fun.”
                                     </blockquote>
-                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col dark:su-text-white">
+                                    <figcaption class="su-mt-0 su-ml-[45px] su-flex su-flex-col su-text-black dark:su-text-white">
                                         <strong>Julie Muir</strong> Zero Waste Manager, Office of Sustainability
                                     </figcaption>
                                 </figure>
@@ -806,6 +756,7 @@
                             <img
                                 src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                                 alt=""
+                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
                             />
                             <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
                             <a
@@ -820,7 +771,7 @@
                             </p>
                         </div>
                         <div
-                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-start"
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-center su-justify-start su-basefont-18 su-text-left su-h-auto"
                             role="group"
                             aria-roledescription="Slide"
                             aria-labelledby="basic-story__read-next-slide-2-heading"
@@ -829,6 +780,7 @@
                             <img
                                 src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                                 alt=""
+                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
                             />
                             <span class="su-text-digital-red su-font-semibold">Campus news</span>
 
@@ -854,6 +806,7 @@
                             <img
                                 src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
                                 alt=""
+                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
                             />
                             <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
                             <a
@@ -908,6 +861,87 @@
                     </div>
                 </div>
             </section>
+            <!-- Stories tray -->
+            <div
+                class="md:su-hidden su-fixed su-bottom-0 su-left-0 su-right-0 su-w-4/5 su-h-[330px] su-z-50 su-mx-auto su-bg-white dark:su-bg-black su-rounded-t-[8px] su-translate-y-[270px] [&.active]:su-translate-y-0"
+                id="featured-story__stories-tray"
+            >
+                <button class="su-w-full su-flex su-justify-between su-items-center su-mb-[10px] su-px-[20px] su-pt-[20px] su-rounded-t-lg">
+                    <span class="su-flex su-gap-[6px] su-items-center su-justify-start su-text-[18px] su-font-sans su-font-bold su-text-black-60]"
+                        ><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                            <g clip-path="url(#clip0_1559_94)">
+                                <path
+                                    d="M13.5 23.625C19.0899 23.625 23.625 19.0898 23.625 13.5C23.625 7.91016 19.0899 3.375 13.5 3.375C7.91021 3.375 3.37505 7.91016 3.37505 13.5C3.37505 13.7057 3.38032 13.9113 3.39614 14.117L0.0949707 15.0873C0.0316894 14.5652 4.88181e-05 14.0379 4.88181e-05 13.5C4.88181e-05 6.04336 6.04341 0 13.5 0C20.9567 0 27 6.04336 27 13.5C27 20.9566 20.9567 27 13.5 27C12.9622 27 12.4348 26.9684 11.9127 26.9051L12.8831 23.6039C13.0887 23.6145 13.2944 23.625 13.5 23.625ZM13.6213 21.0938L14.6602 17.5605C16.4268 17.0543 17.7188 15.4301 17.7188 13.5053C17.7188 11.1744 15.8309 9.28652 13.5 9.28652C11.5752 9.28652 9.94575 10.5785 9.44478 12.3451L5.9063 13.3787C5.96958 9.23906 9.34458 5.90625 13.5 5.90625C17.6924 5.90625 21.0938 9.30762 21.0938 13.5C21.0938 17.6555 17.761 21.0305 13.6213 21.0938ZM2.05669 16.2686L12.8567 13.0939C13.4948 12.9041 14.0907 13.5 13.9061 14.1434L10.7315 24.9434C10.5153 25.6764 9.50806 25.766 9.16528 25.0805L7.65181 22.0588C7.61489 21.9902 7.57271 21.9217 7.51997 21.8637L2.87935 26.5043C2.22017 27.1635 1.14966 27.1635 0.490479 26.5043C-0.168701 25.8451 -0.168701 24.7746 0.490479 24.1154L5.1311 19.4748C5.0731 19.4221 5.00981 19.3746 4.93599 19.343L1.91958 17.8348C1.23403 17.492 1.32368 16.4848 2.05669 16.2686Z"
+                                    fill="url(#paint0_linear_1559_94)"
+                                />
+                            </g>
+                            <defs>
+                                <linearGradient id="paint0_linear_1559_94" x1="-0.00390625" y1="0" x2="27" y2="3.0407e-08" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#B1040E" />
+                                    <stop offset="1" stop-color="#620059" />
+                                </linearGradient>
+                                <clipPath id="clip0_1559_94">
+                                    <rect width="27" height="27" fill="white" />
+                                </clipPath>
+                            </defs></svg
+                        >Stories for you</span
+                    >
+                    <svg
+                        class="featured-story__stories-tray-chevron su-rotate-180 [&.active]:su-rotate-0"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="8"
+                        viewBox="0 0 12 8"
+                        fill="none"
+                    >
+                        <path d="M1 1.55884L6 6.7059L11 1.55884" stroke="#B1040E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <ul class="su-list-none su-pb-[70px] su-px-[20px] su-flex su-flex-col su-h-full su-overflow-y-auto">
+                    <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
+                        <a href="#" class="su-font-bold su-text-black dark:su-text-white su-font-serif hover:su-underline active:su-underline"
+                            >Are you ready for the “longevity economy?”</a
+                        >
+                    </li>
+                    <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
+                        <a href="#" class="su-font-bold su-text-black dark:su-text-white su-font-serif hover:su-underline active:su-underline"
+                            >Board Special Committee provides update</a
+                        >
+                    </li>
+                    <li class="su-border-b-[1px] su-border-black-30 su-py-[18px] su-m-0">
+                        <a href="#" class="su-font-bold su-text-black dark:su-text-white su-font-serif hover:su-underline active:su-underline"
+                            >Report of the president: Academic Council Professoriate appointments</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Email tray -->
+            <div
+                class="su-hidden su-fixed su-bottom-0 su-left-0 su-right-0 su-w-4/5 su-h-[230px] su-z-50 su-mx-auto su-bg-white dark:su-bg-black su-rounded-t-[8px] su-translate-y-[170px] [&.active]:su-translate-y-0"
+                id="featured-story__email-tray"
+            >
+                <button class="su-w-full su-flex su-justify-between su-items-center su-mb-[10px] su-px-[20px] su-pt-[20px] su-rounded-t-lg">
+                    <span class="su-flex su-gap-[6px] su-items-center su-justify-start su-text-[18px] su-font-sans su-font-bold su-text-black-60]">
+                        <h2 class="su-text-[18px] su-text-bold su-flex su-items-center su-justify-center su-m-0">Subscribe to Stanford Report</h2></span
+                    >
+                    <svg
+                        class="featured-story__stories-tray-chevron su-rotate-180 [&.active]:su-rotate-0"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="8"
+                        viewBox="0 0 12 8"
+                        fill="none"
+                    >
+                        <path d="M1 1.55884L6 6.7059L11 1.55884" stroke="#B1040E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <form class="su-flex-col su-px-[20px] su-mt-[16px] su-gap-[10px] su-flex">
+                    <p class="su-m-0 su-p-0 su-text-[16px] su-font-normal su-font-sans">News, insights and events delivered to your inbox each weekday morning.</p>
+                    <input placeholder="Email address" class="su-w-full su-h-[48px] su-rounded-[3px] su-p-[12px] su-text-[16px]" type="text" />
+                    <button class="su-w-[95px] su-h-[40px] su-bg-digital-red su-text-[16px] su-text-white" type="submit">Sign up</button>
+                </form>
+            </div>
         </main>
         <footer class="su-h-[182px] su-w-full su-bg-black-10">
             <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-30">Pre-Footer - logo + local links</div>
@@ -986,6 +1020,27 @@
                 spaceBetween: 26,
                 a11y: true,
             });
+
+            const handleTrayElement = (tray) => {
+                if (!tray) return;
+                tray.addEventListener('click', function (e) {
+                    tray.classList.toggle('active');
+                    tray.setAttribute('aria-expanded', tray.classList.contains('active'));
+                    tray.setAttribute('aria-hidden', !tray.classList.contains('active'));
+                    tray.setAttribute('aria-label', tray.classList.contains('active') ? 'Close stories tray' : 'Open stories tray');
+                    tray.querySelector('.featured-story__stories-tray-chevron').classList.toggle('active');
+                });
+
+                tray.querySelector('ul')?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            };
+
+            const storiesTray = document.getElementById('featured-story__stories-tray');
+            const emailTray = document.getElementById('featured-story__email-tray');
+
+            handleTrayElement(emailTray);
+            handleTrayElement(storiesTray);
         </script>
     </body>
 </html>
