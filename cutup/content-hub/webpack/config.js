@@ -42,7 +42,7 @@ module.exports = {
         ...entryHelpers.buildComponentEntries('./src/components'),
     ),
     chunks: {
-        allPages: ['global'],
+        allPages: ['global', 'tailwind'],
         pages: [
             {
                 pages: ['reactApp'],

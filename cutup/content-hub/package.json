@@ -95,7 +95,6 @@
     "postcss-preset-env": "^8.3.0",
     "postcss-sass": "^0.5.0",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.5.5",
     "replace-in-file": "^6.3.5",
     "sass": "^1.43.4",
     "sass-loader": "^12.3.0",
