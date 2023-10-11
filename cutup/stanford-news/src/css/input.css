@@ -34,3 +34,13 @@
  * your stylesheet by default.
  */
 @tailwind variants;
+
+@layer utilities {
+    .su-bg-gradient {
+        @apply su-bg-gradient-to-r su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive;
+    }
+
+    .su-bg-gradient-b {
+        @apply su-bg-gradient-to-b su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive;
+    }
+}

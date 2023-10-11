@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+    <head>
+        <title>Stanford University - Scaffold component</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <style>
+            .featured-story__quote blockquote::before {
+                color: #2e2d29;
+                line-height: 92px;
+                font-size: 93px;
+                content: '“';
+                position: absolute;
+                transform: translateX(-45px) translateY(-22px);
+                font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            }
+
+            .su-dark .featured-story__quote blockquote::before {
+                color: #fff;
+                line-height: 92px;
+                font-size: 93px;
+                transform: translateY(-6px);
+                content: '“';
+            }
+
+            /* .basic-story__text-callout div {
+                border-bottom: 2px solid red;
+            } */
+
+            .su-dark .basic-story__text-content a {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+            /* swiper styles */
+
+            .swiper {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .swiper-wrapper {
+                position: relative;
+            }
+
+            .swiper-controls {
+                position: absolute;
+                width: 100px;
+                right: 0;
+                top: 250px;
+                content: '';
+                z-index: 999;
+                display: flex;
+                justify-content: flex-end;
+                gap: 13px;
+                height: auto;
+                flex-wrap: wrap;
+            }
+
+            @media screen and (min-width: 768px) {
+                .swiper-controls {
+                    position: absolute;
+                    width: 100px;
+                    right: 0;
+                    top: 390px;
+                    content: '';
+                    z-index: 999;
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 13px;
+                    height: auto;
+                    flex-wrap: wrap;
+                }
+            }
+
+            .swiper-pagination {
+                width: auto;
+                height: auto;
+                position: relative;
+                font-size: 16px;
+                font-weight: 700;
+                margin-right: 2px;
+                font-family: 'Source Serif Pro', Georgia, Times, 'Times New Roman', serif;
+            }
+
+            .swiper-controls button:disabled {
+                background: #585754;
+                opacity: 0.35;
+                border: 1px solid #d5d5d4;
+            }
+
+            .basic-story__read-next .swiper-slide {
+                max-width: 250px !important;
+                opacity: 0.35;
+            }
+
+            .basic-story__read-next .swiper-slide img {
+                width: 250px !important;
+                height: 165px !important;
+            }
+
+            @media (min-width: 768px) {
+                .basic-story__read-next .swiper-slide {
+                    max-width: 525px !important;
+                }
+
+                .basic-story__read-next .swiper-slide img {
+                    width: 523px !important;
+                    height: 348px !important;
+                }
+            }
+
+            .basic-story__read-next .swiper-slide p,
+            .basic-story__read-next .swiper-slide h3,
+            .basic-story__read-next .swiper-slide span {
+                visibility: hidden;
+                text-align: left;
+                width: 100%;
+            }
+
+            .basic-story__read-next .fully-visible p,
+            .basic-story__read-next .fully-visible h3,
+            .basic-story__read-next .fully-visible span {
+                visibility: visible;
+            }
+
+            /* .basic-story__read-next .swiper-slide img {
+                display: block;
+                width: 100%;
+                height: 348px;
+                object-fit: cover;
+            } */
+
+            .basic-story__read-next-swiper .swiper-wrapper .swiper-slide:last-child h3 {
+                padding-right: 100px;
+            }
+
+            .basic-story__content-carousel .swiper-pagination-bullet {
+                opacity: 1;
+                background: #f4f4f4;
+                width: 13px;
+                height: 13px;
+                border: 2px solid #2e2d29;
+            }
+
+            .su-dark .basic-story__content-carousel .swiper-pagination-bullet {
+                opacity: 1;
+                background: #2e2d29;
+                width: 13px;
+                height: 13px;
+                border: 2px solid #f4f4f4;
+            }
+
+            .basic-story__content-carousel .swiper-pagination-bullet-active {
+                background: #2e2d29;
+            }
+
+            .su-dark .basic-story__content-carousel .swiper-pagination-bullet-active {
+                background: #f4f4f4;
+            }
+
+            .basic-story__header-slider .swiper-slide-next,
+            .basic-story__header-slider .swiper-slide-prev {
+                opacity: 0.35;
+            }
+
+            .basic-story__header-slider .swiper-slide-next figcaption,
+            .basic-story__header-slider .swiper-slide-prev figcaption {
+                visibility: hidden;
+            }
+
+            .swiper-slide.fully-visible {
+                opacity: 1;
+            }
+
+            /* ________________ */
+
+            /* SWIPER STYLE END */
+
+            /* ________________ */
+
+            .su-dark .basic-story__read-next-title {
+                background: #017e7c;
+                background: linear-gradient(90deg, #017e7c 0%, #8f993e 100%);
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                margin-bottom: 22px;
+                font-size: 64px;
+                font-weight: 700;
+                display: inline;
+            }
+
+            .su-dark .basic-story__read-next-divider {
+                background: #017e7c;
+                background: linear-gradient(90deg, #017e7c 0%, #8f993e 100%);
+                width: 100%;
+                margin-top: 22px;
+                height: 4px;
+            }
+
+            .basic-story__read-next-title {
+                background: #b1040e;
+                background: linear-gradient(90deg, #b1040e 0%, #620059 100%);
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                margin-bottom: 22px;
+                font-size: 64px;
+                font-weight: 700;
+                display: inline;
+            }
+
+            .basic-story__read-next-divider {
+                background: linear-gradient(90deg, #b1040e 0%, #620059 100%);
+                width: 100%;
+                margin-top: 22px;
+                height: 4px;
+            }
+
+            .swiper-button-disabled {
+                background: #585754;
+                opacity: 0.35;
+                border: 1px solid #d5d5d4;
+            }
+
+            /* TEXT CONTENT GENERIC STYLING */
+            .basic-story__text-content h2 {
+                font-family: 'Source Serif Pro', Georgia, Times, 'Times New Roman', serif;
+                font-size: 25px;
+            }
+
+            .basic-story__text-content p {
+                margin-bottom: 30px;
+                margin: 0;
+                font-size: 18px;
+            }
+
+            @media screen and (min-width: 640px) {
+                .basic-story__text-content p {
+                    margin-bottom: 30px;
+                    margin: 0 63px;
+                    font-size: 23px;
+                }
+
+                .basic-story__text-content h2 {
+                    margin: 0 63px 32px;
+                    font-size: 35px;
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+                .basic-story__text-content p {
+                    max-width: 636px;
+                    margin: 0 auto;
+                }
+
+                .basic-story__text-content h2 {
+                    max-width: 636px;
+                    margin: 0 auto;
+                    font-size: 41px;
+                }
+            }
+
+            .basic-story__text-content p:first-of-type {
+                margin-bottom: 30px;
+                font-size: 25px;
+            }
+
+            .basic-story__text-content a {
+                color: #2e2d29;
+                text-decoration: underline;
+                font-weight: normal;
+                font-size: 18px;
+            }
+
+            .basic-story__wrapper a {
+                text-decoration: none;
+            }
+
+            .basic-story__text-content p + section {
+                margin-top: 7px;
+            }
+
+            .basic-story__footer p {
+                margin-bottom: 0;
+            }
+
+            /* END - TEXT CONTENT GENERIC STYLING */
+
+            .font-serif-4 {
+                font-family: 'Source Serif 4', Georgia, Times, 'Times New Roman', serif;
+            }
+
+            /* .basic-story__header-image::before {
+                width: 4px;
+                background: linear-gradient(0deg, #b1040e 0%, #620059 100%);
+                height: 907px;
+                transform: translateY(15px);
+                left: 0;
+                position: absolute;
+                content: '';
+            } */
+
+            @media screen and (min-width: 768px) {
+                .basic-story__header-image::before {
+                    transform: translateX(-132px) translateY(256px);
+                }
+
+                .basic-story__header-image::after {
+                    width: 168px;
+                    background: linear-gradient(90deg, #b1040e 0%, #620059 100%);
+                    height: 3px;
+                    top: 0;
+                    transform: translateY(-99px);
+                    right: 0;
+                    position: absolute;
+                    content: '';
+                }
+
+                /* .featured-story__quote figure::after {
+                    border-image: linear-gradient(90deg, #b1040e 0%, #620059 100%) 30;
+                    z-index: -1;
+                    border-width: 4px 4px 0 0;
+                    border-style: solid;
+                    position: absolute;
+                    right: -188px;
+                    content: '';
+                    top: 70px;
+                    width: 347px;
+                    height: 458px;
+                } */
+            }
+
+            @media screen and (min-width: 1280px) {
+                /* .featured-story__quote figure::after {
+                    right: -100%;
+                    width: 600px;
+                } */
+            }
+
+            .featured-story__quote figure {
+                position: relative;
+            }
+
+            .fact-wrapper:has(.fact-wrapper__decoration-top) {
+                margin-top: 162px;
+            }
+
+            .fact-wrapper:has(.fact-wrapper__decoration-bottom) {
+                margin-bottom: 162px;
+            }
+
+            .fact-wrapper__decoration-top {
+                top: 0;
+                flex-direction: column-reverse;
+                transform: translateY(-90px);
+            }
+
+            .fact-wrapper__decoration-bottom {
+                bottom: 0;
+                flex-direction: column;
+                transform: translateY(90px);
+            }
+        </style>
+    </head>
+
+    <body class="dark:su-bg-black-true dark:su-text-white">
+        <div class="su-w-full su-bg-digital-red">
+            <div id="" class="su-max-w-[1256px] su-w-full su-mx-auto">
+                <a href="http://www.stanford.edu/" data-ga-action="logo"
+                    ><img alt="Stanford logo" class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University"
+                /></a>
+            </div>
+        </div>
+        <div class="su-relative su-shadow-[0_3px_6px_0_rgba(0,0,0,0.10)]">
+            <header class="su-w-full su-max-w-[1512px] su-px-[20px] su-mx-auto su-flex su-items-center su-justify-between su-h-[150px]">
+                <button
+                    class="su-w-[40px] su-h-[40px] su-flex su-items-center su-bg-black-20 dark:su-bg-black su-justify-center su-border-[1px] su-border-black-10 su-rounded-full"
+                >
+                    <!-- <svg width="40" height="36" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M29 12.0298H11V13.7485H29V12.0298Z" fill="#B1040E" />
+                        <path d="M29 22.3421H11V24.0608H29V22.3421Z" fill="#B1040E" />
+                        <path d="M29 17.1859H11V18.9046H29V17.1859Z" fill="#B1040E" />
+                    </svg> -->
+                </button>
+                <a href="http://www.stanford.edu/" class="dark:su-hidden" data-ga-action="logo"
+                    ><img class="img-responsive" src="../images/sr_logo.svg" alt="Stanford University"
+                /></a>
+
+                <a href="http://www.stanford.edu/" class="su-hidden dark:su-flex" data-ga-action="logo"
+                    ><img class="img-responsive" src="../images/srlogo_light.svg" alt="Stanford University"
+                /></a>
+                <button
+                    class="su-w-[40px] su-h-[40px] su-flex su-items-center su-bg-black-20 dark:su-bg-black su-justify-center su-border-[1px] su-border-black-10 su-rounded-full"
+                >
+                    <!-- <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M13.961 4.11401C10.241 4.11401 7.21498 7.14001 7.21498 10.861C7.21498 12.295 7.66798 13.623 8.43298 14.717L3.59998 19.55C3.18998 19.96 3.18998 20.624 3.59998 21.034C3.80498 21.239 4.07398 21.342 4.34198 21.342C4.60998 21.342 4.87998 21.239 5.08498 21.034L9.89098 16.228C11.024 17.089 12.431 17.607 13.961 17.607C17.681 17.607 20.707 14.581 20.707 10.86C20.707 7.13901 17.681 4.11401 13.961 4.11401ZM13.961 15.507C11.399 15.507 9.31498 13.422 9.31498 10.86C9.31498 8.29801 11.399 6.21301 13.961 6.21301C16.523 6.21301 18.607 8.29801 18.607 10.86C18.607 13.422 16.522 15.507 13.961 15.507Z"
+                            fill="#B1040E"
+                        />
+                    </svg> -->
+                </button>
+            </header>
+        </div>
+        <main class="basic-story__wrapper su-max-w-[1512px] su-overflow-x-hidden su-pt-[32px] md:su-pt-[90px] su-pb-[200px] su-mx-auto">
+            <article>
+                <!-- <header
+                    class="basic-story__header su-relative su-flex su-flex-col su-items-start md:su-items-end su-pt-[207px] sm:su-pt-[280px] xl:su-pt-[400px] xl:su-mx-[113px] su-px-[20px] md:su-px-[50px] xl:su-px-[100px]"
+                >
+                    <div
+                        class="su-relative su-flex su-justify-start su-flex-wrap su-flex-row-reverse md:su-flex-col su-max-w-[260px] sm:su-max-w-[460px] lg:su-max-w-[500px] xl:su-max-w-[766px] sm:su-absolute sm:su-left-[20px] md:su-left-[50px] su-top-0 su-z-10"
+                    >
+                        <span
+                            class="su-w-full su-flex su-items-center su-flex-col md:su-flex-row su-justify-start sm:su-justify-start su-text-[18px] su-leading-[27px] md:su-basefont-23"
+                        >
+                            <time class="su-m-0 su-mt-[4px] md:su-mt-0 md:su-mr-[4px] su-font-semibold">April 27, 2023 </time> | 5 min read</span
+                        >
+                        <h1 class="su-mt-[20px] su-text-[39px] sm:su-text-[72px] lg:su-text-[86px] xl:su-text-[128px] font-serif-4">Muskrats, a bellwether for a drying delta</h1>
+                        <div class="su-w-[4px] su-h-[901px] su-absolute su-left-0 su-top-[110%] su-bg-digital-red"></div>
+                    </div>
+                    <div class="su-overflow-hidden sm:su-overflow-visible su-pl-[30px] su-w-full sm:su-max-w-[599px] lg:su-max-w-[859px] su-ml-auto">
+                        <figure class="basic-story__header-image su-relative su-flex su-items-end su-flex-col">
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/a5a5/4b63/479fb3b9830ae5aab697076eced15044?Expires=1697414400&Signature=b3fQdgSBudMNcYIFSrTlVEZ8gd6eEsm-8LonjJG~iC6hKhlwobuo9TU7NlFPPFqWXCgAmWmp3BrBZMHIi7MGlzbjNDTKx0l2Zg2PuPl4qrBTnoyObMno-0-EwVQ~1nLgnZ374be9nBLUM8tX9d9-HMbSzW0L7WA6M~llQN6YJHp9WiA~rxleWg7ZnF617A0DYf8y8ZL25iYJIgLqX6uGR5~DhJOY80wungZMu7RxcbJM53G8IJhoVMbV26aP0uOga4fS72~ROjaE-itw4-muWA349LBBokMpLiWUkGHQnx7KdM4curde1RSW3b1p8WmiTKBYZKnu7fo97l7eFCDd0A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
+                                class="su-relative su-w-full su-h-[437px] sm:su-h-[907px] lg:su-h-[1301px] su-object-cover su-object-center"
+                            />
+                            <figcaption class="su-text-[16px] su-w-3/4 su-mx-auto su-mt-[12px] md:su-mt-[32px] su-text-center">
+                                Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem dolor.
+                            </figcaption>
+                        </figure>
+                        <p class="su-w-full md:su-w-full su-mx-auto su-mt-[52px] md:su-mt-[132px] su-font-bold su-text-center font-serif-4 su-text-[20px] lg:su-text-[32px]">
+                            Downstream of hydroelectric dams and Alberta’s oil sands, one of the world’s largest freshwater deltas is drying out. New Stanford research suggests
+                            long-term drying is making it harder for muskrats to recover from massive die-offs. It’s a sign of threats to come for many species.
+                        </p>
+                    </div>
+                </header> -->
+
+                <header class="basic-story__header su-relative su-flex su-flex-col su-items-start md:su-items-end">
+                    <div class="su-relative su-w-full">
+                        <img class="su-w-full" src="../images/banner1.png" alt="" />
+                        <div
+                            class="su-absolute su-w-full su-h-[240px] su-bottom-[-3px] su-left-0 su-bg-gradient-to-b su-from-transparent su-to-white dark:su-from-transparent dark:su-to-black-true"
+                        ></div>
+                    </div>
+                    <div class="su-flex su-gap-x-[42px] su-px-[30px] md:su-px-0 su-flex-wrap md:su-flex-nowrap lg:su-gap-[114px] su-justify-end su-mx-auto su-mt-[96px] lg:su-mt-0">
+                        <div class="su-flex su-flex-col su-items-end su-gap-[26px]">
+                            <span class="lg:su-hidden su-w-auto su-text-[18px] su-leading-[27px] md:su-basefont-23">
+                                <time class="su-m-0 su-mt-[4px] md:su-mt-0 md:su-mr-[4px] su-font-semibold">April 27, 2023 </time> | 5 min read</span
+                            >
+                            <h1
+                                class="su-text-right su-font-serif su-max-w-[808px] su-text-[50px] sm:su-text-[68px] lg:su-text-[68px] xl:su-text-[96px] lg:su-mt-[91px] su-ml-[10px]"
+                            >
+                                Bioengineered tool cuts off cancer cell defenses
+                            </h1>
+                        </div>
+                        <div
+                            class="su-pl-[48px] sm:su-mr-[100px] su-mt-[53px] lg:su-mt-0 su-flex su-flex-col su-items-start su-justify-between su-relative before:su-absolute before:su-bg-gradient-b before:su-h-full before:su-w-[3px] before:su-left-0 before:su-top-0"
+                        >
+                            <p class="su-font-serif md:su-text-[21px] lg:su-text-[24px] su-leading-[130%] su-font-semibold su-w-full md:su-w-[228px] lg:su-w-[292px]">
+                                Sugar-coated proteins called mucins are implicated in many diseases, including cancer. A Stanford-led team has bioengineered enzyme-based scissors
+                                that selectively cut mucins off cancer cells, removing their “cloak of protection” from the body’s immune system.
+                            </p>
+                            <span class="su-hidden lg:su-block su-w-auto su-text-[18px] su-leading-[27px] md:su-basefont-23">
+                                <time class="su-m-0 su-mt-[4px] md:su-mt-0 md:su-mr-[4px] su-font-semibold">April 27, 2023 </time> | 5 min read</span
+                            >
+                        </div>
+                    </div>
+                </header>
+
+                <div class="main su-mt-[173px]">
+                    <div class="basic-story__text-content su-px-[20px] md:su-px-[50px] lg:su-px-[100px]">
+                        <p
+                            class="su-mt-[45px] first-letter:su-font-bold first-letter:su-float-left first-letter:su-text-[72px] first-letter:su-mt-[14px] first-letter:su-leading-[35px] first-letter:su-p-0 first-letter:su-mr-[16px] first-letter:su-font-serif"
+                        >
+                            The muskrat, a stocky brown rodent the size of a Chihuahua – with a tail like a mouse, teeth like a beaver and an exceptional ability to bounce back
+                            from rapid die-offs – has lived for thousands of years in one of Earth’s largest freshwater deltas, in northeastern Alberta, Canada.
+                        </p>
+
+                        <p>
+                            Today, this delta lies within one of the largest swaths of protected land in North America: a national park five times the size of Yellowstone that’s
+                            home to the planet’s biggest herd of free-roaming bison and the last natural nesting ground for the endangered whooping crane. It’s also central to the
+                            culture and livelihoods of Indigenous peoples, including the Mikisew Cree First Nation, Athabasca Chipewyan First Nation and Métis Local 125.
+                        </p>
+
+                        <p>
+                            New research focused on muskrat population dynamics in the Peace-Athabasca Delta, published June 24 in Communications Biology, demonstrates the
+                            vulnerability of even this most protected landscape to human-driven changes to water systems and the global climate.
+                        </p>
+
+                        <p>
+                            Her second novel, All the Yellow Suns, will be published in July. Set in Florida, the book follows 15-year-old Maya Krishnan, who, like Kannan at that
+                            age, “understands that things around her are messed up [and] feels frustrated that no one else seems to feel that way.” Maya falls in love with Juneau,
+                            who invites her to join a secret society of kids who are committed to resistance. Kannan hopes readers experience a sense of recognition when they read
+                            the book. “[I’ve] been told by everyone who read it that the end makes them cry, so hopefully there’ll be some tears as well.”
+                        </p>
+
+                        <section class="su-py-[121px]">
+                            <figure class="su-flex su-flex-col su-gap-[9px]">
+                                <div class="su-grid su-grid-cols-3 su-gap-[5px] sm:su-gap-[20px]">
+                                    <img
+                                        src="../images/water1.png"
+                                        alt=""
+                                        class="su-relative su-w-full su-h-[340px] md:su-h-[340px] lg:su-h-[605px] su-object-cover su-object-center"
+                                    />
+                                    <img
+                                        src="../images/water2.png"
+                                        alt=""
+                                        class="su-relative su-w-full su-h-[340px] md:su-h-[340px] lg:su-h-[605px] su-object-cover su-object-center"
+                                    />
+                                    <img
+                                        src="../images/water3.png"
+                                        alt=""
+                                        class="su-relative su-w-full su-h-[340px] md:su-h-[340px] lg:su-h-[605px] su-object-cover su-object-center"
+                                    />
+                                </div>
+                                <figcaption class="su-text-center">
+                                    Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem
+                                </figcaption>
+                            </figure>
+                        </section>
+
+                        <p>
+                            Most of the Peace-Athabasca Delta lies within Wood Buffalo National Park, a UNESCO World Heritage Site. Its wetlands provide habitat for more than 200
+                            species of birds and 20 fish species, as well as dozens of mammals, including muskrats. \ Image credit: Shutterstock
+                        </p>
+
+                        <p>
+                            The research comes on the heels of a draft finding from the United Nations that Canada’s Wood Buffalo National Park – the park and World Heritage Site
+                            that contains the Peace-Athabasca Delta – is likely in danger from threats related to governance as well as hydropower and oil sands development
+                            upstream of the delta. Previous research has implicated climate change as a driver of long-term drying in the delta and hydroelectric dams on the Peace
+                            River as a cause of reduced flooding.
+                        </p>
+
+                        <p>
+                            The research comes on the heels of a draft finding from the United Nations that Canada’s Wood Buffalo National Park – the park and World Heritage Site
+                            that contains the Peace-Athabasca Delta – is likely in danger from threats related to governance as well as hydropower and oil sands development
+                            upstream of the delta. Previous research has implicated climate change as a driver of long-term drying in the delta and hydroelectric dams on the Peace
+                            River as a cause of reduced flooding.
+                        </p>
+
+                        <section class="!su-my-[126px]">
+                            <figure>
+                                <img class="su-w-full su-h-auto su-object-center su-object-cover" src="../images/muskrat1.png" alt="" />
+                                <figcaption>
+                                    Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem dolor site amit
+                                </figcaption>
+                            </figure>
+                        </section>
+
+                        <h2>Eruption and die-off</h2>
+
+                        <p>
+                            Muskrat (Ondatra zibethicus) populations have always followed a boom-and-bust cycle, with their numbers crashing in dry years and peaking after major
+                            floods. But in recent decades the booms – and the area of the delta inhabited by muskrats during wet years – have been shrinking. The authors found the
+                            most recent year of net population increase after flooding, 2014, was less productive than any such growth year going back to the 1970s.
+                        </p>
+
+                        <p>
+                            While many creatures rely on the dynamic nature of wetlands to survive, muskrats depend heavily on floodwaters, rivers and streams to travel and
+                            disperse beyond their natal ponds. “During a big flood, a lot of muskrats will drown. Some will get swept up into trees and stay put,” said lead study
+                            author Ellen Ward, who worked on the research as a PhD student in Earth system science at Stanford. “But some will stay in the water, either floating or
+                            clinging to debris, and get swept along quite far.”
+                        </p>
+
+                        <p>
+                            As floodwaters recede, the dispersed muskrats enjoy habitat gains that support larger populations. They graze intensively on plants near the shore,
+                            strongly influencing plant life in the area and providing prey for fox, lynx, mink and other predators.
+                        </p>
+
+                        <section
+                            class="featured-story__quote su-my-[45px] su-pl-[64px] su-pt-[57px] lg:su-pl-[113px] sm:su-pr-[184px] su-items-end lg:su-items-start xl:su-pr-0 su-flex su-flex-col md:su-flex-col-reverse xl:su-flex-row-reverse lg:su-justify-end su-gap-[30px] su-py-[15px] su-mr-[11px]"
+                        >
+                            <figure
+                                class="su-flex su-flex-col su-gap-[18px] su-pr-[30px] su-relative md:before:su-hidden md:after:su-hidden before:su-absolute before:su-w-screen before:su-top-0 before:su-right-0 before:su-h-[3px] before:su-bg-black after:su-absolute after:su-w-[3px] after:su-top-0 after:su-right-0 after:su-h-full after:su-bg-black su-pt-[140px]"
+                            >
+                                <blockquote
+                                    class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black md:su-ml-[44px] dark:su-text-white su-font-semibold su-text-[25px] lg:su-text-[36px] font-serif-4 lg:su-max-w-[457px]"
+                                >
+                                    We’re going to protect all the fish and muskrats here. It challenges us to think of how we preserve the dynamism in this landscape in the face
+                                    of an altered hydrology and climate.”
+                                </blockquote>
+                                <!-- <figcaption class="su-relative su-text-black su-basefont-21 su-mt-0 su-flex su-flex-col dark:su-text-white">
+                                    <strong>Malavika Kannan</strong> Undergraduate, English Undergraduate, Feminist, Gender, and Sexuality Studies
+                                </figcaption> -->
+                            </figure>
+                            <figure class="su-flex su-flex-col su-gap-[23px] su-mr-[30px] su-w-full su-max-w-[483px] lg:su-max-w-[524px]">
+                                <img
+                                    src="https://s3-alpha-sig.figma.com/img/8027/ee71/e2fd19d168236d6c575451b801b9e3ac?Expires=1697414400&Signature=nQoTq9u-RiYxPNbzpfDDTFqun-BUO3TJnnoUY-uQa7CDEwVnpzaqcQWMJ~f54ni2xU6O43nZ81hr-2pSm-Hy9y4tqf3bgScXqqYifoyTeAV6UKChEpLEJ-KQxmNt-tALRWg5xdAnne0RGGAQil93ajeEw3EN7lG2xFHjvwjFFvfmR2Pr9n9PO4-Fz54BDBDFpOF1WmCjrC8Tw8YSzqAB4fw19xLzM1KQgKdQ1EhmHIFdpftOdko-UTwUy9hiNO1hqi8JATUMDAhp6bfIUgbrb2KPhShfMiuB57ZACN8UKlUc14AGzoPqYxEJWKB7Ob642eUlz751r48FA-0uEgl5nQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                    class="su-h-[321px] su-w-full lg:su-w-[524px] lg:su-h-[349px] su-object-center su-object-cover"
+                                    alt=""
+                                />
+                                <figcaption class="">Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem</figcaption>
+                            </figure>
+                        </section>
+
+                        <h2>Canary in a coal mine</h2>
+
+                        <p>
+                            Because muskrat behavior and dispersal are so closely linked to freshwater distribution and abundance, their genetic data offers hard evidence for how
+                            changes in the aquatic environment have affected a real population over time. “They’re a bit of a canary in a coal mine,” said Hadly, the Paul S. and
+                            Billie Achilles Professor in Environmental Biology and a senior fellow at Stanford Woods Institute for the Environment.
+                        </p>
+
+                        <p>
+                            In one flood year, DNA from a pair of closely related muskrats turned up nearly 25 miles apart, suggesting that the animals can roam or be carried far
+                            in search of suitable habitat beyond their place of birth. During dry years, the authors found population size and density decreased while the number of
+                            individuals migrating through a given location increased, suggesting overcrowding in remaining patches of habitat drives long and perilous migrations in
+                            search of viable territory.
+                        </p>
+
+                        <p>
+                            “Our work shows they can travel great distances – far longer than their home range – and that they breed so prolifically that their population bounces
+                            back, just not to anything like it was beforehand,” said Gorelick, the Cyrus Fisher Tolman Professor in Stanford’s School of Earth, Energy &
+                            Environmental Sciences (Stanford Earth).
+                        </p>
+
+                        <section class="!su-my-[126px]">
+                            <figure class="su-flex su-flex-col su-items-center su-gap-[18px]">
+                                <div class="su-flex su-gap-[20px] su-flex-wrap md:su-flex-nowrap">
+                                    <img class="su-h-auto su-w-full su-max-w-[630px]" src="../images/muskrat-drawing1.png" alt="" />
+                                    <img class="su-h-auto su-w-full su-max-w-[630px]" src="../images/muskrat-drawing2.png" alt="" />
+                                </div>
+                                <figcaption class="su-w-[80%] su-text-center">
+                                    Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem
+                                </figcaption>
+                            </figure>
+                        </section>
+
+                        <h2>Computer simulations and tail tissue</h2>
+
+                        <p>
+                            The new estimates derive from a collaborative effort combining computer simulations of freshwater habitat in the delta and muskrat behaviors, along with
+                            genetic analysis of 288 muskrat tail tissue samples collected and donated by Indigenous trappers who captured the animals for fur and meat. “Our
+                            modeling accounts for all stages of muskrat life: their travels, their diet, their reproduction and the many ways they can and do perish. They can
+                            freeze, drown, starve, be eaten or eat each other,” Gorelick said.
+                        </p>
+
+                        <p>
+                            Both the modeling and the genetic analysis suggest muskrats in the delta today are likely grouped into many smaller populations that, taken as a whole,
+                            show a long history of rapid die-offs and what scientists call genetic bottlenecks. “Even when the population increases to the huge sizes that we see in
+                            peak years, there is not as much genetic diversity in the population as we would expect,” explained co-lead study author Katherine Solari, a
+                            postdoctoral research fellow in biology.
+                        </p>
+
+                        <section class="!su-my-[126px]">
+                            <figure>
+                                <img class="su-w-full su-h-auto su-object-center su-object-cover" src="../images/muskrat-landscape.png" alt="" />
+                            </figure>
+                        </section>
+
+                        <p>
+                            According to the authors, no single portion of the delta is most important for muskrat persistence. “You can’t just go to one lake and say, ‘We’re going
+                            to protect all the fish and muskrats here,’ because it will be completely different next year,” Hadly said. “It challenges us to think of how we
+                            preserve the dynamism in this landscape in the face of an altered hydrology and climate.”
+                        </p>
+
+                        <section
+                            class="su-w-full !su-mt-[90px] su-mb-[72px] su-min-h-[360px] su-px-[39px] su-pt-[39px] su-pb-[26px] su-bg-black-10 dark:su-bg-black su-flex-col su-justify-start su-items-start su-flex lg:su-mx-auto lg:su-max-w-[755px]"
+                        >
+                            <h3 class="su-text-[23px]">More to know about zero waste at Stanford</h3>
+
+                            <div class="swiper basic-story__content-carousel su-flex su-flex-col su-w-full">
+                                <div class="swiper-wrapper su-w-full">
+                                    <div
+                                        class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px] su-w-full su-bg-transparent su-text-left !su-max-w-[800px]"
+                                    >
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit amet,
+                                            <a href="">consectetur adipiscing elit.</a> Lorem ipsum dolor sit amet, consectur adipiscing
+                                        </p>
+                                    </div>
+                                    <div class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px] su-w-full">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit amet,
+                                            <a href="">consectetur adipiscing elit.</a> Lorem ipsum dolor sit amet, consectur adipiscing
+                                        </p>
+                                    </div>
+                                    <div class="swiper-slide basic-story__content-carousel-item su-flex su-flex-col su-items-start su-min-h-[215px] su-w-full">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet.</p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolor sit amet. Lorem ipsum dolor sit amet,
+                                            <a href="">consectetur adipiscing elit.</a> Lorem ipsum dolor sit amet, consectur adipiscing
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="su-w-full su-h-auto su-justify-center su-items-center su-justify-between su-inline-flex">
+                                    <div class="swiper-pagination su-h-[13px] su-justify-start su-items-start su-gap-[10px] su-flex"></div>
+                                    <div class="su-pt-[19px] su-justify-center su-items-center su-gap-[19px] su-flex">
+                                        <button
+                                            class="basic-story__content-carousel-prev su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <path
+                                                    d="M11.8747 15.0415L6.33301 9.49984L11.8747 3.95817"
+                                                    stroke="#2E2D29"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </button>
+                                        <button
+                                            class="basic-story__content-carousel-next su-p-[9px] su-bg-white su-rounded-[100px] su-border-2 su-border-neutral-300 su-justify-start su-items-center su-gap-1.5 su-flex"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                                <path
+                                                    d="M7.12533 3.9585L12.667 9.50016L7.12532 15.0418"
+                                                    stroke="#2E2D29"
+                                                    stroke-width="2"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <p>
+                            According to the authors, no single portion of the delta is most important for muskrat persistence. “You can’t just go to one lake and say, ‘We’re going
+                            to protect all the fish and muskrats here,’ because it will be completely different next year,” Hadly said. “It challenges us to think of how we
+                            preserve the dynamism in this landscape in the face of an altered hydrology and climate.”
+                        </p>
+
+                        <section
+                            class="basic-story__quote !su-my-[171px] su-flex su-flex-col su-items-center su-gap-[18px] su-py-[36px] su-mx-[64px] lg:su-mx-auto lg:su-max-w-[1086px]"
+                        >
+                            <div class="su-w-[212px] su-object-cover su-relative su-h-[212px] su-rounded-full su-overflow-hidden">
+                                <img
+                                    class="su-rounded-full su-h-[200px] su-w-[200px] su-object-cover su-m-[6px] su-z-10 su-border-solid su-border-gradient-to-r su-from-digital-red su-to-white su-w-[200px]"
+                                    src="../images/story-person.svg"
+                                    alt=""
+                                />
+                                <div
+                                    style="z-index: -1"
+                                    class="su-w-full su-z-0 su-top-0 su-h-full su-absolute su-bg-gradient-to-r su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive"
+                                ></div>
+                            </div>
+                            <figure class="su-flex su-flex-col su-gap-[18px]">
+                                <blockquote class="su-flex su-p-0 su-m-0 su-items-start su-gap-[6px] su-text-black dark:su-text-white su-font-semibold su-text-[36px]">
+                                    The hierarchy in waste management is waste reduction, then reuse, which is what Give & Go is all about. The amount of material they donate is
+                                    truly amazing.”
+                                </blockquote>
+                                <figcaption class="su-relative su-text-black su-basefont-21 su-mt-0 su-ml-[45px] su-flex su-flex-col dark:su-text-white">
+                                    <strong>Julie Muir</strong> Zero Waste Manager, Office of Sustainability
+                                </figcaption>
+                            </figure>
+                        </section>
+
+                        <p>
+                            According to the authors, no single portion of the delta is most important for muskrat persistence. “You can’t just go to one lake and say, ‘We’re going
+                            to protect all the fish and muskrats here,’ because it will be completely different next year,” Hadly said. “It challenges us to think of how we
+                            preserve the dynamism in this landscape in the face of an altered hydrology and climate.”
+                        </p>
+
+                        <p>
+                            According to the authors, no single portion of the delta is most important for muskrat persistence. “You can’t just go to one lake and say, ‘We’re going
+                            to protect all the fish and muskrats here,’ because it will be completely different next year,” Hadly said. “It challenges us to think of how we
+                            preserve the dynamism in this landscape in the face of an altered hydrology and climate.”
+                        </p>
+
+                        <section
+                            class="!su-my-[76px] su-flex su-flex-col su-gap-[12px] su-p-[26px] md:su-p-[36px] su-flex-col su-justify-start su-items-start su-bg-fog-light lg:su-mx-auto lg:su-max-w-[755px] dark:su-bg-black [&>p]:su-m-0 [&>p]:!su-mb-0 [&>p]:su-text-[16px] md:[&>p]:!su-text-[19px] last-of-type:[&>p]:!su-mb-0"
+                        >
+                            <div class="su-relative su-justify-start su-items-center su-w-full su-gap-3 su-flex su-overflow-hidden su-mb-[12px]">
+                                <div>
+                                    <h3 class="su-font-serif su-inline su-bg-fog-light dark:su-bg-black !su-text-[23px] su-pr-[10px] su-m-0">Text callout heading</h3>
+                                    <span class="su-w-full su-bg-black dark:su-bg-black-70 su-h-[1px] su-absolute su-bottom-[4px]"></span>
+                                </div>
+                            </div>
+                            <p>
+                                Text callout heading Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit
+                                amet cursus sit amet dictum sit amet. Dui id ornare arcu odio. Scelerisque in dictum non consectetur. Facilisi nullam vehicula ipsum a arcu cursus
+                                vitae. Tempus quam pellentesque nec nam aliquam sem. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Tellus in metus
+                                vulputate eu scelerisque felis imperdiet proin fermentum.
+                            </p>
+                            <p>
+                                Porta non pulvinar neque laoreet. Lectus magna fringilla urna porttitor rhoncus. Vulputate dignissim suspendisse in est. Lacus sed turpis tincidunt
+                                id aliquet risus feugiat in ante. Dignissim sodales ut eu sem integer vitae justo eget. Maecenas ultricies mi eget mauris pharetra et ultrices neque
+                                ornare. Sit amet risus nullam eget felis eget nunc. Donec et odio pellentesque diam volutpat commodo sed. Suscipit tellus mauris a diam.
+                                Pellentesque habitant morbi tristique senectus et netus et malesuada. Arcu ac tortor dignissim convallis aenean et.v
+                            </p>
+                            <figure class="su-w-full">
+                                <img class="su-w-full su-h-auto su-object-cover su-object-center" src="../images/text-callout.png" alt="" />
+                                <figcaption>Caption text goes here lorem ipsum dolor sit amet | Image credit goes here lorem ipsum</figcaption>
+                            </figure>
+                        </section>
+
+                        <section class="fact-wrapper su-my-[121px] su-w-full su-relative su-h-auto su-p-[3px] su-bg-gradient decoration-top">
+                            <div class="fact-wrapper__decoration-top su-absolute su-left-1/2 su-right-1/2 su-flex su-items-center su-justify-start su-w-[24px] su-h-[90px]">
+                                <div class="su-w-[3px] su-h-[72px] su-bg-gradient"></div>
+                                <div class="su-w-[24px] su-h-[24px] su-rounded-full su-bg-gradient su-flex su-items-center su-justify-center">
+                                    <div class="su-w-[18px] su-h-[18px] su-rounded-full su-bg-white"></div>
+                                </div>
+                            </div>
+                            <div class="su-px-[121px] su-py-[61px] su-w-full su-h-full su-bg-white su-flex su-flex-col su-items-center su-justify-center su-gap-[10px]">
+                                <img src="../images/chart-pie.svg" alt="" />
+                                <p>
+                                    14% of students who left went to private schools, while 26% switched to homeschooling. Another 26% of the loss could be attributed to a
+                                    declining school-age population.
+                                </p>
+                            </div>
+                        </section>
+
+                        <p>
+                            Text callout heading Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit
+                            amet cursus sit amet dictum sit amet. Dui id ornare arcu odio. Scelerisque in dictum non consectetur. Facilisi nullam vehicula ipsum a arcu cursus
+                            vitae. Tempus quam pellentesque nec nam aliquam sem. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Tellus in metus vulputate
+                            eu scelerisque felis imperdiet proin fermentum.
+                        </p>
+                        <p>
+                            Porta non pulvinar neque laoreet. Lectus magna fringilla urna porttitor rhoncus. Vulputate dignissim suspendisse in est. Lacus sed turpis tincidunt id
+                            aliquet risus feugiat in ante. Dignissim sodales ut eu sem integer vitae justo eget. Maecenas ultricies mi eget mauris pharetra et ultrices neque
+                            ornare. Sit amet risus nullam eget felis eget nunc. Donec et odio pellentesque diam volutpat commodo sed. Suscipit tellus mauris a diam. Pellentesque
+                            habitant morbi tristique senectus et netus et malesuada. Arcu ac tortor dignissim convallis aenean et.v
+                        </p>
+
+                        <section class="su-mx-[64px] lg:su-mx-auto lg:su-max-w-[636px] !su-my-[90px]">
+                            <h3 class="su-flex su-items-center su-text-[24px] su-gap-[9px]">
+                                <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.5 24.125C19.0898 24.125 23.625 19.5898 23.625 14C23.625 8.41016 19.0898 3.875 13.5 3.875C7.91014 3.875 3.37499 8.41016 3.37499 14C3.37499 14.2057 3.38026 14.4113 3.39608 14.617L0.0949097 15.5873C0.0316284 15.0652 -1.22171e-05 14.5379 -1.22171e-05 14C-1.22171e-05 6.54336 6.04335 0.5 13.5 0.5C20.9566 0.5 27 6.54336 27 14C27 21.4566 20.9566 27.5 13.5 27.5C12.9621 27.5 12.4348 27.4684 11.9127 27.4051L12.883 24.1039C13.0887 24.1145 13.2943 24.125 13.5 24.125ZM13.6213 21.5938L14.6601 18.0605C16.4267 17.5543 17.7187 15.9301 17.7187 14.0053C17.7187 11.6744 15.8308 9.78652 13.5 9.78652C11.5752 9.78652 9.94569 11.0785 9.44471 12.8451L5.90624 13.8787C5.96952 9.73906 9.34452 6.40625 13.5 6.40625C17.6924 6.40625 21.0937 9.80762 21.0937 14C21.0937 18.1555 17.7609 21.5305 13.6213 21.5938ZM2.05663 16.7686L12.8566 13.5939C13.4947 13.4041 14.0906 14 13.906 14.6434L10.7314 25.4434C10.5152 26.1764 9.508 26.266 9.16522 25.5805L7.65175 22.5588C7.61483 22.4902 7.57264 22.4217 7.51991 22.3637L2.87928 27.0043C2.2201 27.6635 1.1496 27.6635 0.490417 27.0043C-0.168762 26.3451 -0.168762 25.2746 0.490417 24.6154L5.13104 19.9748C5.07303 19.9221 5.00975 19.8746 4.93593 19.843L1.91952 18.3348C1.23397 17.992 1.32362 16.9848 2.05663 16.7686Z"
+                                        fill="#2E2D29"
+                                    />
+                                </svg>
+                                Related story
+                            </h3>
+                            <div class="su-flex su-flex-col sm:su-flex-row su-gap-[40px]">
+                                <img class="su-w-[185px] su-h-[211px]" src="../images/related-story.png" alt="" />
+                                <div class="su-w-[257px]">
+                                    <h4 class="su-mb-[9px] su-text-[24px]">
+                                        <a class="!su-text-[24px] su-font-serif !su-font-bold su-leading-[120%] su-m-0" href=""
+                                            >Inside Stanford Medicine's effort to green the OR</a
+                                        >
+                                    </h4>
+                                    <p class="!su-text-[18px] su-leading-[125%] !su-m-0">
+                                        More than 8% of the country’s greenhouse gas emissions come from the health care industry. Stanford Medicine leaders are working to shift
+                                        the trend.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <footer class="featured-story__footer su-mt-[72px]">
+                        <div
+                            aria-hidden="true"
+                            class="su-mb-[36px] su-w-[100px] su-h-[5px] su-mx-[65px] su-bg-gradient-to-r su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive"
+                        ></div>
+                        <p class="su-mx-[65px]">
+                            According to the authors, no single portion of the delta is most important for muskrat persistence. “You can’t just go to one lake and say, ‘We’re going
+                            to protect all the fish and muskrats here,’ because it will be completely different next year,” Hadly said. “It challenges us to think of how we
+                            preserve the dynamism in this landscape in the face of an altered hydrology and climate.”
+                        </p>
+                        <section aria-label="Author and Media Contact" class="su-overflow-hidden su-mt-[155px]">
+                            <h2 class="sr-only">Author, media contact and contributors</h2>
+                            <div class="su-relative">
+                                <div
+                                    class="su-absolute su-left-0 -su-translate-x-[50vw] su-w-[200vw] su-h-[3px] su-z-0 su-top-1/2 su-bg-gradient-to-r su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive h-24"
+                                ></div>
+
+                                <div
+                                    class="su-w-[304px] sm:su-w-[404px] md:su-w-[633px] su-px-[34px] sm:su-px-[74px] su-text-[21px] su-mx-auto su-text-center su-bg-white dark:su-bg-black-true su-relative su-z-10"
+                                >
+                                    <h3 class="su-m-0 su-basefont-19">Author & Media Contact</h3>
+                                    <p class="su-m-0">Josie Garthwaite</p>
+                                    <p class="su-m-0">School of Earth, Energy, and Environmental Sciences</p>
+                                    <a href="mailto:test@test.pl" class="su-m-0 su-text-[18px] !su-underline su-text-black dark:su-text-white"> josieg@stanford.edu </a>
+                                </div>
+                            </div>
+                            <h3 class="sr-only">contributors</h3>
+                            <ul
+                                aria-label="contributors"
+                                class="md:su-w-[633px] su-mx-auto su-px-[94px] md:su-px-0 su-list-none su-flex su-flex-wrap su-justify-center sm:su-justify-between su-mt-[75px] [&>li>p]:su-mb-[6px] [&>li>p]:su-text-[21px] &>li]:su-w-full [&>li]:su-max-w-[182px] su-text-center"
+                            >
+                                <li class="">
+                                    <h4 class="su-text-[19px] su-mb-[9px]">Contributor</h4>
+                                    <p>Ellen Ward</p>
+                                    <p>Earth System Science</p>
+                                </li>
+                                <li>
+                                    <h4 class="su-text-[19px] su-mb-[9px]">Contributor</h4>
+                                    <p>Elizabeth Hadly</p>
+                                    <p>Biology</p>
+                                </li>
+                                <li>
+                                    <h4 class="su-text-[19px] su-mb-[9px]">Contributor</h4>
+                                    <p>Steven Goerlick</p>
+                                    <p>Earth System Science</p>
+                                </li>
+                            </ul>
+                        </section>
+                        <div class="su-px-[80px] su-flex su-items-center su-flex-col su-mt-[73px]">
+                            <h3 class="su-text-[19px]">Related topics</h3>
+                            <ul class="su-list-none su-flex su-items-center su-justify-center su-flex-wrap su-gap-x-[26px]">
+                                <li class="su-m-0">
+                                    <a class="su-basefont-19 su-text-digital-red su-font-semibold hover:su-underline hover:su-text-digital-red focus:su-text-digital-red" href=""
+                                        >Science & Technology</a
+                                    >
+                                </li>
+                                <li class="su-m-0">
+                                    <a class="su-basefont-19 su-text-digital-red su-font-semibold hover:su-underline hover:su-text-digital-red focus:su-text-digital-red" href=""
+                                        >Animal & Human Behavior</a
+                                    >
+                                </li>
+                                <li class="su-m-0">
+                                    <a class="su-basefont-19 su-text-digital-red su-font-semibold hover:su-underline hover:su-text-digital-red focus:su-text-digital-red" href=""
+                                        >Climate Change</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </footer>
+                </div>
+            </article>
+
+            <section class="basic-story__read-next">
+                <h2 class="basic-story__read-next-title su-font-serif">Read next</h2>
+                <div aria-hidden="true" class="basic-story__read-next-divider"></div>
+                <div class="swiper basic-story__read-next-swiper su-mt-[20px] carousel-container">
+                    <div class="swiper-wrapper" role="region" aria-roledescription="carousel" aria-label="Read more">
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-bg-transparent su-items-start"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-1-heading"
+                            id="basic-story__read-next-slide-1"
+                        >
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
+                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
+                            />
+                            <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to An integrated approach to training data scientists article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-1-heading" class="su-m-0 su-font-serif">An integrated approach to training data scientists</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
+                                The gateway course for the new Data Science & Social Systems major teaches students how data can be used to address important social problems.
+                            </p>
+                        </div>
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-center su-justify-start su-basefont-18 su-text-left su-h-auto"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-2-heading"
+                            id="basic-story__read-next-slide-2"
+                        >
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
+                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
+                            />
+                            <span class="su-text-digital-red su-font-semibold">Campus news</span>
+
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to Teaching across America article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-2-heading" class="su-m-0 su-font-serif">Teaching across America</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
+                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
+                                art, and physics for K-12 students along the way.
+                            </p>
+                        </div>
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su su-items-start"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-3-heading"
+                            id="basic-story__read-next-slide-3"
+                        >
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
+                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
+                            />
+                            <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to An integrated approach to training data scientists article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-3-heading" class="su-m-0 su-font-serif">An integrated approach to training data scientists</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
+                                The gateway course for the new Data Science & Social Systems major teaches students how data can be used to address important social problems.
+                            </p>
+                        </div>
+                        <div
+                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-start"
+                            role="group"
+                            aria-roledescription="Slide"
+                            aria-labelledby="basic-story__read-next-slide-2-heading"
+                            id="basic-story__read-next-slide-2"
+                        >
+                            <img
+                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                                alt=""
+                            />
+                            <span class="su-text-digital-red su-font-semibold">Campus news</span>
+
+                            <a
+                                href=""
+                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
+                                aria-label="Go to Teaching across America article page"
+                            >
+                                <h3 id="basic-story__read-next-slide-2-heading" class="su-m-0 su-font-serif">Teaching across America</h3>
+                            </a>
+                            <p class="su-text-left su-m-0 su-basefont-23">
+                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
+                                art, and physics for K-12 students along the way.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-controls">
+                        <button class="swiper-prev su-rounded-full su-h-[37px] su-w-[37px] su-bg-digital-red su-flex su-items-center su-justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                <path d="M11.8747 15.0416L6.33301 9.49996L11.8747 3.95829" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="swiper-next su-rounded-full su-h-[37px] su-w-[37px] su-bg-digital-red su-flex su-items-center su-justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                                <path d="M7.62435 3.95837L13.166 9.50004L7.62435 15.0417" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-30">Pre-Footer - logo + local links</div>
+
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script type="javascript" src="http://127.0.0.1:4000/js/carousel.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper('.basic-story__read-next-swiper', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'fraction',
+                },
+                navigation: {
+                    nextEl: '.swiper-next',
+                    prevEl: '.swiper-prev',
+                },
+                slidesPerView: 'auto',
+                centerSlides: true,
+                centeredSlidesBounds: true,
+                spaceBetween: 40,
+                a11y: true,
+            });
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fully-visible');
+                            entry.target.setAttribute('aria-hidden', false);
+                        } else {
+                            entry.target.classList.remove('fully-visible');
+                            entry.target.setAttribute('aria-hidden', true);
+                        }
+                    });
+                },
+                {threshold: 0.75},
+            );
+
+            const slides = document.querySelectorAll('.swiper-slide');
+            slides.forEach((slide) => {
+                observer.observe(slide);
+            });
+
+            const contentCarousels = document.querySelectorAll('.basic-story__content-carousel');
+            contentCarousels.forEach((carousel) => {
+                var swiper = new Swiper(carousel, {
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                    navigation: {
+                        nextEl: '.basic-story__content-carousel-next',
+                        prevEl: '.basic-story__content-carousel-prev',
+                    },
+                    slidesPerView: 'auto',
+                    spaceBetween: 0,
+                    a11y: true,
+                });
+            });
+
+            var swiper = new Swiper('.basic-story__header-slider', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'fraction',
+                },
+                navigation: {
+                    nextEl: '.basic-story__header-slider-next',
+                    prevEl: '.basic-story__header-slider-prev',
+                },
+
+                slidesPerView: 'auto',
+                spaceBetween: 26,
+                a11y: true,
+            });
+
+            const handleTrayElement = (tray) => {
+                if (!tray) return;
+                tray.addEventListener('click', function (e) {
+                    tray.classList.toggle('active');
+                    tray.setAttribute('aria-expanded', tray.classList.contains('active'));
+                    tray.setAttribute('aria-hidden', !tray.classList.contains('active'));
+                    tray.setAttribute('aria-label', tray.classList.contains('active') ? 'Close stories tray' : 'Open stories tray');
+                    tray.querySelector('.featured-story__stories-tray-chevron').classList.toggle('active');
+                });
+
+                tray.querySelector('ul')?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            };
+
+            const storiesTray = document.getElementById('featured-story__stories-tray');
+            const emailTray = document.getElementById('featured-story__email-tray');
+
+            handleTrayElement(emailTray);
+            handleTrayElement(storiesTray);
+        </script>
+    </body>
+</html>

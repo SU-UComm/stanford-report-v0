@@ -1,0 +1,19 @@
+.fact-wrapper:has(.fact-wrapper__decoration-top) {
+    margin-top: 162px;
+}
+
+.fact-wrapper:has(.fact-wrapper__decoration-bottom) {
+    margin-bottom: 162px;
+}
+
+.fact-wrapper__decoration-top {
+    top: 0;
+    flex-direction: column-reverse;
+    transform: translateY(-90px);
+}
+
+.fact-wrapper__decoration-bottom {
+    bottom: 0;
+    flex-direction: column;
+    transform: translateY(90px);
+}

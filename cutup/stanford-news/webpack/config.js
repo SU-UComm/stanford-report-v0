@@ -50,7 +50,7 @@ module.exports = {
                 removeChunks: [],
             },
             {
-                pages: ['searchPage', 'videosPage', 'bestBets', 'podcastsPage', 'autocomplete', 'savedItemsPage', 'basicStory'],
+                pages: ['searchPage', 'videosPage', 'bestBets', 'podcastsPage', 'autocomplete', 'savedItemsPage', 'basicStory', 'featuredStoryV1'],
                 addChunks: ['tailwind'],
                 removeChunks: [],
             },
