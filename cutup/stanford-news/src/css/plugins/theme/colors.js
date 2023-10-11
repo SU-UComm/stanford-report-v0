@@ -36,6 +36,9 @@ module.exports = function () {
             light: '#E50808', // Same as old Vivid Red in previous color palette
             dark: '#820000', // Same as Dark Cardinal Red in previous color palette
         },
+        'dark-mode': {
+            red: '#EC0909',
+        },
         'digital-blue': {
             // Link colors
             DEFAULT: '#006CB8',
