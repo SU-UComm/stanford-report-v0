@@ -49,10 +49,16 @@
     h1 {
         font-size: 6.4rem;
     }
+
     h2 {
         font-size: 4.4rem;
     }
+
     h3 {
+        font-size: 3.6rem;
+    }
+
+    h4 {
         font-size: 3rem;
     }
 
@@ -63,5 +69,12 @@
     button {
         font-size: 1.6rem;
         font-weight: 600;
+        line-height: 1.5;
+
+        @apply su-py-8 su-px-15 su-rounded su-border su-border-gray;
+    }
+
+    a {
+        @apply su-no-underline su-font-regular;
     }
 }
