@@ -14,6 +14,7 @@ module.exports = {
         './src/components/**/main.js',
         './src/components/**/manifest.json',
         './src/modules/**/*.jsx',
+        './src/modules/**/*.html',
         './src/components/**/*.jsx',
     ],
     // The theme section is where you define your color palette, font stacks,

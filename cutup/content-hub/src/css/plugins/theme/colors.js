@@ -27,8 +27,11 @@ module.exports = function () {
             10: '#EAEAEA',
             true: '#000000', // For when a higher contrast is needed
         },
-        lightGray: '#C9C9C9',
-        darkGray: '#53565A',
+        gray: {
+            DEFAULT: '#C9C9C9',
+            dark: '#53565A',
+            light: '#F0F0F0',
+        },
         green: '#009B76',
         red: {
             DEFAULT: '#E50808',
