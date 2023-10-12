@@ -47,19 +47,19 @@
     }
 
     h1 {
-        font-size: 6.4rem;
+        @apply su-text-h2 md:su-text-h1;
     }
 
     h2 {
-        font-size: 4.4rem;
+        @apply su-text-h3 md:su-text-h2;
     }
 
     h3 {
-        font-size: 3.6rem;
+        @apply su-text-h4 md:su-text-h3;
     }
 
     h4 {
-        font-size: 3rem;
+        @apply su-text-h5 md:su-text-h4;
     }
 
     p {
@@ -71,7 +71,19 @@
         font-weight: 600;
         line-height: 1.5;
 
-        @apply su-py-8 su-px-15 su-rounded su-border su-border-gray;
+        @apply su-py-8 su-px-15 su-rounded su-border su-transition-colors su-border-gray hover:su-border-red hover:su-bg-red hover:su-text-white;
+    }
+
+    .header-button img {
+        filter: invert(27%) sepia(40%) saturate(5887%) hue-rotate(346deg) brightness(81%) contrast(129%);
+    }
+
+    .header-button:hover img {
+        filter: invert(100%);
+    }
+
+    .button-green {
+        @apply hover:su-border-green hover:su-bg-green hover:su-text-white;
     }
 
     a {

@@ -31,8 +31,10 @@ module.exports = function () {
             DEFAULT: '#C9C9C9',
             dark: '#53565A',
             light: '#F0F0F0',
+            bg: '#FAFAFA',
         },
         green: '#009B76',
+        blue: '#006CB8',
         red: {
             DEFAULT: '#E50808',
             dark: '#B1040E',

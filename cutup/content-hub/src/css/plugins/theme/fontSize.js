@@ -25,6 +25,12 @@ module.exports = function () {
         28: '2.8rem',
         29: '2.9rem',
         30: '3rem',
+        h1: '6.4rem',
+        h2: '4.4rem',
+        h3: '3.6rem',
+        h4: '3rem',
+        h5: '2.4rem',
+        h6: '1.8rem',
         /**
          * Font sizes classes for use in modular typography utilities.
          * To take full advantage of modular typography which inlude letter spacing adjustments propotional to font sizes,

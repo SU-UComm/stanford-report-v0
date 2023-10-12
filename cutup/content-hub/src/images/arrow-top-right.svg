@@ -1,10 +1,10 @@
-<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Icon/Solid/arrow-external" clip-path="url(#clip0_731_2676)">
-<path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M4.91811 4.54555C4.91811 4.04849 5.32105 3.64555 5.81811 3.64555L13.4549 3.64555C13.9519 3.64555 14.3549 4.04849 14.3549 4.54555L14.3549 12.1823C14.3549 12.6794 13.9519 13.0823 13.4549 13.0823C12.9578 13.0823 12.5549 12.6794 12.5549 12.1823L12.5549 6.71834L5.18171 14.0915C4.83024 14.443 4.26039 14.443 3.90892 14.0915C3.55745 13.74 3.55745 13.1702 3.90892 12.8187L11.2821 5.44555L5.81811 5.44555C5.32105 5.44555 4.91811 5.04261 4.91811 4.54555Z" fill="#E50808"/>
-</g>
-<defs>
-<clipPath id="clip0_731_2676">
-<rect width="18" height="18" fill="white"/>
-</clipPath>
-</defs>
+<svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#a)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.918 4.546a.9.9 0 0 1 .9-.9h7.637a.9.9 0 0 1 .9.9v7.636a.9.9 0 0 1-1.8 0V6.718l-7.373 7.373a.9.9 0 1 1-1.273-1.272l7.373-7.373H5.818a.9.9 0 0 1-.9-.9Z" fill="currentColor"/>
+    </g>
+    <defs>
+        <clipPath id="a">
+            <path fill="#fff" d="M0 0h18v18H0z"/>
+        </clipPath>
+    </defs>
 </svg>

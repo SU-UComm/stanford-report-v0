@@ -5,11 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
     </head>
-    <body>
+    <body class="su-relative">
         ${require('./fragments/header.html')}
-        <main class="su-centered-container su-grid su-grid-cols-12 su-mb-120">
+        <main class="su-centered-container su-pt-95 su-bg-gray-bg su-grid su-grid-cols-12 su-mb-120">
             <div class="su-col-span-full xl:su-col-start-2 xl:su-col-span-10">
-                ${require('../modules/Hero/base.html')} ${require('../modules/Insights/small.html')}
+                ${require('../modules/Hero/base.html')} ${require('../modules/Insights/list-small.html')}
+                ${require('../modules/Stories/listing.html')}
             </div>
         </main>
     </body>
