@@ -89,4 +89,8 @@
     a {
         @apply su-no-underline su-font-regular;
     }
+
+    li.pagination-active {
+        @apply su-bg-gray-light;
+    }
 }
