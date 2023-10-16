@@ -35,6 +35,7 @@ module.exports = function () {
         },
         green: '#009B76',
         blue: '#006CB8',
+        orange: '#F16E00',
         red: {
             DEFAULT: '#E50808',
             dark: '#B1040E',
