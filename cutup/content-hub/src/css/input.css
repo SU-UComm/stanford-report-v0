@@ -66,6 +66,10 @@
         font-size: 1.8rem;
     }
 
+    .small-heading {
+        @apply su-text-18 su-font-bold su-text-red-dark su-leading-[normal] su-py-8 su-mb-10;
+    }
+
     button,
     .header-button {
         font-size: 1.6rem;
@@ -73,14 +77,6 @@
         line-height: 1.5;
 
         @apply su-py-8 su-px-15 su-rounded su-border su-transition-colors su-border-gray hover:su-border-red hover:su-bg-red hover:su-text-white;
-    }
-
-    .header-button img {
-        filter: invert(27%) sepia(40%) saturate(5887%) hue-rotate(346deg) brightness(81%) contrast(129%);
-    }
-
-    .header-button:hover img {
-        filter: invert(100%);
     }
 
     .button-green {
@@ -93,5 +89,10 @@
 
     li.pagination-active {
         @apply su-bg-gray-light;
+    }
+
+    .full-width-bg {
+        @apply before:su-absolute before:su-h-full before:su-w-screen before:su-top-0 before:su-right-full 
+        after:su-absolute after:su-h-full after:su-w-screen after:su-top-0 after:su-left-full;
     }
 }

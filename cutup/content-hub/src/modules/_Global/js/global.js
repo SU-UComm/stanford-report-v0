@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const customSelects = document.querySelectorAll('.c-select');
+    if (customSelects.length === 0) return;
 
     customSelects.forEach((select) => {
         const selectInput = select.querySelector('select');
