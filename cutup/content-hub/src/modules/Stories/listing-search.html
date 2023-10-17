@@ -1,0 +1,48 @@
+<section>
+    <div class="su-mb-20">
+        <div class="su-flex su-flex-col lg:su-flex-row su-gap-xs">
+            <div class="su-grow">
+                <p class="su-font-bold su-leading-[2] su-mb-10">Content partners</p>
+                ${require('../_Global/select.html')}
+            </div>
+            <div class="su-grow">
+                <p class="su-font-bold su-leading-[2] su-mb-10">Status</p>
+                ${require('../_Global/select.html')}
+            </div>
+            <div class="su-grow">
+                <p class="su-font-bold su-leading-[2] su-mb-10">Date Range</p>
+                ${require('../_Global/select.html')}
+            </div>
+        </div>
+        <div class="su-flex su-flex-wrap su-gap-xs su-mt-20">
+            <p
+                class="su-rounded su-flex su-items-center su-bg-gray-light su-border su-border-gray su-text-16 su-mb-0 su-py-8 su-px-15"
+            >
+                <span class="su-inline-block su-py-4 hover:su-cursor-pointer"
+                    ><img class="su-mr-6" src="../../images/close.svg" alt=""
+                /></span>
+                Woods Institute for the Environment (18)
+            </p>
+            <p
+                class="su-rounded su-flex su-items-center su-bg-gray-light su-border su-border-gray su-text-16 su-mb-0 su-py-8 su-px-15"
+            >
+                <span class="su-inline-block su-py-4 hover:su-cursor-pointer"
+                    ><img class="su-mr-6" src="../../images/close.svg" alt=""
+                /></span>
+                Woods Institute (12)
+            </p>
+        </div>
+    </div>
+    <div class="su-flex su-flex-col sm:su-flex-row su-gap-y-xs su-justify-between su-mb-20">
+        <p class="su-leading-[2] su-mb-0">1-5 of 27 results</p>
+        <div class="su-flex su-gap-xs su-items-center">
+            <span>Sort By</span> ${require('../_Global/select-small.html')}
+        </div>
+    </div>
+    <ul class="su-flex su-flex-col su-gap-y-xs su-list-none su-p-0 su-m-0 su-mb-60">
+        ${require('./items/item.html')} ${require('./items/item2.html')} ${require('./items/item3.html')}
+        ${require('./items/item4.html')} ${require('./items/item5.html')} ${require('./items/item2.html')}
+        ${require('./items/item.html')} ${require('./items/item.html')}
+    </ul>
+    ${require('../_Global/pagination.html')}
+</section>
