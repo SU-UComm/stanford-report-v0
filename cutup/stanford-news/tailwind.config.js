@@ -10,6 +10,8 @@ module.exports = {
     prefix: 'su-',
     content: [
         './src/html/**/*.html',
+        './src/modules/**/*.html',
+        './src/modules/**/*.js',
         './src/components/**/previews/**/*.html',
         './src/components/**/main.js',
         './src/components/**/manifest.json',

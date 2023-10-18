@@ -1,0 +1,32 @@
+/* stylelint-disable selector-class-pattern */
+.story__quote .story__quote-target::before {
+  color: #2e2d29;
+  line-height: 50px;
+  font-size: 50px;
+  content: "“";
+  position: absolute;
+  transform: translateX(-25px) translateY(-12px);
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.su-dark .story__quote .story__quote-target::before {
+  color: #fff;
+  line-height: 50px;
+  font-size: 50px;
+  transform: translateX(-25px) translateY(-12px);
+  content: "“";
+}
+
+@media screen and (min-width: 765px) {
+  .story__quote .story__quote-target::before {
+    font-size: 93px;
+    line-height: 92px;
+    transform: translateX(-45px) translateY(-22px);
+  }
+
+  .su-dark .story__quote .story__quote-target::before {
+    line-height: 92px;
+    font-size: 93px;
+    transform: translateX(-45px) translateY(-22px);
+  }
+}

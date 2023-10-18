@@ -342,26 +342,6 @@
             .featured-story__quote figure {
                 position: relative;
             }
-
-            .fact-wrapper:has(.fact-wrapper__decoration-top) {
-                margin-top: 162px;
-            }
-
-            .fact-wrapper:has(.fact-wrapper__decoration-bottom) {
-                margin-bottom: 162px;
-            }
-
-            .fact-wrapper__decoration-top {
-                top: 0;
-                flex-direction: column-reverse;
-                transform: translateY(-90px);
-            }
-
-            .fact-wrapper__decoration-bottom {
-                bottom: 0;
-                flex-direction: column;
-                transform: translateY(90px);
-            }
         </style>
     </head>
 
@@ -437,37 +417,7 @@
                     </div>
                 </header> -->
 
-                <header class="basic-story__header su-relative su-flex su-flex-col su-items-start md:su-items-end">
-                    <div class="su-relative su-w-full">
-                        <img class="su-w-full" src="../images/banner1.png" alt="" />
-                        <div
-                            class="su-absolute su-w-full su-h-[240px] su-bottom-[-3px] su-left-0 su-bg-gradient-to-b su-from-transparent su-to-white dark:su-from-transparent dark:su-to-black-true"
-                        ></div>
-                    </div>
-                    <div class="su-flex su-gap-x-[42px] su-px-[30px] md:su-px-0 su-flex-wrap md:su-flex-nowrap lg:su-gap-[114px] su-justify-end su-mx-auto su-mt-[96px] lg:su-mt-0">
-                        <div class="su-flex su-flex-col su-items-end su-gap-[26px]">
-                            <span class="lg:su-hidden su-w-auto su-text-[18px] su-leading-[27px] md:su-basefont-23">
-                                <time class="su-m-0 su-mt-[4px] md:su-mt-0 md:su-mr-[4px] su-font-semibold">April 27, 2023 </time> | 5 min read</span
-                            >
-                            <h1
-                                class="su-text-right su-font-serif su-max-w-[808px] su-text-[50px] sm:su-text-[68px] lg:su-text-[68px] xl:su-text-[96px] lg:su-mt-[91px] su-ml-[10px]"
-                            >
-                                Bioengineered tool cuts off cancer cell defenses
-                            </h1>
-                        </div>
-                        <div
-                            class="su-pl-[48px] sm:su-mr-[100px] su-mt-[53px] lg:su-mt-0 su-flex su-flex-col su-items-start su-justify-between su-relative before:su-absolute before:su-bg-gradient-b before:su-h-full before:su-w-[3px] before:su-left-0 before:su-top-0"
-                        >
-                            <p class="su-font-serif md:su-text-[21px] lg:su-text-[24px] su-leading-[130%] su-font-semibold su-w-full md:su-w-[228px] lg:su-w-[292px]">
-                                Sugar-coated proteins called mucins are implicated in many diseases, including cancer. A Stanford-led team has bioengineered enzyme-based scissors
-                                that selectively cut mucins off cancer cells, removing their “cloak of protection” from the body’s immune system.
-                            </p>
-                            <span class="su-hidden lg:su-block su-w-auto su-text-[18px] su-leading-[27px] md:su-basefont-23">
-                                <time class="su-m-0 su-mt-[4px] md:su-mt-0 md:su-mr-[4px] su-font-semibold">April 27, 2023 </time> | 5 min read</span
-                            >
-                        </div>
-                    </div>
-                </header>
+                ${require('src/modules/Headers/html/version2.html')}
 
                 <div class="main su-mt-[173px]">
                     <div class="basic-story__text-content su-px-[20px] md:su-px-[50px] lg:su-px-[100px]">
@@ -496,30 +446,7 @@
                             the book. “[I’ve] been told by everyone who read it that the end makes them cry, so hopefully there’ll be some tears as well.”
                         </p>
 
-                        <section class="su-py-[121px]">
-                            <figure class="su-flex su-flex-col su-gap-[9px]">
-                                <div class="su-grid su-grid-cols-3 su-gap-[5px] sm:su-gap-[20px]">
-                                    <img
-                                        src="../images/water1.png"
-                                        alt=""
-                                        class="su-relative su-w-full su-h-[340px] md:su-h-[340px] lg:su-h-[605px] su-object-cover su-object-center"
-                                    />
-                                    <img
-                                        src="../images/water2.png"
-                                        alt=""
-                                        class="su-relative su-w-full su-h-[340px] md:su-h-[340px] lg:su-h-[605px] su-object-cover su-object-center"
-                                    />
-                                    <img
-                                        src="../images/water3.png"
-                                        alt=""
-                                        class="su-relative su-w-full su-h-[340px] md:su-h-[340px] lg:su-h-[605px] su-object-cover su-object-center"
-                                    />
-                                </div>
-                                <figcaption class="su-text-center">
-                                    Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem
-                                </figcaption>
-                            </figure>
-                        </section>
+                        ${require('src/modules/Three images section/html/global.html')}
 
                         <p>
                             Most of the Peace-Athabasca Delta lies within Wood Buffalo National Park, a UNESCO World Heritage Site. Its wetlands provide habitat for more than 200
@@ -540,14 +467,7 @@
                             River as a cause of reduced flooding.
                         </p>
 
-                        <section class="!su-my-[126px]">
-                            <figure>
-                                <img class="su-w-full su-h-auto su-object-center su-object-cover" src="../images/muskrat1.png" alt="" />
-                                <figcaption>
-                                    Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem dolor site amit
-                                </figcaption>
-                            </figure>
-                        </section>
+                        ${require('src/modules/Single image section/html/global.html')}
 
                         <h2>Eruption and die-off</h2>
 
@@ -616,17 +536,7 @@
                             Environmental Sciences (Stanford Earth).
                         </p>
 
-                        <section class="!su-my-[126px]">
-                            <figure class="su-flex su-flex-col su-items-center su-gap-[18px]">
-                                <div class="su-flex su-gap-[20px] su-flex-wrap md:su-flex-nowrap">
-                                    <img class="su-h-auto su-w-full su-max-w-[630px]" src="../images/muskrat-drawing1.png" alt="" />
-                                    <img class="su-h-auto su-w-full su-max-w-[630px]" src="../images/muskrat-drawing2.png" alt="" />
-                                </div>
-                                <figcaption class="su-w-[80%] su-text-center">
-                                    Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum lorem ipsum lorem ipsum lorem
-                                </figcaption>
-                            </figure>
-                        </section>
+                        ${require('src/modules/Two images section/html/global.html')}
 
                         <h2>Computer simulations and tail tissue</h2>
 
@@ -644,11 +554,7 @@
                             postdoctoral research fellow in biology.
                         </p>
 
-                        <section class="!su-my-[126px]">
-                            <figure>
-                                <img class="su-w-full su-h-auto su-object-center su-object-cover" src="../images/muskrat-landscape.png" alt="" />
-                            </figure>
-                        </section>
+                        ${require('src/modules/Single image section/html/global.html')}
 
                         <p>
                             According to the authors, no single portion of the delta is most important for muskrat persistence. “You can’t just go to one lake and say, ‘We’re going
@@ -918,127 +824,6 @@
                     </footer>
                 </div>
             </article>
-
-            <section class="basic-story__read-next">
-                <h2 class="basic-story__read-next-title su-font-serif">Read next</h2>
-                <div aria-hidden="true" class="basic-story__read-next-divider"></div>
-                <div class="swiper basic-story__read-next-swiper su-mt-[20px] carousel-container">
-                    <div class="swiper-wrapper" role="region" aria-roledescription="carousel" aria-label="Read more">
-                        <div
-                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-bg-transparent su-items-start"
-                            role="group"
-                            aria-roledescription="Slide"
-                            aria-labelledby="basic-story__read-next-slide-1-heading"
-                            id="basic-story__read-next-slide-1"
-                        >
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                                alt=""
-                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
-                            />
-                            <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
-                            <a
-                                href=""
-                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
-                                aria-label="Go to An integrated approach to training data scientists article page"
-                            >
-                                <h3 id="basic-story__read-next-slide-1-heading" class="su-m-0 su-font-serif">An integrated approach to training data scientists</h3>
-                            </a>
-                            <p class="su-text-left su-m-0 su-basefont-23">
-                                The gateway course for the new Data Science & Social Systems major teaches students how data can be used to address important social problems.
-                            </p>
-                        </div>
-                        <div
-                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-center su-justify-start su-basefont-18 su-text-left su-h-auto"
-                            role="group"
-                            aria-roledescription="Slide"
-                            aria-labelledby="basic-story__read-next-slide-2-heading"
-                            id="basic-story__read-next-slide-2"
-                        >
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                                alt=""
-                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
-                            />
-                            <span class="su-text-digital-red su-font-semibold">Campus news</span>
-
-                            <a
-                                href=""
-                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
-                                aria-label="Go to Teaching across America article page"
-                            >
-                                <h3 id="basic-story__read-next-slide-2-heading" class="su-m-0 su-font-serif">Teaching across America</h3>
-                            </a>
-                            <p class="su-text-left su-m-0 su-basefont-23">
-                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
-                                art, and physics for K-12 students along the way.
-                            </p>
-                        </div>
-                        <div
-                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su su-items-start"
-                            role="group"
-                            aria-roledescription="Slide"
-                            aria-labelledby="basic-story__read-next-slide-3-heading"
-                            id="basic-story__read-next-slide-3"
-                        >
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                                alt=""
-                                class="su-block su-w-full su-h-auto su-object-cover su-object-center"
-                            />
-                            <span class="su-text-digital-red su-font-semibold">Teaching and learning</span>
-                            <a
-                                href=""
-                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
-                                aria-label="Go to An integrated approach to training data scientists article page"
-                            >
-                                <h3 id="basic-story__read-next-slide-3-heading" class="su-m-0 su-font-serif">An integrated approach to training data scientists</h3>
-                            </a>
-                            <p class="su-text-left su-m-0 su-basefont-23">
-                                The gateway course for the new Data Science & Social Systems major teaches students how data can be used to address important social problems.
-                            </p>
-                        </div>
-                        <div
-                            class="swiper-slide su-flex su-flex-col su-gap-[12px] su-items-start"
-                            role="group"
-                            aria-roledescription="Slide"
-                            aria-labelledby="basic-story__read-next-slide-2-heading"
-                            id="basic-story__read-next-slide-2"
-                        >
-                            <img
-                                src="https://s3-alpha-sig.figma.com/img/ac14/881f/34f776bcfc6c13fae2034daf744ab646?Expires=1697414400&Signature=dPhtZAHfdabFzp8xl~OqR~YJddz5LdN~N8yc~m13DFGOHADfjJTb8osiMcbkKqIYPP2B071QZmsOYTESEE5b4GIT2tyJMxhaQ45eMVeazMJtUpKVHiMwIDPi7EQ-cU4zUudyGoWViufNQm71LaTFBnMvbTt85FeHH2rz0xfnLKPMMd6jnqFlCu7xRZeKCir--6CHs8Ei39FZd9YCABtPoJmVLGS71InJ1qsvt3RKz6tXrP0VAQw-2i1c07Fs9vRsCaoxmRp9vy0ZJ12MyzwXnGnwSfgdHzt9x4q5NMj2KtNzbyYJ77UDLQtlzgZKh7eIGu5LMEz00wbhDv3Xd9qzBA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-                                alt=""
-                            />
-                            <span class="su-text-digital-red su-font-semibold">Campus news</span>
-
-                            <a
-                                href=""
-                                class="su-w-full su-text-black dark:su-text-white hover:su-underline focus:su-underline"
-                                aria-label="Go to Teaching across America article page"
-                            >
-                                <h3 id="basic-story__read-next-slide-2-heading" class="su-m-0 su-font-serif">Teaching across America</h3>
-                            </a>
-                            <p class="su-text-left su-m-0 su-basefont-23">
-                                The student group Stanford Spokes is riding from San Francisco to Washington, D.C., this summer, holding workshops on computer science, history,
-                                art, and physics for K-12 students along the way.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-controls">
-                        <button class="swiper-prev su-rounded-full su-h-[37px] su-w-[37px] su-bg-digital-red su-flex su-items-center su-justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                <path d="M11.8747 15.0416L6.33301 9.49996L11.8747 3.95829" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <button class="swiper-next su-rounded-full su-h-[37px] su-w-[37px] su-bg-digital-red su-flex su-items-center su-justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
-                                <path d="M7.62435 3.95837L13.166 9.50004L7.62435 15.0417" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </section>
         </main>
         <footer class="su-h-[182px] su-w-full su-bg-black-10">
             <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-30">Pre-Footer - logo + local links</div>
