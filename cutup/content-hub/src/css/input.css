@@ -71,6 +71,7 @@
     }
 
     button,
+    .button,
     .header-button {
         font-size: 1.6rem;
         font-weight: 600;
