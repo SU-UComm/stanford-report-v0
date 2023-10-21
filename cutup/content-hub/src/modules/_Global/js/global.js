@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         listElements.forEach((listItem) => {
             listItem.addEventListener('click', () => {
-                console.log(listItem.dataset.value);
                 wrapper.classList.toggle('open');
                 buttonText.innerHTML = listItem.innerText;
                 selectInput.value = listItem.dataset.value;
@@ -56,6 +55,65 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             });
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sendButtons = document.querySelectorAll('.c-button-send');
+    if (sendButtons.length === 0) return;
+
+    sendButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const dialog = button.parentElement.querySelector('.c-dialog-send');
+
+            dialog.addEventListener('click', () => {
+                dialog.close();
+            });
+
+            dialog.querySelector('.c-dialog-body').addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            dialog.querySelectorAll('button').forEach((button) => {
+                button.addEventListener('click', () => {
+                    dialog.close();
+                });
+            });
+
+            dialog.showModal();
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const declineButtons = document.querySelectorAll('.c-button-decline');
+    if (declineButtons.length === 0) return;
+
+    declineButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const dialog = button.parentElement.querySelector('.c-dialog-decline');
+
+            dialog.addEventListener('click', () => {
+                dialog.close();
+            });
+
+            dialog.querySelector('.c-dialog-body').addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            dialog.querySelectorAll('button').forEach((button) => {
+                button.addEventListener('click', () => {
+                    dialog.close();
+                });
+            });
+
+            dialog.addEventListener('close', () => {
+                document.body.style.overflowY = 'auto';
+            });
+
+            dialog.showModal();
+            document.body.style.overflowY = 'hidden';
         });
     });
 });
