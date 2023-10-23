@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerToggle = document.querySelector('#header-mobile-menu-toggle');
+    const mobileMenu = document.querySelector('#header-mobile-menu');
+    const mobileMenuItems = mobileMenu.querySelectorAll('a');
+
+    mobileMenuItems.forEach((item) => {
+        item.setAttribute('tabindex', '-1');
+    });
+
+    if (!hamburgerToggle || !mobileMenu) return;
+
+    hamburgerToggle.addEventListener('click', () => {
+        hamburgerToggle.classList.toggle('active');
+        hamburgerToggle.setAttribute('aria-expanded', hamburgerToggle.classList.contains('active'));
+        mobileMenu.classList.toggle('su-hidden');
+
+        if (hamburgerToggle.classList.contains('active')) {
+            mobileMenuItems.forEach((item) => {
+                item.setAttribute('tabindex', '0');
+            });
+        } else {
+            mobileMenuItems.forEach((item) => {
+                item.setAttribute('tabindex', '-1');
+            });
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
     const toggleOpen = (isOpen, button, list, listItems = []) => {
         if (isOpen) {
             button.setAttribute('aria-expanded', 'true');

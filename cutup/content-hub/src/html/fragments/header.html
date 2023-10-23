@@ -1,14 +1,14 @@
 <header class="su-h-95 su-w-full su-fixed su-z-20">
     <div class="su-centered-container su-h-full su-flex">
         <div
-            class="su-bg-red-dark su-relative su-flex su-items-center su-pr-40 before:su-bg-red-dark before:su-absolute before:su-h-full before:su-right-full before:su-w-screen"
+            class="su-bg-red-dark su-relative su-flex su-items-center su-pr-16 sm:su-pr-40 before:su-bg-red-dark before:su-absolute before:su-h-full before:su-right-full before:su-w-screen"
         >
             <img src="../../images/stanford-ch.svg" alt="" />
         </div>
         <div
-            class="su-bg-black su-relative su-grow su-flex su-items-center su-justify-between after:su-bg-black after:su-absolute after:su-h-full after:su-left-full after:su-w-screen"
+            class="su-bg-black su-relative su-grow su-flex su-items-center su-justify-end xl:su-justify-between after:su-bg-black after:su-absolute after:su-h-full after:su-left-full after:su-w-screen"
         >
-            <div class="su-flex su-items-center">
+            <div class="su-hidden xl:su-flex su-items-center">
                 <ul class="su-p-0 su-m-0 su-mx-40 su-list-none su-flex su-gap-x-xl">
                     <li class="su-mb-0 su-group active">
                         <a
@@ -64,21 +64,144 @@
                     </svg>
                 </a>
             </div>
-            <div class="su-text-white su-flex su-items-center">
+            <div class="su-hidden xl:su-flex su-text-white su-items-center">
                 <div class="su-flex su-flex-col">
                     <p class="su-font-semibold su-text-16 su-leading-display su-mb-0">Hi, John Smith</p>
                     <a
-                        class="su-underline su-font-regular su-text-14 su-self-end hover:su-cursor-pointer hover:su-text-white focus:su-text-white"
+                        class="su-underline su-font-regular su-text-14 xl:su-self-end hover:su-cursor-pointer hover:su-text-white focus:su-text-white"
                         href=""
                         >Sign out</a
                     >
                 </div>
                 <div
-                    class="su-rounded-full su-flex su-ml-10 su-items-center su-justify-center su-aspect-[1/1] su-w-38 su-h-38 su-border-3 su-font-bold su-border-red"
+                    class="su-rounded-full su-flex su-mr-10 su-ml-10 su-items-center su-justify-center su-aspect-[1/1] su-w-38 su-h-38 su-border-3 su-font-bold su-border-red"
                 >
                     J
                 </div>
             </div>
+            <div class="su-block xl:su-hidden">
+                <button
+                    id="header-mobile-menu-toggle"
+                    aria-label="Mobile Menu Toggle"
+                    aria-expanded="false"
+                    aria-controls="header-mobile-menu"
+                    class="su-group su-bg-transparent su-border-none hover:su-bg-transparent hover:su-border-none focus:su-bg-transparent focus:su-border-none su-text-white hover:su-text-gray"
+                >
+                    <svg
+                        class="su-block group-[.active]:su-hidden"
+                        aria-hidden="true"
+                        viewBox="0 0 100 80"
+                        width="30"
+                        height="30"
+                        fill="currentColor"
+                    >
+                        <rect width="100" height="8" rx="8"></rect>
+                        <rect y="30" width="100" height="8" rx="8"></rect>
+                        <rect y="60" width="100" height="8" rx="8"></rect>
+                    </svg>
+                    <svg
+                        class="su-hidden group-[.active]:su-block"
+                        aria-hidden="true"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 14 13"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g id="x">
+                            <path
+                                id="Vector"
+                                d="M12.0554 1.9502L1.94434 11.0502"
+                                stroke="currentColor"
+                                stroke-width="1"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                id="Vector_2"
+                                d="M1.94434 1.9502L12.0554 11.0502"
+                                stroke="currentColor"
+                                stroke-width="1"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </g>
+                    </svg>
+                </button>
+            </div>
         </div>
+    </div>
+    <div
+        id="header-mobile-menu"
+        aria-labelledby="header-mobile-menu-toggle"
+        class="su-hidden xl:su-hidden su-shadow-xl su-bg-white"
+    >
+        <div class="su-flex su-items-center su-px-16 su-py-12 su-font-bold su-border-b su-border-gray">
+            <div
+                class="su-rounded-full su-flex su-mr-10 xl:su-mr-0 xl:su-ml-10 su-items-center su-justify-center su-aspect-[1/1] su-w-32 su-h-32 su-border-3 su-font-bold su-border-red"
+            >
+                J
+            </div>
+            <span>Hi, John Smith</span>
+        </div>
+        <ul class="su-m-0 su-p-0 su-list-none su-flex su-flex-col su-z-20">
+            <li class="su-mb-0 su-group active">
+                <a
+                    href="../main.html"
+                    class="su-inline-block su-w-full su-px-16 su-py-12 su-font-semibold hover:su-bg-gray/20"
+                    >Home</a
+                >
+            </li>
+            <li class="su-mb-0 su-group">
+                <a
+                    href="../new-content.html"
+                    class="su-inline-block su-w-full su-px-16 su-py-12 su-font-semibold hover:su-bg-gray/20"
+                    >New Content</a
+                >
+            </li>
+            <li class="su-mb-0 su-group">
+                <a
+                    href="../all-content.html"
+                    class="su-inline-block su-w-full su-px-16 su-py-12 su-font-semibold hover:su-bg-gray/20"
+                    >All Content</a
+                >
+            </li>
+            <li class="su-mb-0 su-group">
+                <a
+                    href="../insights.html"
+                    class="su-inline-block su-w-full su-px-16 su-py-12 su-font-semibold hover:su-bg-gray/20"
+                    >Insights</a
+                >
+            </li>
+            <li class="su-mb-0 su-px-16 su-pt-12 su-pb-6">
+                <a href="#" class="header-button su-group su-bg-white su-flex su-justify-center su-items-center">
+                    <span>Go to Matrix</span>
+                    <svg
+                        class="su-ml-5 su-transition-colors su-text-red group-hover:su-text-white"
+                        width="18"
+                        height="18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g clip-path="url(#a)">
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M4.918 4.546a.9.9 0 0 1 .9-.9h7.637a.9.9 0 0 1 .9.9v7.636a.9.9 0 0 1-1.8 0V6.718l-7.373 7.373a.9.9 0 1 1-1.273-1.272l7.373-7.373H5.818a.9.9 0 0 1-.9-.9Z"
+                                fill="currentColor"
+                            />
+                        </g>
+                        <defs>
+                            <clipPath id="a">
+                                <path fill="#fff" d="M0 0h18v18H0z" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
+            </li>
+            <li class="su-mb-0 su-px-16 su-pt-6 su-pb-12">
+                <a class="button su-inline-block su-w-full su-text-center" href="">Sign Out</a>
+            </li>
+        </ul>
     </div>
 </header>
