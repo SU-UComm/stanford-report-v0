@@ -65,13 +65,30 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.classList.toggle('open');
             if (wrapper.classList.contains('open')) {
                 toggleOpen(true, button, list, listElements);
+                select.querySelector('input').focus();
             } else {
                 toggleOpen(false, button, list, listElements);
             }
         });
 
         listElements.forEach((listItem) => {
-            listItem.addEventListener('click', () => {
+            listItem.addEventListener('keydown', (event) => {
+                if (event.keyCode === 13) {
+                    event.target.blur();
+                    wrapper.classList.toggle('open');
+                    buttonText.innerHTML = listItem.innerText;
+                    selectInput.value = listItem.dataset.value;
+                    selectOptions.forEach((option) => {
+                        if (option.value === listItem.dataset.value) {
+                            option.setAttribute('selected', '');
+                        } else {
+                            option.removeAttribute('selected');
+                        }
+                    });
+                }
+            });
+            listItem.addEventListener('click', (event) => {
+                event.target.blur();
                 wrapper.classList.toggle('open');
                 buttonText.innerHTML = listItem.innerText;
                 selectInput.value = listItem.dataset.value;

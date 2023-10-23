@@ -1,4 +1,4 @@
-<div class="c-select su-min-w-[180px] su-grow su-shrink-0">
+<div class="c-select c-select--searchable su-min-w-[180px] su-grow su-shrink-0">
     <select class="su-opacity-0 su-float-right su-border-0 su-w-0 su-h-0 su-p-0 su-m-0" name="test" id="test">
         <option value="1">item</option>
         <option value="2">item2</option>
@@ -14,44 +14,55 @@
             <img class="su-hidden group-[.open]:su-inline" src="../../images/chevron-up-red.svg" />
             <img class="su-inline group-[.open]:su-hidden" src="../../images/chevron-down.svg" />
         </button>
-        <ul
-            class="su-z-10 c-list su-hidden group-[.open]:su-block su-max-h-[209px] su-overflow-y-auto su-absolute su-border-t-0 su-p-0 su-border su-border-gray su-w-full su-bg-white su-rounded-b su-top-full su-list-none"
+        <div
+            class="su-z-10 su-hidden group-[.open]:su-block su-overflow-y-auto su-absolute su-border-t-0 su-border su-border-gray su-w-full su-bg-white su-rounded-b su-top-full"
         >
-            <li
-                data-value="1"
-                role="button"
-                class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
-            >
-                Item
-            </li>
-            <li
-                role="button"
-                data-value="2"
-                class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
-            >
-                Item
-            </li>
-            <li
-                role="button"
-                data-value="3"
-                class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
-            >
-                Item
-            </li>
-            <li
-                role="button"
-                data-value="4"
-                class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
-            >
-                Item
-            </li>
-            <li
-                role="button"
-                data-value="5"
-                class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
-            >
-                Item
-            </li>
-        </ul>
+            <div class="su-leading-[3.6rem] su-px-8 su-pb-8">
+                <input
+                    class="su-w-full su-rounded su-border-gray su-text-18"
+                    placeholder="Search"
+                    type="text"
+                    name=""
+                    id=""
+                />
+            </div>
+            <ul class="su-z-10 c-list su-max-h-[209px] su-overflow-y-auto su-p-0 su-list-none">
+                <li
+                    data-value="1"
+                    role="button"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+                <li
+                    role="button"
+                    data-value="2"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+                <li
+                    role="button"
+                    data-value="3"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+                <li
+                    role="button"
+                    data-value="4"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+                <li
+                    role="button"
+                    data-value="5"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
