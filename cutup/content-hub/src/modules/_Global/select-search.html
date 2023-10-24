@@ -1,0 +1,69 @@
+<div class="c-select c-select--search su-min-w-full">
+    <select class="su-opacity-0 su-float-right su-border-0 su-w-0 su-h-0 su-p-0 su-m-0" name="test" id="xxx-select">
+        <option value="1">item</option>
+        <option value="2">item2</option>
+        <option value="3">item3</option>
+        <option value="4">item4</option>
+        <option value="5">item5</option>
+    </select>
+    <div class="c-wrapper su-relative su-group">
+        <button
+            class="c-button su-transition-none group-[.open]:su-mb-1 group-[.open]:su-border-b-transparent group-[.open]:su-rounded-b-none su-leading-[3.6rem] su-pr-20 su-w-full su-text-18 su-flex su-items-center su-justify-between su-text-left su-bg-white su-font-regular hover:su-bg-white hover:su-border-gray hover:su-text-black"
+        >
+            <span class="su-mr-10 su-line-clamp-1">-- Choose a category --</span>
+            <img class="su-hidden group-[.open]:su-inline" alt="" src="../../images/chevron-up-red.svg" />
+            <img class="su-inline group-[.open]:su-hidden" alt="" src="../../images/chevron-down.svg" />
+        </button>
+        <div
+            class="su-z-10 su-hidden group-[.open]:su-block su-overflow-y-auto su-absolute su-border-t-0 su-border su-border-gray su-w-full su-bg-white su-rounded-b su-top-full"
+        >
+            <div class="su-leading-[3.6rem] su-px-8 su-pt-4 su-pb-8">
+                <input
+                    class="su-w-full su-rounded su-border-gray su-text-18 su-py-8"
+                    placeholder="Search"
+                    type="text"
+                    name=""
+                    id=""
+                />
+            </div>
+
+            <ul class="su-z-10 c-list su-max-h-[209px] su-overflow-y-auto su-p-0 su-list-none">
+                <li
+                    data-value="1"
+                    role="button"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-py-8 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+                <li
+                    role="button"
+                    data-value="2"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-py-8 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+                <li
+                    role="button"
+                    data-value="3"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-py-8 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item lorem ipsum dolor sit amet dolor
+                </li>
+                <li
+                    role="button"
+                    data-value="4"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-py-8 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+                <li
+                    role="button"
+                    data-value="5"
+                    class="su-leading-[3.6rem] su-block su-text-18 su-mb-0 su-py-8 su-pl-15 su-pr-20 hover:su-cursor-pointer hover:su-bg-gray-light"
+                >
+                    Item
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.classList.toggle('open');
             if (wrapper.classList.contains('open')) {
                 toggleOpen(true, button, list, listElements);
-                select.querySelector('input').focus();
+                if (select.classList.contains('c-select--search')) select.querySelector('input').focus();
             } else {
                 toggleOpen(false, button, list, listElements);
             }
