@@ -56,8 +56,28 @@
         clip-path: inset(-100vw -100vw 0 0);
     }
 
+    .su-stop-red {
+        stop-color: #b1040e;
+    }
+
+    .su-stop-plum {
+        stop-color: #620059;
+    }
+
+    .su-stop-teal {
+        stop-color: #017e7c;
+    }
+
+    .su-stop-green {
+        stop-color: #8f993e;
+    }
+
     .su-featured-story-text {
         @apply [&>p]:su-col-span-full sm:[&>p]:su-col-span-10 sm:[&>p]:su-col-start-2 [&>p]:su-col-end-11 lg:[&>p]:su-col-span-6 lg:[&>p]:su-col-start-4 [&>h2]:su-col-span-full sm:[&>h2]:su-col-span-10 sm:[&>h2]:su-col-start-2 [&>h2]:su-col-end-11 lg:[&>h2]:su-col-span-6 lg:[&>h2]:su-col-start-4;
+    }
+
+    .su-basic-story-text {
+        @apply [&>p]:su-col-span-full [&>h1]:su-col-span-full [&>h2]:su-col-span-full [&>h3]:su-col-span-full [&>h4]:su-col-span-full [&>p>a]:su-text-black dark:[&>p>a]:su-text-white [&>p>a]:su-font-normal [&>p>a]:su-underline;
     }
 
     .su-bg-gradient-header-dark {
@@ -66,5 +86,9 @@
 
     .su-bg-gradient-header-white {
         background: linear-gradient(180deg, #fff 0.11%, rgba(0, 0, 0, 0) 50%);
+    }
+
+    .su-story-first-letter {
+        @apply first-letter:su-font-bold first-letter:su-float-left first-letter:su-text-[72px] first-letter:su-mt-[14px] first-letter:su-leading-[35px] first-letter:su-p-0 first-letter:su-mr-[16px] first-letter:su-font-serif;
     }
 }

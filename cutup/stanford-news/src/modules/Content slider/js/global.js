@@ -1,12 +1,12 @@
-const contentCarousels = document.querySelectorAll('.basic-story__content-carousel');
+const contentCarousels = document.querySelectorAll('.story__content-carousel');
 contentCarousels.forEach((carousel) => {
     var swiper = new Swiper(carousel, {
         pagination: {
             el: '.swiper-pagination',
         },
         navigation: {
-            nextEl: '.basic-story__content-carousel-next',
-            prevEl: '.basic-story__content-carousel-prev',
+            nextEl: '.story__content-carousel-next',
+            prevEl: '.story__content-carousel-prev',
         },
         slidesPerView: 'auto',
         spaceBetween: 0,
