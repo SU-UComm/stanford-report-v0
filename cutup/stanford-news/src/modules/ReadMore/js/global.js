@@ -27,7 +27,7 @@ const observer = new IntersectionObserver(
             }
         });
     },
-    {threshold: 0.9},
+    {rootMargin: '100% 0px 100% 0px', threshold: 0.9},
 );
 
 const slides = document.querySelectorAll('.swiper-slide');
