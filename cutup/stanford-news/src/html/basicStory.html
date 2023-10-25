@@ -4,88 +4,6 @@
         <title>Stanford University - Scaffold component</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <style>
-            .su-dark .basic-story__text-content a {
-                color: #fff;
-                text-decoration: underline;
-            }
-
-            .swiper {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-
-            .swiper-wrapper {
-                position: relative;
-            }
-
-            /* TEXT CONTENT GENERIC STYLING */
-            .basic-story__text-content h2 {
-                font-family: 'Source Serif Pro', Georgia, Times, 'Times New Roman', serif;
-                font-size: 35px;
-            }
-
-            .basic-story__text-content p {
-                margin-bottom: 38px;
-                font-size: 23px;
-            }
-
-            .basic-story__text-content a {
-                color: #2e2d29;
-                text-decoration: underline;
-                font-weight: normal;
-                font-size: 23px;
-            }
-
-            .basic-story__wrapper a {
-                text-decoration: none;
-            }
-
-            .basic-story__text-content p + section {
-                margin-top: 7px;
-            }
-
-            .basic-story__text-content section {
-                margin-bottom: 45px;
-            }
-
-            .basic-story__footer p {
-                margin-bottom: 0;
-            }
-
-            /* END - TEXT CONTENT GENERIC STYLING */
-
-            .swiper-button-disabled {
-                background: #585754;
-                opacity: 0.35;
-                border: 1px solid #d5d5d4;
-            }
-
-            .basic-story__header-slider .swiper-slide-next,
-            .basic-story__header-slider .swiper-slide-prev {
-                opacity: 0.35;
-            }
-
-            .basic-story__header-slider .swiper-pagination-bullet {
-                background: #fff;
-                width: 20px;
-                height: 20px;
-                opacity: 1;
-                border: 2px solid #c0c0bf;
-            }
-
-            .basic-story__header-slider .swiper-pagination-bullet-active {
-                background: #b1040e;
-                opacity: 1;
-            }
-
-            .basic-story__header-slider .swiper-slide-next figcaption,
-            .basic-story__header-slider .swiper-slide-prev figcaption {
-                visibility: hidden;
-            }
-        </style>
     </head>
 
     <body class="dark:su-bg-black-true dark:su-text-white">
@@ -143,67 +61,7 @@
                             The Give & Go program run by Stanford’s Residential & Dining Enterprises has helped to divert nearly 500 tons of material from landfills.
                         </p>
                     </div>
-                    <div class="swiper basic-story__header-slider su-overflow-visible su-mt-[32px] md:su-mt-[72px]">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <figure>
-                                    <img src="../images/basic-story/basic-story-banner.png" alt="" />
-                                    <figcaption class="su-text-black dark:su-text-white su-text-[16px]">
-                                        Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="swiper-slide">
-                                <figure>
-                                    <img src="../images/basic-story/basic-story-banner.png" alt="" />
-                                    <figcaption class="su-text-black dark:su-text-white su-text-[16px]">
-                                        Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="swiper-slide">
-                                <figure>
-                                    <img src="../images/basic-story/basic-story-banner.png" alt="" />
-                                    <figcaption class="su-text-black dark:su-text-white su-text-[16px]">
-                                        Caption text goes here lorem ipsum dolor sit amet | Credit goes here lorem ipsum
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="su-flex su-justify-between su-items-center su-mt-[36px] su-w-4/5 su-mx-auto">
-                            <div class="su-w-auto">
-                                <div class="swiper-pagination !su-bottom-0 su-mr-[12px]"></div>
-                            </div>
-                            <div class="su-flex">
-                                <button
-                                    class="basic-story__header-slider-prev su-rounded-full su-h-[37px] su-w-[37px] su-mr-[12px] su-bg-white su-border-[2px] su-border-digital-red-light dark:su-text-black su-flex su-items-center su-justify-center disabled:su-bg-white disabled:su-border-black-30"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                                        <path
-                                            d="M11.8747 15.0416L6.33301 9.49996L11.8747 3.95829"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                </button>
-                                <button
-                                    class="basic-story__header-slider-next su-rounded-full su-h-[37px] su-w-[37px] su-mr-[12px] su-bg-white su-border-[2px] su-border-digital-red-light dark:su-text-black su-flex su-items-center su-justify-center disabled:su-bg-white disabled:su-border-black-30"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
-                                        <path
-                                            d="M7.62435 3.95837L13.166 9.50004L7.62435 15.0417"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    ${require('src/modules/HeaderSlider/html/global.html')}
                 </header>
 
                 <div
@@ -578,20 +436,6 @@
 
         <!-- Initialize Swiper -->
         <script>
-            var swiper = new Swiper('.basic-story__header-slider', {
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-                navigation: {
-                    nextEl: '.basic-story__header-slider-next',
-                    prevEl: '.basic-story__header-slider-prev',
-                },
-
-                slidesPerView: 'auto',
-                spaceBetween: 26,
-                a11y: true,
-            });
-
             const handleTrayElement = (tray) => {
                 if (!tray) return;
                 tray.addEventListener('click', function (e) {
