@@ -56,6 +56,10 @@
         clip-path: inset(-100vw -100vw 0 0);
     }
 
+    .font-serif-4 {
+        font-family: 'Source Serif 4', Georgia, Times, 'Times New Roman', serif;
+    }
+
     .su-stop-red {
         stop-color: #b1040e;
     }
