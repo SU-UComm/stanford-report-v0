@@ -2,10 +2,18 @@
   color: #c0c0bf;
 }
 
-.featured-story__no-gradient .su-bg-gradient {
+.featured-story__no-gradient .su-bg-gradient,
+.featured-story__no-gradient .su-bg-gradient-b {
   background: #6d6c69 !important;
 }
 
 .featured-story__no-gradient .image-gallery__swiper-wrapper .su-bg-gradient {
-  background: #6d6c69 !important;
+  background-color: #6d6c69 !important;
+}
+
+.featured-story__no-gradient .su-stop-red,
+.featured-story__no-gradient .su-stop-teal,
+.featured-story__no-gradient .su-stop-plum,
+.featured-story__no-gradient .su-stop-green {
+  stop-color: #6d6c69 !important;
 }

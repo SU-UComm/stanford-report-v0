@@ -118,3 +118,33 @@
 .su-dark .story__read-next .swiper-pagination {
   color: #fff;
 }
+
+.story__read-next .swiper-controls {
+  position: absolute;
+  width: 100px;
+  right: 0;
+  top: 200px;
+  content: "";
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+  gap: 13px;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 768px) {
+  .story__read-next .swiper-controls {
+    position: absolute;
+    width: 100px;
+    right: 0;
+    top: 380px;
+    content: "";
+    z-index: 999;
+    display: flex;
+    justify-content: flex-end;
+    gap: 13px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+}
