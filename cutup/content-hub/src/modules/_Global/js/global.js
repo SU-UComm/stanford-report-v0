@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburgerToggle = document.querySelector('#header-mobile-menu-toggle');
     const mobileMenu = document.querySelector('#header-mobile-menu');
-    const mobileMenuItems = mobileMenu.querySelectorAll('a');
 
+    if (!hamburgerToggle || !mobileMenu) return;
+
+    const mobileMenuItems = mobileMenu.querySelectorAll('a');
     mobileMenuItems.forEach((item) => {
         item.setAttribute('tabindex', '-1');
     });
-
-    if (!hamburgerToggle || !mobileMenu) return;
 
     hamburgerToggle.addEventListener('click', () => {
         hamburgerToggle.classList.toggle('active');
