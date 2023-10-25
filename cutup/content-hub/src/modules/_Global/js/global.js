@@ -53,52 +53,72 @@ document.addEventListener('DOMContentLoaded', () => {
         const buttonText = select.querySelector('.c-button span');
         const list = select.querySelector('.c-list');
         const listElements = select.querySelectorAll('.c-list li');
+        const searchInput = select.classList.contains('c-select--search') ? select.querySelector('input') : null;
+
+        const resetSearch = () => {
+            if (!searchInput) return;
+            searchInput.value = '';
+            listElements.forEach((listItem) => {
+                listItem.classList.remove('su-hidden');
+            });
+        };
+
+        const handleItemClick = (listItem, event) => {
+            event.target.blur();
+            wrapper.classList.toggle('open');
+            buttonText.innerHTML = listItem.innerText;
+            selectInput.value = listItem.dataset.value;
+            if (searchInput) resetSearch();
+            selectOptions.forEach((option) => {
+                if (option.value === listItem.dataset.value) {
+                    option.setAttribute('selected', '');
+                } else {
+                    option.removeAttribute('selected');
+                }
+            });
+            selectInput.dispatchEvent(new Event('change'));
+        };
 
         document.addEventListener('click', (event) => {
             if (!wrapper.contains(event.target)) {
                 wrapper.classList.remove('open');
                 toggleOpen(false, button, list, listElements);
+                if (searchInput) resetSearch();
             }
         });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const searchValue = searchInput.value.toLowerCase();
+                listElements.forEach((listItem) => {
+                    if (listItem.innerText.toLowerCase().indexOf(searchValue) > -1) {
+                        listItem.classList.remove('su-hidden');
+                    } else {
+                        listItem.classList.add('su-hidden');
+                    }
+                });
+            });
+        }
 
         button.addEventListener('click', () => {
             wrapper.classList.toggle('open');
             if (wrapper.classList.contains('open')) {
                 toggleOpen(true, button, list, listElements);
-                if (select.classList.contains('c-select--search')) select.querySelector('input').focus();
+                if (searchInput) searchInput.focus();
             } else {
                 toggleOpen(false, button, list, listElements);
+                resetSearch();
             }
         });
 
         listElements.forEach((listItem) => {
             listItem.addEventListener('keydown', (event) => {
                 if (event.keyCode === 13) {
-                    event.target.blur();
-                    wrapper.classList.toggle('open');
-                    buttonText.innerHTML = listItem.innerText;
-                    selectInput.value = listItem.dataset.value;
-                    selectOptions.forEach((option) => {
-                        if (option.value === listItem.dataset.value) {
-                            option.setAttribute('selected', '');
-                        } else {
-                            option.removeAttribute('selected');
-                        }
-                    });
+                    handleItemClick(listItem, event);
                 }
             });
             listItem.addEventListener('click', (event) => {
-                event.target.blur();
-                wrapper.classList.toggle('open');
-                buttonText.innerHTML = listItem.innerText;
-                selectInput.value = listItem.dataset.value;
-                selectOptions.forEach((option) => {
-                    if (option.value === listItem.dataset.value) {
-                        option.setAttribute('selected', '');
-                    } else {
-                        option.removeAttribute('selected');
-                    }
-                });
+                handleItemClick(listItem, event);
             });
         });
     });
