@@ -63,6 +63,7 @@ module.exports = {
                     'featuredStoryV1',
                     'featuredStorySandbox',
                     'BioengineeredTools',
+                    'topicsPage',
                 ],
                 addChunks: ['tailwind'],
                 removeChunks: [],

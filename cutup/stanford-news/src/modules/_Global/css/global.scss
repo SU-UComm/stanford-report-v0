@@ -2,6 +2,10 @@
   color: #c0c0bf;
 }
 
+svg {
+  fill: currentColor;
+}
+
 .featured-story__no-gradient .su-bg-gradient,
 .featured-story__no-gradient .su-bg-gradient-b {
   background: #6d6c69 !important;
