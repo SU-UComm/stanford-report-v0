@@ -1,3 +1,4 @@
+import Swiper from 'swiper';
 /* eslint-disable no-undef */
 var swiper = new Swiper('.story__read-next-swiper', {
     pagination: {

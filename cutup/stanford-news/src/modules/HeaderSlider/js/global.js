@@ -1,3 +1,4 @@
+import Swiper from 'swiper';
 const headerSlider = document.querySelector('.basic-story__header-slider');
 const swiper = new Swiper(headerSlider, {
     pagination: {
