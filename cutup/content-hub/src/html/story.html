@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body class="su-relative">
+        ${require('./fragments/header.html')}
+        <main class="su-centered-container su-pt-95 su-bg-white su-grid su-grid-cols-12">
+            <div class="su-col-span-full xl:su-col-start-2 xl:su-col-span-10">
+                ${require('../modules/Hero/story.html')} ${require('../modules/Stories/details.html')}
+                ${require('../modules/Stories/full-story.html')}
+            </div>
+        </main>
+        ${require('./fragments/footer.html')}
+    </body>
+</html>

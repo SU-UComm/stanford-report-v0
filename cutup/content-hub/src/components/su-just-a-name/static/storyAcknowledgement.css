@@ -1,0 +1,51 @@
+/* Component CSS Details */
+.acknowledgement {
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+    padding: 1.4em 1.2em 0.4em;
+    background-color: #E3DFD5;
+}
+
+.acknowledgement p,
+.acknowledgement ul,
+.acknowledgement li {
+    font-size: 0.96em;
+    line-height: 1.52941176em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.acknowledgement.text-light,
+.acknowledgement.text-light p,
+.acknowledgement.text-light a,
+.acknowledgement.text-light ul,
+.acknowledgement.text-light li {
+    color: #FFF;
+}
+
+.acknowledgement a {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.acknowledgement.background-red {
+    background-color: #8C1515;
+}
+
+.acknowledgement.background-blue {
+    background-color: #0076BE;
+}
+
+.acknowledgement.background-white {
+    background-color: #FFF;
+}
+
+.acknowledgement.background-white-red-border {
+    background-color: #FFF;
+    border: 2px dashed #8C1515;
+}
+
+.acknowledgement.background-white-blue-border {
+    background-color: #FFF;
+    border: 2px dashed #0076BE;
+}

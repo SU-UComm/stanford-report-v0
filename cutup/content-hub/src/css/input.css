@@ -1,0 +1,99 @@
+/** Source Sans Pro, Source Serif Pro */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+@font-face {
+    font-family: Stanford;
+    src: url('https://www-media.stanford.edu/assets/fonts/stanford.woff') format('woff'),
+        url('https://www-media.stanford.edu/assets/fonts/stanford.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+}
+
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@tailwind base;
+
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins.
+ */
+@tailwind utilities;
+
+/**
+ * Use this directive to control where Tailwind injects the responsive
+ * variations of each utility.
+ *
+ * If omitted, Tailwind will append these classes to the very end of
+ * your stylesheet by default.
+ */
+@tailwind variants;
+
+@layer base {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 110%;
+    }
+
+    h1 {
+        @apply su-text-h2 md:su-text-h1;
+    }
+
+    h2 {
+        @apply su-text-h3 md:su-text-h2;
+    }
+
+    h3 {
+        @apply su-text-h4 md:su-text-h3;
+    }
+
+    h4 {
+        @apply su-text-h5 md:su-text-h4;
+    }
+
+    p {
+        font-size: 1.8rem;
+    }
+
+    .small-heading {
+        @apply su-text-18 su-font-bold su-text-red-dark su-leading-[normal] su-py-8 su-mb-10;
+    }
+
+    button,
+    .button,
+    .header-button {
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 1.5;
+
+        @apply su-py-8 su-px-15 su-rounded su-border su-transition-colors su-border-gray hover:su-border-red hover:su-bg-red hover:su-text-white;
+    }
+
+    .button-green {
+        @apply hover:su-border-green hover:su-bg-green hover:su-text-white;
+    }
+
+    a {
+        @apply su-no-underline su-font-regular;
+    }
+
+    li.pagination-active {
+        @apply su-bg-gray-light;
+    }
+
+    .full-width-bg {
+        @apply before:su-absolute before:su-h-full before:su-w-screen before:su-top-0 before:su-right-full 
+        after:su-absolute after:su-h-full after:su-w-screen after:su-top-0 after:su-left-full;
+    }
+}

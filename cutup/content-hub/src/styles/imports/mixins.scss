@@ -1,0 +1,161 @@
+// REM font sizing with pixel fall back
+// This technique will allow external font sizes to be set for html and respected
+// if REMs are supported (everything but IE8 and older).
+@mixin sq-font-size($sizeValue: 1) {
+  @include sq-rem-attr(font-size, $sizeValue);
+}
+
+// Express the value of an attribute using rems falling back to pixels
+@mixin sq-rem-attr($attr, $sizeValue: 1) {
+  #{$attr}: ($sizeValue * $base-font-pixel) + px;
+  #{$attr}: $sizeValue + rem;
+}
+
+// Transition shortcut
+@mixin sq-transition($params...) {
+  transition: $params;
+}
+
+// Apply a prefixed transformation
+@mixin sq-transform($params) {
+  transform: $params;
+}
+
+// 2D rotation with IE support
+@mixin sq-rotate($deg) {
+  $msRotVal: (((360 + $deg) % 360) / 90); // Modulo lets us handle negative values.
+
+  @include sq-transform(rotate($deg + deg));
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$msRotVal}); /* stylelint-disable-line */
+}
+
+@mixin sq-border-box() {
+  box-sizing: border-box;
+}
+
+@mixin sq-reset-box-sizing() {
+  box-sizing: content-box;
+}
+
+@mixin sq-box-shadow($params) {
+  box-shadow: $params;
+}
+
+// Glow effect taken from foundation
+@mixin sq-block-glowing-effect($selector: focus, $fade-time: 300ms, $glowing-effect-color: blue) {
+  transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
+
+  &:#{$selector} {
+    @include sq-box-shadow(0 0 5px $glowing-effect-color);
+    border-color: $glowing-effect-color;
+  }
+}
+
+// Legacy border radius helper
+@mixin sq-border-radius($radius: 4px) {
+  border-radius: $radius;
+}
+
+// Opacity with IE filter fallback
+// Value should be expressed as a number between 0 and 100
+// with 0 being transparent and 100 being opaque
+@mixin sq-opacity($value) {
+  $decimal-value: $value / 100;
+  opacity: $decimal-value;
+}
+
+// Individual border radius rule helper.
+@mixin sq-rounded($vert, $horz, $radius: 10px) {
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+// Use an SVG background image (for perfect Retina-rendering) with a PNG fallback.
+@mixin sq-svg-background($suffixless-url) {
+  background-image: url($suffixless-url + ".svg");
+  .no-svg & {
+    background-image: url($suffixless-url + ".png");
+  }
+}
+
+@mixin sq-flex-box() {
+  .no-js &,
+  .no-flexbox & {
+    display: table;
+  }
+  .flexbox & {
+    display: flex;
+  }
+}
+
+// Apply flex to an element
+@mixin sq-flex($values) {
+  // Table cell is a fallback to no flexbox support
+  .flexbox & {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    flex: $values;
+  }
+  .no-js &,
+  .no-flexbox & {
+    display: table-cell;
+
+    // Vertical align is needed to prevent auto vertical centering by some browsers
+    vertical-align: top;
+  }
+}
+
+// Em calculator based on James' in Squiz Map issue #4906
+@mixin sq-calc-ems($prop, $numerator, $denominator) {
+  $tmp: ($numerator / $denominator);
+  #{$prop}: #{$tmp}em;
+  #{$prop}: calc(#{$numerator}em / #{$denominator});
+}
+
+// CSS arrow helper
+// $direction: top, left, right, bottom
+@mixin sq-arrow($direction: top, $color: #000, $size: 5px, $height: 0) {
+  $_height: $size + $height;
+
+  height: 0;
+  width: 0;
+  content: " ";
+  border-style: solid;
+
+  @if $direction == "top" {
+    border-width: $size $size $_height $size;
+    border-color: transparent transparent $color transparent;
+  } @else if $direction == "right" {
+    border-width: $size $size $size $_height;
+    border-color: transparent transparent transparent $color;
+  } @else if $direction == "bottom" {
+    border-width: $_height $size $size $size;
+    border-color: $color transparent transparent transparent;
+  } @else if $direction == "left" {
+    border-width: $size $_height $size $size;
+    border-color: transparent $color transparent transparent;
+  }
+}
+
+@mixin sq-inline-block() {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+@mixin sq-list-reset() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// "Quantity queries" - a.k.a. "One of n siblings"
+// From this codepen: http://codepen.io/long-lazuli/pen/PwBbmo
+// http://alistapart.com/article/quantity-queries-for-css
+@mixin sq-one-of-n-siblings($countArg...) {
+  &:nth-last-child(#{$countArg}):first-child,
+  &:nth-last-child(#{$countArg}):first-child ~ & {
+    @content;
+  }
+}

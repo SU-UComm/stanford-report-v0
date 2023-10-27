@@ -1,0 +1,86 @@
+{
+  "$schema": "https://render.dx-team-dev-1650.components.dev.dx.squiz.cloud/schemas/v1.json",
+  "name": "su-pullquote-react",
+  "namespace": "stanford-components",
+  "displayName": "React pullquote",
+  "description": "React pullquote component",
+  "version": "0.0.6",
+  "mainFunction": "main",
+  "environment": [],
+  "functions": [
+    {
+      "name": "main",
+      "entry": "dist/server.js",
+      "input": {
+        "type": "object",
+        "title": "React pullquote component",
+        "description": "",
+        "required": [],
+        "properties": {
+          "quote": {
+            "type": "FormattedText",
+            "title": "Quote text",
+            "default": ""
+          },
+          "attribution": {
+            "type": "string",
+            "title": "Attribution",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "default": ""
+          },
+          "image": {
+            "type": "SquizImage",
+            "title": "Image",
+            "description": "Quote author image"
+          },
+          "alignment": {
+            "type": "string",
+            "title": "Alignment",
+            "enum": ["left", "center", "right"]
+          }
+        }
+      },
+      "output": {
+        "responseType": "html",
+        "staticFiles": [
+          {
+            "location": "header",
+            "file": {
+              "type": "css",
+              "filepath": "http://127.0.0.1:4000/global.css"
+            }
+          },
+          {
+            "location": "footer",
+            "file": {
+              "type": "js",
+              "filepath": "http://127.0.0.1:4000/js/global.js"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "previews": {
+    "server": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/preview.data.json"
+          },
+          "wrapper": {
+            "path": "previews/preview.wrapper.html"
+          }
+        }
+      }
+    }
+  },
+  "staticFiles": {
+    "locationRoot": "dist"
+  }
+}
