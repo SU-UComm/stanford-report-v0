@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Stanford University - Scaffold component</title>
+        ${require('src/html/fragments/head.html')} ${require('src/html/fragments/su-head.html')}
+
+        <style>
+            .block-scroll {
+                margin: 0;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            .search-bar input {
+                position: relative;
+                width: calc(100% - 115px);
+                height: 80%;
+                margin: 0 5px;
+                border: none;
+                border-radius: 50px 0 0 50px;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+                padding-left: 15px;
+            }
+
+            .search-filters {
+                position: absolute;
+                width: 100%;
+                min-height: 100vh;
+                top: 0;
+                left: 0;
+                z-index: 999;
+                padding-bottom: 150px;
+            }
+
+            .facets fieldset li {
+                margin-top: 20px;
+            }
+
+            .facets fieldset li input {
+                margin-top: 0;
+            }
+
+            .facets fieldset li label {
+                font-size: 18px;
+                font-weight: 400;
+            }
+
+            .facets fieldset li:first-of-type {
+                margin-top: 12px;
+            }
+
+            .facets li {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .facets input[type='checkbox'] {
+                margin-top: 2px;
+                width: 18px;
+                height: 18px;
+            }
+
+            .reset-list-styles li:last-of-type {
+                margin-bottom: 0.5em;
+            }
+
+            .facets label {
+                font-size: 18px;
+                margin-left: 8px;
+                line-height: 125%;
+            }
+
+            .pagination li a {
+                border: none;
+            }
+
+            .pagination li:hover a {
+                background: none;
+            }
+
+            .pagination li {
+                position: relative;
+                display: flex;
+            }
+
+            .pagination li:hover::after {
+                position: absolute;
+                bottom: 2px;
+                left: auto;
+                height: 2px;
+                width: 12px;
+                background: #b1040e;
+                content: '';
+            }
+
+            .pagination li.active {
+                background: #b1040e;
+                border-radius: 300px;
+                overflow: hidden;
+                filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+            }
+
+            .pagination li:not(.pagination-btn__disabled) svg {
+                fill: #2e2d29; /* Your default SVG color */
+            }
+
+            .pagination-btn__disabled svg {
+                fill: #979694;
+            }
+
+            .pagination li.active a {
+                color: #fff;
+            }
+
+            .facets__toggle-rev svg {
+                transform: rotate(180deg);
+            }
+
+            @media screen and (max-width: 768px) {
+                .mobile-hidden {
+                    display: none;
+                    visibility: hidden;
+                }
+            }
+
+            @media screen and (min-width: 769px) {
+                .desktop-hidden {
+                    display: none;
+                    visibility: hidden;
+                }
+            }
+
+            .facets label.switch {
+                position: relative;
+                display: flex;
+                padding-left: 26px;
+                font-size: 18px;
+                margin-left: 2px;
+                font-weight: 400;
+            }
+
+            .facets label.switch:focus-within .slider {
+                outline: 2px solid #006cb8;
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .slider {
+                width: 38px;
+                height: 18px;
+                position: absolute;
+                cursor: pointer;
+                top: 2px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                border: 1px solid #d5d5d4;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: '';
+                height: 15px;
+                width: 15px;
+                left: 1px;
+                bottom: 1px;
+                background-color: white;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+            }
+
+            input:checked + .slider {
+                background-color: #417865;
+                border: 1px solid #8ab8a7;
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196f3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(19px);
+                -ms-transform: translateX(19px);
+                transform: translateX(19px);
+            }
+
+            .slider.round {
+                border-radius: 34px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+
+            audio::-webkit-media-controls-panel {
+                background: white;
+            }
+
+            .video-item {
+                max-width: calc(50% - 5px);
+            }
+
+            @media screen and (min-width: 768px) {
+                .video-item {
+                    max-width: calc(50% - 20px);
+                }
+            }
+
+            /* Styles for the overlay */
+            .overlay {
+                position: fixed;
+                z-index: 9999;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.75);
+                align-items: center;
+                justify-content: center;
+            }
+
+            .embed-container iframe {
+                max-width: 900px;
+                max-height: 500px;
+                margin: 0 auto;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+            }
+
+            @media screen and (max-width: 1130px) {
+                .embed-container iframe {
+                    transform: translate(-50%, -30%);
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                .embed-container iframe {
+                    transform: translate(-50%, -20%);
+                }
+            }
+
+            /* Styles for the close button */
+            .close-btn {
+                position: absolute;
+                top: 0;
+                transform: translateY(-24px);
+                right: 0;
+                font-size: 24px;
+                color: white;
+                background: none;
+                border: none;
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            .save-btn__active svg {
+                fill: #006cb8;
+            }
+
+            .save-btn__active span {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="su-w-full su-bg-digital-red">
+            <div id="" class="su-max-w-[1256px] su-mx-auto">
+                <a href="http://www.stanford.edu/" data-ga-action="logo"><img class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University" /></a>
+            </div>
+        </div>
+        <div class="page-wrapper su-relative su-mb-[116px]">
+            <header class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-bg-black-10">Site header - logo + local links</header>
+
+            <main class="main su-max-w-[813px] su-mx-auto su-flex su-flex-col su-mt-[32px] su-px-[20px]" role="main">
+                <div class="su-flex su-items-center su-justify-between">
+                    <h1 class="su-font-sans su-text-[33px] su-m-0">Your saved items</h1>
+                    <a class="su-no-underline hover:su-underline su-text-[18px] su-font-normal" href="#">Clear all</a>
+                </div>
+                <div class="su-flex su-flex-col">
+                    <section class="saved-items__news su-border-b-2 su-border-black-20 su-flex su-flex-col su-mt-[20px] su-relative su-pb-[25px]">
+                        <h2 class="su-mb-[43px] su-mt-[41px] su-font-sans su-text-[25px]">News</h2>
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30 md:su-border-none">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Remove</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">
+                                        Stanford joins international initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-hidden md:su-flex su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <div class="su-w-full su-flex su-items-center">
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-font-semibold su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-ml-[3px] su-text-black-60"> | Stanford Business</span>
+                                </div>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+                        </article>
+
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Remove</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="http://www.stanford.edu/">
+                                        Stanford joins international initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-hidden md:su-flex su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <div class="su-w-full su-flex su-items-center">
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-font-semibold su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-ml-[3px] su-text-black-60"> | Stanford Business</span>
+                                </div>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+                        </article>
+
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Remove</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">
+                                        Stanford joins international initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-hidden md:su-flex su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+                        </article>
+                    </section>
+
+                    <section class="saved-items__video su-justify-between su-flex su-flex-row su-border-b-2 su-border-black-20 su-flex-wrap su-mt-[41px] su-relative su-pb-[25px]">
+                        <h2 class="su-mb-[21px] su-font-sans su-w-full su-text-[33px]">Video</h2>
+
+                        <article class="video-item su-flex su-flex-col su-w-1/2 su-mt-0 su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
+                            <img
+                                class="su-w-full su-h-[100px] md:su-h-[217px] su-object-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+
+                            <div class="su-flex su-flex-wrap su-mt-[9px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold hover:su-underline su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Remove</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                    <a data-videoId="0qHWub21h5c" class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#"
+                                        >Stanford joins international initiative to strengthen democracy and foster…</a
+                                    >
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-mt-[6px] su-hidden md:su-flex su-mb-0 su-hidden md:su-block">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <div class="su-flex su-w-full su-font-semibold su-justify-between">
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-flex su-items-center su-text-[14px] md:su-text-[16px] su-text-black-60"
+                                        ><svg class="su-mr-[3px]" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M7.5 5V7.5L9.375 9.375M13.125 7.5C13.125 10.6066 10.6066 13.125 7.5 13.125C4.3934 13.125 1.875 10.6066 1.875 7.5C1.875 4.3934 4.3934 1.875 7.5 1.875C10.6066 1.875 13.125 4.3934 13.125 7.5Z"
+                                                stroke="#767674"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                        01:32:02</span
+                                    >
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="video-item su-flex su-flex-col su-mt-0 su-w-1/2 su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
+                            <img
+                                class="su-w-full su-h-[100px] md:su-h-[217px] su-object-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+
+                            <div class="su-flex su-flex-wrap su-mt-[9px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold hover:su-underline su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Remove</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                    <a data-videoId="0qHWub21h5c" class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#"
+                                        >Stanford joins international initiative to strengthen democracy and foster…</a
+                                    >
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-mt-[6px] su-hidden md:su-flex su-hidden md:su-flex su-hidden md:su-flex su-mb-0 su-hidden md:su-block">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <div class="su-flex su-w-full su-font-semibold su-justify-between">
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-flex su-items-center su-text-[14px] md:su-text-[16px] su-text-black-60"
+                                        ><svg class="su-mr-[3px]" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M7.5 5V7.5L9.375 9.375M13.125 7.5C13.125 10.6066 10.6066 13.125 7.5 13.125C4.3934 13.125 1.875 10.6066 1.875 7.5C1.875 4.3934 4.3934 1.875 7.5 1.875C10.6066 1.875 13.125 4.3934 13.125 7.5Z"
+                                                stroke="#767674"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                        01:32:02</span
+                                    >
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="video-item su-flex su-flex-col su-mt-0 su-w-1/2 su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
+                            <img
+                                class="su-w-full su-h-[100px] md:su-h-[217px] su-object-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+
+                            <div class="su-flex su-flex-wrap su-mt-[9px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold hover:su-underline su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Remove</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                    <a data-videoId="0qHWub21h5c" class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#"
+                                        >Stanford joins international initiative to strengthen democracy and foster…</a
+                                    >
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-mt-[6px] su-hidden md:su-flex su-mb-0 su-hidden md:su-block">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <div class="su-flex su-w-full su-font-semibold su-justify-between">
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-flex su-items-center su-text-[14px] md:su-text-[16px] su-text-black-60"
+                                        ><svg class="su-mr-[3px]" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M7.5 5V7.5L9.375 9.375M13.125 7.5C13.125 10.6066 10.6066 13.125 7.5 13.125C4.3934 13.125 1.875 10.6066 1.875 7.5C1.875 4.3934 4.3934 1.875 7.5 1.875C10.6066 1.875 13.125 4.3934 13.125 7.5Z"
+                                                stroke="#767674"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                        01:32:02</span
+                                    >
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+
+                    <section class="saved-items__news su-flex su-flex-col su-mt-[41px] su-relative su-pb-[25px]">
+                        <h2 class="su-mb-[21px] su-font-sans su-text-[33px]">Podcasts</h2>
+
+                        <article class="su-flex su-flex-row su-flex-wrap su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
+                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+
+                            <span class="su-w-1/2">
+                                <a class="su-font-semibold su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end" href="#">
+                                    <span>Remove</span>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                            fill="#006CB8"
+                                        />
+                                    </svg>
+                                </a>
+                            </span>
+
+                            <img
+                                class="su-w-full su-h-[150px] su-mt-[15px] md:su-w-[95px] md:su-h-[95px] su-object-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+
+                            <div class="su-flex su-w-3/4 su-mt-[9px] su-flex-wrap su-ml-[12px]">
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">The future of computational linguistics</a>
+                                </h2>
+                                <p class="su-text-[18px] su-mt-[6px] su-hidden md:su-flex su-mb-0">
+                                    An expert in understanding language using machine learning explains why even he was surprised by the linguistic capabilities of ChatGPT.
+                                </p>
+
+                                <div class="su-w-full su-flex su-mt-[6px] su-items-center">
+                                    <button class="play-btn su-flex su-items-center su-text-[16px] su-text-digital-blue hover:su-underline su-my-[12px]">
+                                        Play clip
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM9.5547 7.16795C9.24784 6.96338 8.8533 6.94431 8.52814 7.11833C8.20298 7.29235 8 7.63121 8 8V12C8 12.3688 8.20298 12.7077 8.52814 12.8817C8.8533 13.0557 9.24784 13.0366 9.5547 12.8321L12.5547 10.8321C12.8329 10.6466 13 10.3344 13 10C13 9.66565 12.8329 9.35342 12.5547 9.16795L9.5547 7.16795Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <div class="su-hidden su-w-full su-flex-col sm:su-flex-row su-flex su-justify-center su-items-center sm:su-justify-start">
+                                        <audio controls class="su-flex su-max-w-[263px] su-w-full">
+                                            <source src="audio.mp3" type="audio/mp3" />
+                                        </audio>
+                                        <a href="#" class="su-text-[16px] su-ml-[8px] su-no-underline hover:su-underline">Subscribe</a>
+                                    </div>
+                                </div>
+                                <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
+                            </div>
+                        </article>
+                        <article class="su-flex su-flex-row su-flex-wrap su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] su-border-black-30 md:su-border-none">
+                            <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+
+                            <span class="su-w-1/2">
+                                <a class="su-font-semibold su-text-[12px] su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end" href="#">
+                                    <span>Remove</span>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M3.00483 3.00483C3.2782 2.73146 3.72141 2.73146 3.99478 3.00483L6.9998 6.00986L10.0048 3.00483C10.2782 2.73146 10.7214 2.73146 10.9948 3.00483C11.2681 3.2782 11.2681 3.72141 10.9948 3.99478L7.98975 6.9998L10.9948 10.0048C11.2681 10.2782 11.2681 10.7214 10.9948 10.9948C10.7214 11.2681 10.2782 11.2681 10.0048 10.9948L6.9998 7.98975L3.99478 10.9948C3.72141 11.2681 3.2782 11.2681 3.00483 10.9948C2.73146 10.7214 2.73146 10.2782 3.00483 10.0048L6.00986 6.9998L3.00483 3.99478C2.73146 3.72141 2.73146 3.2782 3.00483 3.00483Z"
+                                            fill="#006CB8"
+                                        />
+                                    </svg>
+                                </a>
+                            </span>
+
+                            <img
+                                class="su-w-full su-h-[150px] su-mt-[15px] md:su-w-[95px] md:su-h-[95px] su-object-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+
+                            <div class="su-flex su-w-3/4 su-mt-[9px] su-flex-wrap su-ml-[12px]">
+                                <h2 class="su-font-serif su-w-full su-mr-[8px] su-mt-[5px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px]">
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">The future of computational linguistics</a>
+                                </h2>
+                                <p class="su-text-[18px] su-mt-[6px] su-mb-0">
+                                    An expert in understanding language using machine learning explains why even he was surprised by the linguistic capabilities of ChatGPT.
+                                </p>
+
+                                <div class="su-w-full su-flex su-mt-[6px] su-items-center">
+                                    <button class="play-btn su-flex su-items-center su-text-[16px] su-text-digital-blue hover:su-underline su-my-[12px]">
+                                        Play clip
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM9.5547 7.16795C9.24784 6.96338 8.8533 6.94431 8.52814 7.11833C8.20298 7.29235 8 7.63121 8 8V12C8 12.3688 8.20298 12.7077 8.52814 12.8817C8.8533 13.0557 9.24784 13.0366 9.5547 12.8321L12.5547 10.8321C12.8329 10.6466 13 10.3344 13 10C13 9.66565 12.8329 9.35342 12.5547 9.16795L9.5547 7.16795Z"
+                                                fill="#006CB8"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <div class="su-hidden su-w-full su-flex-col sm:su-flex-row su-flex su-justify-center su-items-center sm:su-justify-start">
+                                        <audio controls class="su-flex su-max-w-[263px] su-w-full">
+                                            <source src="audio.mp3" type="audio/mp3" />
+                                        </audio>
+                                        <a href="#" class="su-text-[16px] su-ml-[8px] su-no-underline hover:su-underline">Subscribe</a>
+                                    </div>
+                                </div>
+                                <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </main>
+            <!-- /.main -->
+        </div>
+        <footer class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-10">Pre-Footer - logo + local links</div>
+
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
+        </footer>
+
+        <dialog id="overlay" class="overlay">
+            <div class="embed-container">
+                <iframe
+                    width="560"
+                    height="315"
+                    src=""
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""
+                    title="YouTube video player"
+                ></iframe>
+                <button id="closeBtn" class="close-btn">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M28.9959 23.5575L38.3 14.3367C39.2 13.445 39.2063 11.995 38.3146 11.095C37.4229 10.195 35.9729 10.1909 35.0729 11.0804L25.7396 20.3304L16.4084 11.0804C15.5104 10.1909 14.0584 10.1992 13.1667 11.0971C12.275 11.995 12.2813 13.445 13.1813 14.3367L22.4834 23.5575L13.1792 32.7784C12.2792 33.67 12.2729 35.12 13.1646 36.02C13.6125 36.4721 14.2021 36.6971 14.7917 36.6971C15.375 36.6971 15.9584 36.4784 16.4042 36.0346L25.7396 26.7846L35.0709 36.0346C35.5188 36.4784 36.1 36.6971 36.6834 36.6971C37.2729 36.6971 37.8625 36.4721 38.3104 36.02C39.2021 35.12 39.1959 33.67 38.2959 32.7784L28.9959 23.5575Z"
+                            fill="white"
+                        />
+                    </svg>
+                </button>
+            </div>
+        </dialog>
+    </body>
+</html>
+
+<script>
+    class FiltersManager {
+        constructor() {
+            this.showFiltersButton = document.querySelector('.show-filters');
+            this.searchFilters = document.querySelector('.search-filters');
+            this.searchFiltersControls = document.querySelector('.search-filters__controls');
+            this.viewResults = document.querySelector('.search-filters__view-results');
+            this.clearAll = document.querySelector('.search-filters__clear-all');
+            this.clearInput = document.querySelector('.clear-input');
+            this.input = document.querySelector('.input');
+            this.modal = document.getElementById('search-filters');
+            this.toggleButtons = document.querySelectorAll('.facets__toggle-btn');
+
+            this.init();
+        }
+
+        init() {
+            this.viewResults.addEventListener('click', () => this.hideFilters());
+            this.clearAll.addEventListener('click', () => this.hideFilters());
+            this.showFiltersButton.addEventListener('click', () => this.showFilters());
+            this.clearInput.addEventListener('click', () => this.clearInputValue());
+
+            // Obtain all keyboard-focusable elements within the modal
+            this.keyboardfocusableElements = this.modal.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+
+            this.firstFocusableElement = this.keyboardfocusableElements[0];
+            this.lastFocusableElement = this.keyboardfocusableElements[this.keyboardfocusableElements.length - 1];
+
+            this.modal.addEventListener('keydown', (event) => this.trapFocus(event));
+
+            if (window.innerWidth < 768) {
+                this.handleFacetsToggle();
+            }
+        }
+
+        handleFacetsToggle() {
+            this.toggleButtons.forEach((button) => {
+                button.setAttribute('tabindex', '0');
+                button.setAttribute('role', 'button');
+
+                button.addEventListener('click', () => {
+                    button.nextElementSibling.classList.toggle('su-hidden');
+                    button.classList.toggle('facets__toggle-rev');
+                });
+
+                button.addEventListener('keydown', (event) => {
+                    if (event.key === ' ' || event.key === 'Enter') {
+                        button.nextElementSibling.classList.toggle('su-hidden');
+                        button.classList.toggle('facets__toggle-rev');
+                    }
+                });
+            });
+        }
+
+        showFilters() {
+            this.searchFilters.classList.remove('mobile-hidden');
+            this.searchFiltersControls.classList.remove('mobile-hidden');
+            document.body.classList.add('block-scroll');
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                this.firstFocusableElement.focus(); // Set initial focus to the first element inside the modal
+            }, 0);
+        }
+
+        hideFilters() {
+            this.searchFilters.classList.add('mobile-hidden');
+            this.searchFiltersControls.classList.add('mobile-hidden');
+            document.body.classList.remove('block-scroll');
+        }
+
+        clearInputValue() {
+            this.input.value = '';
+        }
+
+        trapFocus(event) {
+            if (event.key === 'Tab') {
+                const isShiftKey = event.shiftKey;
+
+                if (isShiftKey && document.activeElement === this.firstFocusableElement) {
+                    event.preventDefault();
+                    this.lastFocusableElement.focus();
+                } else if (!isShiftKey && document.activeElement === this.lastFocusableElement) {
+                    event.preventDefault();
+                    this.firstFocusableElement.focus();
+                }
+            }
+        }
+    }
+
+    const filtersManager = new FiltersManager();
+
+    const handleAudioElements = () => {
+        const playButtons = document.querySelectorAll('.play-btn');
+
+        playButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const audio = button.nextElementSibling;
+
+                audio.classList.remove('su-hidden');
+                button.classList.add('su-hidden');
+            });
+        });
+    };
+
+    const handleClearButton = () => {
+        const input = document.querySelector('.search-bar input');
+        const clearButton = document.querySelector('.clear-input');
+
+        input.addEventListener('keyup', () => {
+            if (input.value.length > 3) {
+                clearButton.classList.remove('su-invisible');
+            } else {
+                clearButton.classList.add('su-invisible');
+            }
+        });
+    };
+
+    const isExternalLink = (link) => {
+        const currentHostname = window.location.hostname;
+        const linkHostname = new URL(link).hostname;
+
+        return currentHostname !== linkHostname;
+    };
+
+    const handleExternalLinks = () => {
+        const links = document.querySelectorAll('article h2 a');
+
+        links.forEach((link) => {
+            if (isExternalLink(link.href)) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+                link.nextElementSibling.classList.remove('su-hidden');
+            }
+        });
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+        handleAudioElements();
+        handleExternalLinks();
+        handleClearButton();
+    });
+</script>

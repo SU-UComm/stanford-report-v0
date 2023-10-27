@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Stanford University - Scaffold component</title>
+        ${require('src/html/fragments/head.html')} ${require('src/html/fragments/su-head.html')}
+
+        <style>
+            .block-scroll {
+                margin: 0;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            .search-bar input {
+                position: relative;
+                width: calc(100% - 115px);
+                height: 80%;
+                margin: 0 5px;
+                border: none;
+                border-radius: 50px 0 0 50px;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+                padding-left: 15px;
+            }
+
+            .search-filters {
+                position: absolute;
+                width: 100%;
+                min-height: 100vh;
+                top: 0;
+                left: 0;
+                z-index: 999;
+                padding-bottom: 150px;
+            }
+
+            .facets fieldset li {
+                margin-top: 20px;
+            }
+
+            .facets fieldset li input {
+                margin-top: 0;
+            }
+
+            .facets fieldset li label {
+                font-size: 18px;
+                font-weight: 400;
+            }
+
+            .facets fieldset li:first-of-type {
+                margin-top: 12px;
+            }
+
+            .facets li {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .facets input[type='checkbox'] {
+                margin-top: 2px;
+                width: 18px;
+                height: 18px;
+            }
+
+            .reset-list-styles li:last-of-type {
+                margin-bottom: 0.5em;
+            }
+
+            .facets label {
+                font-size: 18px;
+                margin-left: 8px;
+                line-height: 125%;
+            }
+
+            .pagination li a {
+                border: none;
+            }
+
+            .pagination li:hover a {
+                background: none;
+            }
+
+            .pagination li {
+                position: relative;
+                display: flex;
+            }
+
+            .pagination li:hover::after {
+                position: absolute;
+                bottom: 2px;
+                left: auto;
+                height: 2px;
+                width: 12px;
+                background: #b1040e;
+                content: '';
+            }
+
+            .pagination li.active {
+                background: #b1040e;
+                border-radius: 300px;
+                overflow: hidden;
+                filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+            }
+
+            .pagination li:not(.pagination-btn__disabled) svg {
+                fill: #2e2d29; /* Your default SVG color */
+            }
+
+            .pagination-btn__disabled svg {
+                fill: #979694;
+            }
+
+            .pagination li.active a {
+                color: #fff;
+            }
+
+            .facets__toggle-rev svg {
+                transform: rotate(180deg);
+            }
+
+            @media screen and (max-width: 768px) {
+                .mobile-hidden {
+                    display: none;
+                    visibility: hidden;
+                }
+            }
+
+            @media screen and (min-width: 769px) {
+                .desktop-hidden {
+                    display: none;
+                    visibility: hidden;
+                }
+            }
+
+            .facets label.switch {
+                position: relative;
+                display: flex;
+                padding-left: 26px;
+                font-size: 18px;
+                margin-left: 2px;
+                font-weight: 400;
+            }
+
+            .facets label.switch:focus-within .slider {
+                outline: 2px solid #006cb8;
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .slider {
+                width: 38px;
+                height: 18px;
+                position: absolute;
+                cursor: pointer;
+                top: 2px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                border: 1px solid #d5d5d4;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: '';
+                height: 15px;
+                width: 15px;
+                left: 1px;
+                bottom: 1px;
+                background-color: white;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+            }
+
+            input:checked + .slider {
+                background-color: #417865;
+                border: 1px solid #8ab8a7;
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196f3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(19px);
+                -ms-transform: translateX(19px);
+                transform: translateX(19px);
+            }
+
+            .slider.round {
+                border-radius: 34px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+
+            audio::-webkit-media-controls-panel {
+                background: white;
+            }
+
+            .video-item {
+                max-width: calc(50% - 5px);
+            }
+
+            @media screen and (min-width: 768px) {
+                .video-item {
+                    max-width: calc(50% - 20px);
+                }
+            }
+
+            /* Styles for the overlay */
+            .overlay {
+                position: fixed;
+                z-index: 9999;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.75);
+                align-items: center;
+                justify-content: center;
+            }
+
+            .embed-container iframe {
+                max-width: 900px;
+                max-height: 500px;
+                margin: 0 auto;
+                position: absolute;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -40%);
+            }
+
+            @media screen and (max-width: 1130px) {
+                .embed-container iframe {
+                    transform: translate(-50%, -30%);
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                .embed-container iframe {
+                    transform: translate(-50%, -20%);
+                }
+            }
+
+            /* Styles for the close button */
+            .close-btn {
+                position: absolute;
+                top: 0;
+                transform: translateY(-24px);
+                right: 0;
+                font-size: 24px;
+                color: white;
+                background: none;
+                border: none;
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            .save-btn:hover svg {
+                fill: #006cb8;
+            }
+
+            .flb-cart-icon {
+                position: relative;
+            }
+
+            .flb-cart-icon::after {
+                position: relative;
+                content: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.91699 2.91667C2.91699 2.27233 3.43933 1.75 4.08366 1.75H9.91699C10.5613 1.75 11.0837 2.27233 11.0837 2.91667V12.25L7.00033 10.2083L2.91699 12.25V2.91667Z' fill='%23006CB8' stroke='%23006CB8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            }
+
+            .save-btn__active span {
+                display: none;
+            }
+
+            /* fixes */
+
+            .sorting-select__wrapper select {
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.70711 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68342 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z' fill='%232E2D29'/%3E%3C/svg%3E%0A");
+            }
+
+            /* .search-results article p {
+                display: inline;
+            } */
+        </style>
+    </head>
+
+    <body>
+        <div class="su-w-full su-bg-digital-red">
+            <div id="" class="su-max-w-[1256px] su-mx-auto">
+                <a href="http://www.stanford.edu/" data-ga-action="logo"><img class="img-responsive" src="../images/SUSig_White.png" alt="Stanford University" /></a>
+            </div>
+        </div>
+        <div class="page-wrapper su-relative su-mb-[116px]">
+            <header class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-bg-black-10">Site header - logo + local links</header>
+
+            <main class="main su-max-w-[1066px] su-mx-auto su-flex su-flex-col su-mt-[32px] su-px-[20px]" role="main">
+                <div class="su-flex su-mt-[15px] su-flex-row su-w-full su-items-center su-justify-end">
+                    <a href="#" class="su-flex su-flex-row su-items-center hover:su-underline su-text-[16px] su-text-black su-no-underline su-font-normal">
+                        Saved (12)
+                        <svg class="su-ml-[3px]" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3.75 3.75C3.75 2.92157 4.42157 2.25 5.25 2.25H12.75C13.5784 2.25 14.25 2.92157 14.25 3.75V15.75L9 13.125L3.75 15.75V3.75Z"
+                                stroke="#2E2D29"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </a>
+                </div>
+
+                <section class="search-header su-mt-[15px] su-overflow-x-auto">
+                    <div
+                        class="search-bar su-w-full su-relative su-flex su-flex-row su-justify-start su-items-center su-pr-[15px] su-rounded-full su-h-[50px] su-border-2 su-border-black-30"
+                    >
+                        <input type="text" aria-label="Search query input" class="input" placeholder="Artificial intelligence" />
+                        <button class="clear-input su-invisible su-text-digital-blue su-text-[18px]">clear</button>
+                        <span class="search-bar__divider su-h-[32px] su-w-[2px] su-mx-[15px] su-bg-black-30"></span>
+
+                        <button aria-label="Search query submit button" class="">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.4512 4.23242C12.8012 4.23242 9.01873 8.01492 9.01873 12.6662C9.01873 14.4587 9.58498 16.1187 10.5412 17.4862L4.49998 23.5274C3.98748 24.0399 3.98748 24.8699 4.49998 25.3824C4.75623 25.6387 5.09248 25.7674 5.42748 25.7674C5.76248 25.7674 6.09998 25.6387 6.35623 25.3824L12.3637 19.3749C13.78 20.4512 15.5387 21.0987 17.4512 21.0987C22.1012 21.0987 25.8837 17.3162 25.8837 12.6649C25.8837 8.01367 22.1012 4.23242 17.4512 4.23242ZM17.4512 18.4737C14.2487 18.4737 11.6437 15.8674 11.6437 12.6649C11.6437 9.46242 14.2487 6.85617 17.4512 6.85617C20.6537 6.85617 23.2587 9.46242 23.2587 12.6649C23.2587 15.8674 20.6525 18.4737 17.4512 18.4737Z"
+                                    fill="#B1040E"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="reset-list-styles su-flex su-font-sans su-flex-row su-overflow-x-auto su-mt-[36px] su-space-x-[21px] su-list-none su-p-0">
+                        <li class="su-flex-shrink-0 su-mb-0 su-text-[18px] su-w-auto su-px-[8px] su-border-b-4 su-border-digital-red hover:su-border-digital-red">
+                            <a class="su-no-underline su-text-black su-text-digital-red su-font-bold" href="#">Stanford Report</a>
+                        </li>
+                        <li class="su-flex-shrink-0 su-mb-0 hover:su-border-b-4 hover:su-border-digital-red su-text-[18px] su-w-auto su-px-[8px]">
+                            <a class="su-no-underline su-text-black su-font-normal" href="#">Other campus news</a>
+                        </li>
+                        <li class="su-flex-shrink-0 su-mb-0 hover:su-border-b-4 hover:su-border-digital-red su-text-[18px] su-w-auto su-px-[8px]">
+                            <a class="su-no-underline su-text-black su-font-normal" href="#">Video</a>
+                        </li>
+                        <li class="su-flex-shrink-0 su-mb-0 hover:su-border-b-4 hover:su-border-digital-red su-text-[18px] su-w-auto su-px-[8px]">
+                            <a class="su-no-underline su-text-black su-font-normal" href="#">Podcasts</a>
+                        </li>
+                    </ul>
+                    <button
+                        class="show-filters md:su-hidden su-flex su-items-center su-justify-center su-w-full su-mt-[20px] su-pt-[10px] su-pb-[14px] su-border su-border-black-60 su-text-[20px] su-text- su-text-normal su-text-black-70"
+                    >
+                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.55 7.589H7.155C7.18 7.589 7.2 7.577 7.224 7.575C7.622 8.458 8.506 9.076 9.535 9.076C10.571 9.076 11.461 8.451 11.855 7.559C11.904 7.566 11.948 7.588 12 7.588H19.712C20.292 7.588 20.762 7.118 20.762 6.538C20.762 5.958 20.292 5.488 19.712 5.488H12C11.949 5.488 11.904 5.51 11.855 5.517C11.461 4.626 10.571 4 9.536 4C8.507 4 7.623 4.619 7.225 5.501C7.2 5.501 7.18 5.489 7.155 5.489H4.55C3.97 5.489 3.5 5.959 3.5 6.539C3.5 7.119 3.97 7.589 4.55 7.589ZM9.535 5.502C10.107 5.502 10.573 5.967 10.573 6.539C10.573 7.111 10.108 7.577 9.535 7.577C8.963 7.577 8.498 7.112 8.498 6.539C8.498 5.967 8.963 5.502 9.535 5.502Z"
+                                fill="#6D6C69"
+                            />
+                            <path
+                                d="M19.711 11.003H16.567C16.556 11.003 16.547 11.009 16.536 11.009C16.137 10.131 15.256 9.515 14.229 9.515C13.184 9.515 12.286 10.15 11.898 11.054C11.814 11.032 11.732 11.002 11.641 11.002H4.55C3.97 11.002 3.5 11.472 3.5 12.052C3.5 12.632 3.97 13.102 4.55 13.102H11.642C11.733 13.102 11.815 13.072 11.899 13.05C12.287 13.954 13.185 14.589 14.23 14.589C15.257 14.589 16.137 13.974 16.537 13.095C16.548 13.095 16.557 13.101 16.568 13.101H19.712C20.292 13.101 20.762 12.631 20.762 12.051C20.762 11.471 20.291 11.003 19.711 11.003ZM14.23 13.09C13.658 13.09 13.193 12.625 13.193 12.053C13.193 11.481 13.658 11.016 14.23 11.016C14.802 11.016 15.267 11.481 15.267 12.053C15.267 12.625 14.802 13.09 14.23 13.09Z"
+                                fill="#6D6C69"
+                            />
+                            <path
+                                d="M19.711 16.517H11.724C11.713 16.517 11.703 16.523 11.692 16.523C11.293 15.644 10.412 15.029 9.385 15.029C8.338 15.029 7.438 15.666 7.051 16.573C6.96 16.547 6.87 16.516 6.77 16.516H4.55C3.97 16.516 3.5 16.986 3.5 17.566C3.5 18.146 3.97 18.616 4.55 18.616H6.77C6.87 18.616 6.959 18.585 7.051 18.559C7.438 19.466 8.338 20.104 9.386 20.104C10.412 20.104 11.294 19.488 11.693 18.609C11.704 18.609 11.714 18.615 11.725 18.615H19.712C20.292 18.615 20.762 18.145 20.762 17.565C20.762 16.985 20.291 16.517 19.711 16.517ZM9.385 18.605C8.813 18.605 8.347 18.139 8.347 17.567C8.347 16.995 8.812 16.53 9.385 16.53C9.957 16.53 10.422 16.995 10.422 17.567C10.422 18.139 9.957 18.605 9.385 18.605Z"
+                                fill="#6D6C69"
+                            />
+                        </svg>
+                        Refine Results (2)
+                    </button>
+                </section>
+                <div class="su-flex su-gap-[40px] su-mt-[30px] su-flex-row">
+                    <aside
+                        id="search-filters"
+                        class="mobile-hidden su-bg-white md:su-w-full md:su-max-w-[216px] su-overflow-y-auto su-h-[100vh] md:su-h-auto su-pb-[230px] md:su-pb-[130px] su-px-[24px] md:su-px-0 su-bg-white su-pt-30 md:su-relative md:su-pt-0 search-filters"
+                    >
+                        <section class="sorting su-flex su-flex-col [@media(min-width:390px)]:su-flex-row su-gap-[20px] desktop-hidden md:su-hidden">
+                            <div class="sorting-select__wrapper su-flex su-justify-center su-items-start su-flex-col">
+                                <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
+                                <select id="date" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
+                                    <option selected disabled value="7days" title="Last 7 days">Last 7 days</option>
+                                    <option value="30days">Last 30 days</option>
+                                    <option value="year">This year</option>
+                                </select>
+                            </div>
+
+                            <div class="sorting-select__wrapper su-flex su-justify-center su-items-start su-flex-col">
+                                <label for="sort" class="su-text-[16px] su-text-black su-font-semibold">Sorted by:</label>
+                                <select id="sort" title="Sort" name="Sort" class="su-w-[165px] su-rounded-[3px] su-border-black-30 su-text-[16px] su-mt-[6px]">
+                                    <option selected disabled value="newest">Newest first</option>
+                                    <option value="alphabetically">Alphabetically</option>
+                                </select>
+                            </div>
+                        </section>
+
+                        <section class="su-mt-30 su-overflow-y-auto su-w-full facets su-flex su-flex-row su-flex-wrap">
+                            <h2 class="su-font-sans su-text-black su-flex su-text-[21px] su-font-semibold su-whitespace-nowrap">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M19 20H5C3.89543 20 3 19.1046 3 18L3 6C3 4.89543 3.89543 4 5 4L15 4C16.1046 4 17 4.89543 17 6V7M19 20C17.8954 20 17 19.1046 17 18L17 7M19 20C20.1046 20 21 19.1046 21 18V9C21 7.89543 20.1046 7 19 7L17 7M13 4L9 4M7 16H13M7 8H13V12H7V8Z"
+                                        stroke="#2E2D29"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+
+                                Sources
+                            </h2>
+
+                            <label class="switch su-w-full">
+                                <input type="checkbox" />
+                                <span class="slider round"></span>
+                                All Stanford news sources
+                            </label>
+
+                            <h2 class="su-font-sans su-text-black su-flex su-text-[21px] su-whitespace-nowrap">
+                                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M4.55 7.589H7.155C7.18 7.589 7.2 7.577 7.224 7.575C7.622 8.458 8.506 9.076 9.535 9.076C10.571 9.076 11.461 8.451 11.855 7.559C11.904 7.566 11.948 7.588 12 7.588H19.712C20.292 7.588 20.762 7.118 20.762 6.538C20.762 5.958 20.292 5.488 19.712 5.488H12C11.949 5.488 11.904 5.51 11.855 5.517C11.461 4.626 10.571 4 9.536 4C8.507 4 7.623 4.619 7.225 5.501C7.2 5.501 7.18 5.489 7.155 5.489H4.55C3.97 5.489 3.5 5.959 3.5 6.539C3.5 7.119 3.97 7.589 4.55 7.589ZM9.535 5.502C10.107 5.502 10.573 5.967 10.573 6.539C10.573 7.111 10.108 7.577 9.535 7.577C8.963 7.577 8.498 7.112 8.498 6.539C8.498 5.967 8.963 5.502 9.535 5.502Z"
+                                        fill="#2E2D29"
+                                    />
+                                    <path
+                                        d="M19.711 11.003H16.567C16.556 11.003 16.547 11.009 16.536 11.009C16.137 10.131 15.256 9.515 14.229 9.515C13.184 9.515 12.286 10.15 11.898 11.054C11.814 11.032 11.732 11.002 11.641 11.002H4.55C3.97 11.002 3.5 11.472 3.5 12.052C3.5 12.632 3.97 13.102 4.55 13.102H11.642C11.733 13.102 11.815 13.072 11.899 13.05C12.287 13.954 13.185 14.589 14.23 14.589C15.257 14.589 16.137 13.974 16.537 13.095C16.548 13.095 16.557 13.101 16.568 13.101H19.712C20.292 13.101 20.762 12.631 20.762 12.051C20.762 11.471 20.291 11.003 19.711 11.003ZM14.23 13.09C13.658 13.09 13.193 12.625 13.193 12.053C13.193 11.481 13.658 11.016 14.23 11.016C14.802 11.016 15.267 11.481 15.267 12.053C15.267 12.625 14.802 13.09 14.23 13.09Z"
+                                        fill="#2E2D29"
+                                    />
+                                    <path
+                                        d="M19.711 16.517H11.724C11.713 16.517 11.703 16.523 11.692 16.523C11.293 15.644 10.412 15.029 9.385 15.029C8.338 15.029 7.438 15.666 7.051 16.573C6.96 16.547 6.87 16.516 6.77 16.516H4.55C3.97 16.516 3.5 16.986 3.5 17.566C3.5 18.146 3.97 18.616 4.55 18.616H6.77C6.87 18.616 6.959 18.585 7.051 18.559C7.438 19.466 8.338 20.104 9.386 20.104C10.412 20.104 11.294 19.488 11.693 18.609C11.704 18.609 11.714 18.615 11.725 18.615H19.712C20.292 18.615 20.762 18.145 20.762 17.565C20.762 16.985 20.291 16.517 19.711 16.517ZM9.385 18.605C8.813 18.605 8.347 18.139 8.347 17.567C8.347 16.995 8.812 16.53 9.385 16.53C9.957 16.53 10.422 16.995 10.422 17.567C10.422 18.139 9.957 18.605 9.385 18.605Z"
+                                        fill="#2E2D29"
+                                    />
+                                </svg>
+                                Refine Results
+                            </h2>
+
+                            <fieldset class="su-w-full su-p-0 su-mb-[26px]">
+                                <legend
+                                    class="facets__toggle-btn su-border-none su-w-full su-flex su-mb-0 su-items-center su-justify-between su-text-[18px] su-text-black su-font-semibold"
+                                >
+                                    <span class="su-pr-[6px]"> Campus </span>
+                                    <svg class="md:su-hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.70711 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68342 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z"
+                                            fill="#2E2D29"
+                                        />
+                                    </svg>
+                                </legend>
+                                <ul class="su-list-none su-font-sans su-pl-[14px]">
+                                    <li>
+                                        <input type="checkbox" class="su-rounded-[2px]" id="Arts" name="Arts" value="Arts" />
+                                        <label for="Arts" class="su-mb-0">Arts</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Athletics" name="Athletics" value="Athletics" />
+                                        <label for="Athletics" class="su-mb-0">Athletics</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Teaching and learning" name="Teaching and learning" value="Teaching and learning" />
+                                        <label for="Teaching and learning">Awards and honors</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Student experience" name="Student experience" value="Student experience" />
+                                        <label for="Student experience">Student experience</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Events" name="Events" value="Events" />
+                                        <label for="Events">Events</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Labs" name="Labs" value="Labs" />
+                                        <label for="Labs">Labs</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="University affairs" name="University affairs" value="University affairs" />
+                                        <label for="University affairs">University affairs</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Messages from leadership" name="Messages from leadership" value="Messages from leadership" />
+                                        <label for="Messages from leadership">Messages from leadership</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+
+                            <fieldset class="su-p-0 su-w-full su-mb-[26px]">
+                                <legend
+                                    class="facets__toggle-btn su-border-none su-w-full su-flex su-mb-0 su-items-center su-justify-between su-text-[18px] su-text-black su-font-semibold"
+                                >
+                                    <span class="su-pr-[16px]"> Research for a better world </span>
+                                    <svg class="md:su-hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.70711 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68342 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z"
+                                            fill="#2E2D29"
+                                        />
+                                    </svg>
+                                </legend>
+                                <ul class="su-list-none su-font-sans su-pl-[14px]">
+                                    <li>
+                                        <input type="checkbox" id="Business" name="Business" value="Business" />
+                                        <label for="Business">Business</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Health and medicine" name="Health and medicine" value="Health and medicine" />
+                                        <label for="Health and medicine">Health and medicine</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Economics" name="Economics" value="Economics" />
+                                        <label for="Economics">Economics</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Education" name="Education" value="Education" />
+                                        <label for="Education">Education</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Humanities" name="Humanities" value="Humanities" />
+                                        <label for="Humanities">Humanities</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Law" name="Law" value="Law" />
+                                        <label for="Law">Law</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Social sciences" name="Social sciences" value="Social sciences" />
+                                        <label for="Social sciences">Social sciences</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Science and engineering" name="Science and engineering" value="Science and engineering" />
+                                        <label for="Science and engineering">Science and engineering</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="Earth and climate" name="Earth and climate" value="Earth and climate" />
+                                        <label for="Earth and climate">Earth and climate</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </section>
+
+                        <div
+                            class="search-filters__controls su-fixed su-left-0 su-right-0 su-bottom-0 su-w-full su-h-[131px] su-z-[9999] su-flex su-px-[20px] su-bg-black-80 su-border-t-2 su-border-digital-red su-items-center su-justify-center su-gap-[12px] su-flex-col [@media(min-width:330px)]:su-flex-row [@media(min-width:340px)]:su-gap-[62px] su-text-[20px] md:su-hidden"
+                        >
+                            <button
+                                class="search-filters__view-results su-whitespace-nowrap su-px-30 min-[320px]:su-px-30 su-h-[50px] su-bg-white focus:su-bg-digital-red hover:su-bg-digital-red hover:su-text-white focus:su-text-white su-border-digital-red su-text-digital-red"
+                            >
+                                Clear all
+                            </button>
+                            <button
+                                class="search-filters__clear-all su-whitespace-nowrap su-px-30 su-h-[50px] su-bg-digital-red su-text-white focus:su-bg-white hover:su-bg-white focus:su-text-digital-red hover:su-text-digital-red hover:su-border-digital-red"
+                            >
+                                View results
+                            </button>
+                        </div>
+                    </aside>
+                    <section class="search-results su-flex su-flex-col su-mt-[20px] su-relative su-pb-[64px]">
+                        <h1 class="su-type-2 su-mb-0 su-font-sans md:su-hidden su-text-black">Stanford Report results</h1>
+                        <div class="su-hidden md:su-flex su-items-start su-justify-between">
+                            <div>
+                                <h1 class="su-type-2 su-mb-0 su-font-sans md:hidden su-text-black">News results</h1>
+                                <span class="su-text-[18px] su-text-black">1 – 10 of 99 items</span>
+                                <ul class="su-w-full su-list-none su-font-sans su-p-0 su-flex su-gap-[12px] su-flex-wrap su-mt-[26px] su-min-h-[20px]">
+                                    <li>
+                                        <a class="su-flex hover:su-text-digital-blue hover:su-underline su-items-center su-no-underline su-font-normal su-text-[16px]" href="#"
+                                            >Arts
+                                            <svg class="su-ml-[3px]" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="6" cy="6" r="6" fill="#006CB8" />
+                                                <path
+                                                    d="M6.73784 6.00015L8.8461 3.89498C9.05003 3.6914 9.05145 3.36036 8.84941 3.15488C8.64736 2.94941 8.3188 2.94846 8.11487 3.15155L6 5.26339L3.88561 3.15155C3.68214 2.94846 3.35311 2.95036 3.15107 3.15536C2.94902 3.36036 2.95044 3.6914 3.15437 3.89498L5.26216 6.00015L3.1539 8.10533C2.94997 8.3089 2.94855 8.63994 3.15059 8.84542C3.25209 8.94863 3.38568 9 3.51928 9C3.65146 9 3.78364 8.95006 3.88466 8.84875L6 6.73691L8.1144 8.84875C8.21589 8.95006 8.3476 9 8.47978 9C8.61337 9 8.74697 8.94863 8.84846 8.84542C9.05051 8.63994 9.04909 8.3089 8.84516 8.10533L6.73784 6.00015Z"
+                                                    fill="white"
+                                                />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="su-flex hover:su-text-digital-blue hover:su-underline su-items-center su-no-underline su-font-normal su-text-[16px]" href="#"
+                                            >Science and engineering
+                                            <svg class="su-ml-[3px]" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="6" cy="6" r="6" fill="#006CB8" />
+                                                <path
+                                                    d="M6.73784 6.00015L8.8461 3.89498C9.05003 3.6914 9.05145 3.36036 8.84941 3.15488C8.64736 2.94941 8.3188 2.94846 8.11487 3.15155L6 5.26339L3.88561 3.15155C3.68214 2.94846 3.35311 2.95036 3.15107 3.15536C2.94902 3.36036 2.95044 3.6914 3.15437 3.89498L5.26216 6.00015L3.1539 8.10533C2.94997 8.3089 2.94855 8.63994 3.15059 8.84542C3.25209 8.94863 3.38568 9 3.51928 9C3.65146 9 3.78364 8.95006 3.88466 8.84875L6 6.73691L8.1144 8.84875C8.21589 8.95006 8.3476 9 8.47978 9C8.61337 9 8.74697 8.94863 8.84846 8.84542C9.05051 8.63994 9.04909 8.3089 8.84516 8.10533L6.73784 6.00015Z"
+                                                    fill="white"
+                                                />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="su-flex hover:su-text-digital-blue hover:su-underline su-items-center su-no-underline su-font-normal su-text-[16px]" href="#"
+                                            >Clear all
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="su-flex su-gap-[18px]">
+                                <div class="sorting-select__wrapper su-flex su-justify-center su-items-start su-flex-col">
+                                    <label for="date" class="su-text-[16px] su-text-black su-font-semibold">Published date:</label>
+                                    <select id="date" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
+                                        <option selected disabled value="7days">Last 7 days</option>
+                                        <option value="30days">Last 30 days</option>
+                                        <option value="year">This year</option>
+                                    </select>
+                                </div>
+
+                                <div class="sorting-select__wrapper su-flex su-justify-center su-items-start su-flex-col">
+                                    <label for="sort" class="su-text-[16px] su-text-black su-font-semibold">Sorted by:</label>
+                                    <select id="sort" class="su-w-[125px] su-h-[38px] su-rounded-[3px] su-border-black-30 su-text-[16px]">
+                                        <option selected disabled value="newest">Newest first</option>
+                                        <option value="alphabetically">Alphabetically</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30 md:su-border-none">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[40px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] md:su-text-[16px]">Institutional news</span>
+                                <span class="su-w-1/2 save-btn__active">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Save</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
+                                                stroke="#006CB8"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[8px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline su hover:su-underline su-text-black su-font-semibold hover:su-text-digital-red" href="#">
+                                        Stanford joins <strong>international</strong> initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-leading-[125%] su-font-sans su-hidden md:su-inline su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable? A new <strong>collaboration</strong> wants scholars of all disciplines to engage with the question, how can we automate
+                                    discovery about objects that are unquantifiable? A new collaboration wants scholars of all disciplines to engage with the question, how can we
+                                    automate discovery about objects that are unquantifiable?
+                                </p>
+                                <div class="su-w-full su-flex su-items-center">
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-font-semibold su-text-black-60">June 7, 2023</span>
+                                    <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-ml-[3px] su-text-black-60"> | Stanford Business</span>
+                                </div>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+                        </article>
+
+                        <article class="su-flex su-mt-0 su-items-start su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30">
+                            <div class="su-flex su-flex-wrap su-h-auto su-mr-[8px] su-items-start md:su-mr-[40px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline hover:su-text-digital-blue su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Save</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
+                                                stroke="#006CB8"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[9px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="http://www.stanford.edu/">
+                                        Stanford joins international initiative
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-mt-[9px] su-hidden md:su-flex su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can
+                                </p>
+                                <div class="su-w-full su-mt-[9px] su-flex su-items-center">
+                                    <span class="su-text-[14px] md:su-text-[16px] su-font-semibold su-text-black-60">June 7, 2023</span>
+                                    <span class="su-text-[14px] md:su-text-[16px] su-ml-[3px] su-text-black-60"> | Stanford Business</span>
+                                </div>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+                        </article>
+
+                        <article class="su-flex su-mt-0 su-w-full su-py-20 su-h-auto su-border-b-[1px] md:su-border-none su-border-black-30">
+                            <div class="su-flex su-flex-wrap su-mr-[8px] md:su-mr-[30px]">
+                                <span class="su-w-1/2 su-text-digital-red su-text-[14px] md:su-text-[16px] su-font-semibold">Institutional news</span>
+                                <span class="su-w-1/2">
+                                    <a
+                                        class="su-font-semibold su-text-[12px] hover:su-underline su-w-auto su-no-underline su-text-digital-blue su-flex su-items-center su-justify-end"
+                                        href="#"
+                                    >
+                                        <span>Save</span>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.91669 2.91667C2.91669 2.27233 3.43902 1.75 4.08335 1.75H9.91669C10.561 1.75 11.0834 2.27233 11.0834 2.91667V12.25L7.00002 10.2083L2.91669 12.25V2.91667Z"
+                                                stroke="#006CB8"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </a>
+                                </span>
+                                <h2
+                                    class="su-font-serif su-w-full su-mr-[8px] su-mt-[8px] su-mb-0 su-font-semibold su-leading-5 su-text-[16px] md:su-text-[23px] md:su-border-none"
+                                >
+                                    <a class="su-no-uderline hover:su-underline su-text-black hover:su-text-digital-red" href="#">
+                                        Stanford joins international initiative to strengthen democracy and foster…
+                                    </a>
+                                    <svg class="su-inline-block su-hidden su-w-[20px] su-h-[20px] su-fill-digital-red" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M7.08366 5.83335C7.08366 5.32709 7.49406 4.91669 8.00033 4.91669H14.667C15.1733 4.91669 15.5837 5.32709 15.5837 5.83335V12.5C15.5837 13.0063 15.1733 13.4167 14.667 13.4167C14.1607 13.4167 13.7503 13.0063 13.7503 12.5V8.12972L6.48184 15.3982C6.12386 15.7562 5.54346 15.7562 5.18548 15.3982C4.8275 15.0402 4.8275 14.4598 5.18548 14.1018L12.5373 6.75002H8.00033C7.49406 6.75002 7.08366 6.33961 7.08366 5.83335Z"
+                                            fill="#B1040E"
+                                        />
+                                    </svg>
+                                </h2>
+                                <p class="su-text-[18px] su-hidden md:su-flex su-mt-[6px] su-mb-0">
+                                    A new collaboration wants scholars of all disciplines to engage with the question, how can we automate discovery about objects that are
+                                    unquantifiable?
+                                </p>
+                                <span class="su-mt-[5px] su-text-[14px] md:su-text-[16px] su-text-black-60">June 7, 2023</span>
+                            </div>
+                            <img
+                                class="su-w-[75px] su-h-[75px] md:su-w-[173px] md:su-h-[173px] bg-cover"
+                                src="https://www.hillel.org/wp-content/uploads/college-images/Stanford_University.png"
+                                alt="Stanford University Courtyard with fountain"
+                            />
+                        </article>
+
+                        <div class="su-w-full su-mt-[38px] su-text-[18px] su-flex su-items-center su-justify-center md:su-absolute md:su-bottom-0">
+                            <ul class="pagination reset-list-styles su-flex su-justify-center su-items-center su-mt-0 su-gap-[10px] su-p-0 su-list-none su-font-serif">
+                                <li class="pagination-btn__disabled su-relative su-w-[24px] su-h-[24px] su-flex su-justify-center">
+                                    <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to previous page</span>
+                                        <svg width="24" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M15.2486 6.35147C15.7172 6.8201 15.7172 7.5799 15.2486 8.04853L11.2971 12L15.2486 15.9515C15.7172 16.4201 15.7172 17.1799 15.2486 17.6485C14.7799 18.1172 14.0201 18.1172 13.5515 17.6485L8.7515 12.8485C8.28287 12.3799 8.28287 11.6201 8.7515 11.1515L13.5515 6.35147C14.0201 5.88284 14.7799 5.88284 15.2486 6.35147Z"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="active su-w-[24px] su-relative su-h-[24px] su-flex su-justify-center">
+                                    <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to page</span>
+                                        <span>1</span>
+                                    </a>
+                                </li>
+                                <li class="su-w-[24px] su-h-[24px] su-relative su-flex su-justify-center">
+                                    <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to page</span>
+                                        <span>2</span>
+                                    </a>
+                                </li>
+                                <li class="su-w-[24px] su-h-[24px] su-relative su-flex su-justify-center">
+                                    <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to page</span>
+                                        <span>3</span>
+                                    </a>
+                                </li>
+                                <li class="su-w-[24px] su-h-[24px] su-relative su-flex su-justify-center">
+                                    <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to page</span>
+                                        <span>4</span>
+                                    </a>
+                                </li>
+
+                                <li class="su-w-[24px] su-h-[24px] su-relative su-flex su-justify-center">
+                                    <a class="su-text-black su-no-underline su-border-none su-flex su-justify-center su-items-center" href="#">
+                                        <span class="sr-only">Go to next page</span>
+
+                                        <svg width="24" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M8.7515 17.6485C8.28287 17.1799 8.28287 16.4201 8.7515 15.9515L12.703 12L8.7515 8.04853C8.28287 7.5799 8.28287 6.8201 8.7515 6.35147C9.22013 5.88284 9.97992 5.88284 10.4486 6.35147L15.2486 11.1515C15.7172 11.6201 15.7172 12.3799 15.2486 12.8485L10.4486 17.6485C9.97992 18.1172 9.22013 18.1172 8.7515 17.6485Z"
+                                            />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            <!-- /.main -->
+        </div>
+        <footer class="su-h-[182px] su-w-full su-bg-black-10">
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[375px] su-bg-black-10">Pre-Footer - logo + local links</div>
+
+            <div class="su-w-full su-flex su-items-center su-justify-center su-h-[150px] su-text-white su-bg-digital-red">Global footer</div>
+        </footer>
+    </body>
+</html>
+
+<script>
+    class FiltersManager {
+        constructor() {
+            this.showFiltersButton = document.querySelector('.show-filters');
+            this.searchFilters = document.querySelector('.search-filters');
+            this.searchFiltersControls = document.querySelector('.search-filters__controls');
+            this.viewResults = document.querySelector('.search-filters__view-results');
+            this.clearAll = document.querySelector('.search-filters__clear-all');
+            this.clearInput = document.querySelector('.clear-input');
+            this.input = document.querySelector('.input');
+            this.modal = document.getElementById('search-filters');
+            this.toggleButtons = document.querySelectorAll('.facets__toggle-btn');
+
+            this.init();
+        }
+
+        init() {
+            this.viewResults.addEventListener('click', () => this.hideFilters());
+            this.clearAll.addEventListener('click', () => this.hideFilters());
+            this.showFiltersButton.addEventListener('click', () => this.showFilters());
+            this.clearInput.addEventListener('click', () => this.clearInputValue());
+
+            // Obtain all keyboard-focusable elements within the modal
+            this.keyboardfocusableElements = this.modal.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+
+            this.firstFocusableElement = this.keyboardfocusableElements[0];
+            this.lastFocusableElement = this.keyboardfocusableElements[this.keyboardfocusableElements.length - 1];
+
+            this.modal.addEventListener('keydown', (event) => this.trapFocus(event));
+
+            if (window.innerWidth < 768) {
+                this.handleFacetsToggle();
+            }
+        }
+
+        handleFacetsToggle() {
+            this.toggleButtons.forEach((button) => {
+                button.setAttribute('tabindex', '0');
+                button.setAttribute('role', 'button');
+
+                button.addEventListener('click', () => {
+                    button.nextElementSibling.classList.toggle('su-hidden');
+                    button.classList.toggle('facets__toggle-rev');
+                });
+
+                button.addEventListener('keydown', (event) => {
+                    if (event.key === ' ' || event.key === 'Enter') {
+                        button.nextElementSibling.classList.toggle('su-hidden');
+                        button.classList.toggle('facets__toggle-rev');
+                    }
+                });
+            });
+        }
+
+        showFilters() {
+            this.searchFilters.classList.remove('mobile-hidden');
+            this.searchFiltersControls.classList.remove('mobile-hidden');
+            document.body.classList.add('block-scroll');
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                this.firstFocusableElement.focus(); // Set initial focus to the first element inside the modal
+            }, 0);
+        }
+
+        hideFilters() {
+            this.searchFilters.classList.add('mobile-hidden');
+            this.searchFiltersControls.classList.add('mobile-hidden');
+            document.body.classList.remove('block-scroll');
+        }
+
+        clearInputValue() {
+            this.input.value = '';
+        }
+
+        trapFocus(event) {
+            if (event.key === 'Tab') {
+                const isShiftKey = event.shiftKey;
+
+                if (isShiftKey && document.activeElement === this.firstFocusableElement) {
+                    event.preventDefault();
+                    this.lastFocusableElement.focus();
+                } else if (!isShiftKey && document.activeElement === this.lastFocusableElement) {
+                    event.preventDefault();
+                    this.firstFocusableElement.focus();
+                }
+            }
+        }
+    }
+
+    const filtersManager = new FiltersManager();
+
+    const handleAudioElements = () => {
+        const playButtons = document.querySelectorAll('.play-btn');
+
+        playButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const audio = button.nextElementSibling;
+
+                audio.classList.remove('su-hidden');
+                button.classList.add('su-hidden');
+            });
+        });
+    };
+
+    const handleClearButton = () => {
+        const input = document.querySelector('.search-bar input');
+        const clearButton = document.querySelector('.clear-input');
+
+        input.addEventListener('keyup', () => {
+            if (input.value.length > 3) {
+                clearButton.classList.remove('su-invisible');
+            } else {
+                clearButton.classList.add('su-invisible');
+            }
+        });
+    };
+
+    const isExternalLink = (link) => {
+        const currentHostname = window.location.hostname;
+        const linkHostname = new URL(link).hostname;
+
+        return currentHostname !== linkHostname;
+    };
+
+    const handleExternalLinks = () => {
+        const links = document.querySelectorAll('article h2 a');
+
+        links.forEach((link) => {
+            if (isExternalLink(link.href)) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+                link.nextElementSibling.classList.remove('su-hidden');
+            }
+        });
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+        handleAudioElements();
+        handleExternalLinks();
+        handleClearButton();
+    });
+</script>

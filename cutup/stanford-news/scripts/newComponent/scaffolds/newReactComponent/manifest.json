@@ -1,0 +1,81 @@
+{
+  "$schema": "https://render.dx-team-dev-1650.components.dev.dx.squiz.cloud/schemas/v1.json",
+  "name": "{NAME_lowercase}",
+  "namespace": "{NAMESPACE}",
+  "displayName": "{NAME}",
+  "description": "{DESCRIPTION}",
+  "version": "0.0.1",
+  "mainFunction": "main",
+  "environment": [],
+  "functions": [
+    {
+      "name": "main",
+      "entry": "dist/server.js",
+      "input": {
+        "type": "object",
+        "title": "{NAME}",
+        "description": "",
+        "required": [],
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "default": ""
+          },
+          "image": {
+            "type": "SquizImage",
+            "title": "Image",
+            "description": "Sample image"
+          }
+        }
+      },
+      "output": {
+        "responseType": "html",
+        "staticFiles": [
+          {
+            "location": "header",
+            "file": {
+              "type": "css",
+              "filepath": "http://127.0.0.1:4000/global.css"
+            }
+          },
+          {
+            "location": "footer",
+            "file": {
+              "type": "js",
+              "filepath": "client.js"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "previews": {
+    "server": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/sample.json"
+          }
+        }
+      }
+    },
+    "client": {
+      "functionData": {
+        "main": {
+          "inputData": {
+            "type": "file",
+            "path": "previews/sample.json"
+          },
+          "wrapper": {
+            "path": "previews/wrapper.html"
+          }
+        }
+      }
+    }
+  },
+  "staticFiles": {
+    "locationRoot": "dist"
+  }
+}

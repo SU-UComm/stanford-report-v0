@@ -1,0 +1,22 @@
+.basic-story__header-slider .swiper-slide-next,
+.basic-story__header-slider .swiper-slide-prev {
+  opacity: 0.35;
+}
+
+.basic-story__header-slider .swiper-pagination-bullet {
+  background: #fff;
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  border: 2px solid #c0c0bf;
+}
+
+.basic-story__header-slider .swiper-pagination-bullet-active {
+  background: #b1040e;
+  opacity: 1;
+}
+
+.basic-story__header-slider .swiper-slide-next figcaption,
+.basic-story__header-slider .swiper-slide-prev figcaption {
+  visibility: hidden;
+}

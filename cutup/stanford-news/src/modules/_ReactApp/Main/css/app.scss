@@ -1,0 +1,9 @@
+.react-contexts {
+  &__title {
+    margin: 0;
+    padding: pxToRem(16) 0;
+  }
+  &__subtitle {
+    font-weight: $fontWeightNormal;
+  }
+}

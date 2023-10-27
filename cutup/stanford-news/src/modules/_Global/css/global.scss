@@ -1,0 +1,63 @@
+.su-dark figcaption {
+  color: #c0c0bf;
+}
+
+svg {
+  fill: currentColor;
+}
+
+.featured-story__no-gradient .su-bg-gradient,
+.featured-story__no-gradient .su-bg-gradient-b {
+  background: #6d6c69 !important;
+}
+
+.featured-story__no-gradient .image-gallery__swiper-wrapper .su-bg-gradient {
+  background-color: #6d6c69 !important;
+}
+
+.featured-story__no-gradient .su-stop-red,
+.featured-story__no-gradient .su-stop-teal,
+.featured-story__no-gradient .su-stop-plum,
+.featured-story__no-gradient .su-stop-green {
+  stop-color: #6d6c69 !important;
+}
+
+/* TEXT CONTENT GENERIC STYLING */
+.basic-story__text-content h2 {
+  font-family: "Source Serif Pro", Georgia, Times, "Times New Roman", serif;
+  font-size: 35px;
+}
+
+.basic-story__text-content p {
+  margin-bottom: 38px;
+  font-size: 23px;
+}
+
+.basic-story__text-content a {
+  color: #2e2d29;
+  text-decoration: underline;
+  font-weight: normal;
+  font-size: 23px;
+}
+
+.basic-story__wrapper a {
+  text-decoration: none;
+}
+
+.basic-story__text-content p + section {
+  margin-top: 7px;
+}
+
+.basic-story__text-content section {
+  margin-bottom: 45px;
+}
+
+.basic-story__footer p {
+  margin-bottom: 0;
+}
+
+.su-dark .basic-story__text-content a {
+  color: #fff;
+  text-decoration: underline;
+}
+/* END - TEXT CONTENT GENERIC STYLING */

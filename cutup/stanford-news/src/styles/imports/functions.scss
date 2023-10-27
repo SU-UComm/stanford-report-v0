@@ -1,0 +1,26 @@
+@use "sass:math";
+
+// Convert a pixel value to EM units
+@function pxToEm($pixel) {
+  @return math.div($pixel, $base-font-pixel) + em;
+}
+
+// Convert a pixel value to REM units
+@function pxToRem($pixel) {
+  @return math.div($pixel, $base-font-pixel) + rem;
+}
+
+// Strip unit taken from foundation
+@function stripUnit($num) {
+  @return math.div($num, $num * 0 + 1);
+}
+
+// Convert Photoshop Letter spacing to EM
+@function photoshopLetterspacingToEms($val) {
+  @return ($val / 1000) * 1em;
+}
+
+// Convert Photoshop Letter spacing to PX
+@function photoshopLetterspacingToPixels($val, $font-size) {
+  @return ($val * $font-size / 1000) * 1px;
+}

@@ -1,0 +1,98 @@
+/** Source Sans Pro, Source Serif Pro, Roboto Slab, Roboto Mono (regular only) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab:wght@300;400;700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+
+@font-face {
+    font-family: 'Stanford';
+    src: url('https://www-media.stanford.edu/assets/fonts/stanford.woff') format('woff'), url('https://www-media.stanford.edu/assets/fonts/stanford.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+}
+
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@tailwind base;
+
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins.
+ */
+@tailwind utilities;
+
+/**
+ * Use this directive to control where Tailwind injects the responsive
+ * variations of each utility.
+ *
+ * If omitted, Tailwind will append these classes to the very end of
+ * your stylesheet by default.
+ */
+@tailwind variants;
+
+@layer utilities {
+    .su-bg-gradient {
+        @apply su-bg-gradient-to-r su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive;
+    }
+
+    .su-bg-gradient-b {
+        @apply su-bg-gradient-to-b su-from-digital-red su-to-plum dark:su-from-palo-verde dark:su-to-olive;
+    }
+
+    .su-bg-gradient-header-1 {
+        background: linear-gradient(180deg, #1c4270 0%, rgba(0, 0, 0, 0) 53.4%), linear-gradient(180deg, rgba(0, 0, 0, 0) 64.92%, #fff 96.86%);
+    }
+
+    .su-bg-gradient-header-1-dark {
+        background: linear-gradient(180deg, #1c4270 0%, rgba(0, 0, 0, 0) 53.4%), linear-gradient(180deg, rgba(0, 0, 0, 0) 64.92%, #000 96.86%);
+    }
+
+    .su-clip-bottom {
+        clip-path: inset(-100vw -100vw 0 0);
+    }
+
+    .font-serif-4 {
+        font-family: 'Source Serif 4', Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .su-stop-red {
+        stop-color: #b1040e;
+    }
+
+    .su-stop-plum {
+        stop-color: #620059;
+    }
+
+    .su-stop-teal {
+        stop-color: #017e7c;
+    }
+
+    .su-stop-green {
+        stop-color: #8f993e;
+    }
+
+    .su-featured-story-text {
+        @apply [&>p]:su-col-span-full sm:[&>p]:su-col-span-10 sm:[&>p]:su-col-start-2 [&>p]:su-col-end-11 lg:[&>p]:su-col-span-6 lg:[&>p]:su-col-start-4 [&>h2]:su-col-span-full sm:[&>h2]:su-col-span-10 sm:[&>h2]:su-col-start-2 [&>h2]:su-col-end-11 lg:[&>h2]:su-col-span-6 lg:[&>h2]:su-col-start-4;
+    }
+
+    .su-basic-story-text {
+        @apply [&>p]:su-col-span-full [&>h1]:su-col-span-full [&>h2]:su-col-span-full [&>h3]:su-col-span-full [&>h4]:su-col-span-full [&>p>a]:su-text-black dark:[&>p>a]:su-text-white [&>p>a]:su-font-normal [&>p>a]:su-underline;
+    }
+
+    .su-bg-gradient-header-dark {
+        background: linear-gradient(180deg, rgba(1, 50, 107, 0.9) 0.11%, rgba(0, 0, 0, 0) 50%);
+    }
+
+    .su-bg-gradient-header-white {
+        background: linear-gradient(180deg, #fff 0.11%, rgba(0, 0, 0, 0) 50%);
+    }
+
+    .su-story-first-letter {
+        @apply first-letter:su-font-bold first-letter:su-float-left first-letter:su-text-[72px] first-letter:su-mt-[14px] first-letter:su-leading-[35px] first-letter:su-p-0 first-letter:su-mr-[16px] first-letter:su-font-serif;
+    }
+}

@@ -1,0 +1,41 @@
+// Base font
+$base-font-scale: 1; // The font scale multiplier (e.g. 2 = 32px/2em/2rem)
+$base-font-pixel: 16; // Used for font size calculations & conversions
+$base-font-colour: #4a4a4a;
+
+// Selection highlighting
+$content-selection-highlight: #b3d4fc;
+
+// Default breakpoints
+$tablet: 768px;
+$desktop: 1300px;
+
+// Colours
+$white: #fff;
+$black: #000;
+
+$lightGray: #f0f0f0;
+$gray: #b8b8b8;
+$darkGray: #a9a9a9;
+$darkerGray: #4e4e4e;
+
+$error: #f00;
+
+// Font size
+$fontSizeTiny: 0.625rem;
+$fontSizeSmall: 0.75rem;
+$fontSizeBig: 1.125rem;
+$fontSizeLarge: 1.25rem;
+
+// Font weight
+$fontWeightLight: 300;
+$fontWeightNormal: 400;
+$fontWeightBold: 600;
+
+// Export
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown, property-case */
+:export {
+  errorTextColor: $error;
+  fontSizeSmall: $fontSizeSmall;
+}
+/* stylelint-enable */
